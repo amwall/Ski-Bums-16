@@ -20,6 +20,7 @@ def create_dictionary():
     dictionary['Expert Runs'] = 0
     dictionary['Runs'] = 0
     dictionary['Skiable Terrain'] = 'N/A'
+    dictionary['Average Snowfall'] = 'N/A'
 
     return dictionary
 
@@ -109,7 +110,7 @@ def go():
         td_tags = resort_overview.find_all('td')
         resort_overview_list = []
         for i in td_tags:
-            class_name = i.find('span', class_ = 'ovv_t t1')
+            class_name = i.find('span', class_ = 'ovv_t t2')
             if class_name == None:
                 resort_overview_list.append(i.text)
         # adding this info to the dictionary    
@@ -138,18 +139,25 @@ def go():
         # obtaining the towns and addresses of the resorts
         resort_contact = html.find('div', id = 'resort_contact') 
         address_info = resort_contact.find_all('p')
-        address = address_info[1]
-        resort_dictionary[resort]['Address'] = address.text
+        address = address_info[1].text
+        resort_dictionary[resort]['Address'] = address
         city = address_info[2].text
         zip_code = re.search('[0-9]+', city).group()
         if len(zip_code) == 4:
             resort_dictionary[resort]['Zip Code'] = '0' + zip_code
         else:
             resort_dictionary[resort]['Zip Code'] = zip_code
-        town = re.search('[A-Za-z]+', city).group()
-        resort_dictionary[resort]['City'] = town
+        if re.search('[A-Za-z]+', city) != None:
+            town = re.search('[A-Za-z]+', city).group()
+            resort_dictionary[resort]['City'] = town
+        else:
+            resort_dictionary[resort]['City'] = ''
 
-    return resort_dictionary  
+        #print(resort_dictionary[resort])
+        #print()
+
+    return resort_dictionary 
+
           
 
 
