@@ -35,23 +35,31 @@ def go():
 
     resort_dictionary = {} # key is resort name and the entry is another 
                            # dictionary containing all of the info
+    # getting the rating of the resorts (out of 5 stars)
+    rating_tags = html.find_all('b', class_ = 'rating_small')
+    rating_list = []
+    for i in rating_tags:
+        b_tag = i.find_all('b')
+        rating = b_tag[1].text
+        rating_list.append(rating)
 
+    # getting the name and the links of the resorts
     resort_links = html.find_all('div', class_ = 'name')
     resort_name_and_link = []
     for resort in resort_links:
         entry = []
         a_tag = resort.find('a')
-        # obtaining the name of the resort
+        # name of the resort
         resort_name = a_tag['title']
         entry.append(resort_name)
-        # obtaining the link to the resort
+        # link to the resort
         resort_url = a_tag['href']
         resort_url = convert_if_relative_url(starting_url, resort_url)
         entry.append(resort_url)
 
         resort_name_and_link.append(entry)
 
-    # adding the resort id, link and state to the dictionary
+    # adding the resort name, link, and rating to the dictionary
     for i in range(len(resort_name_and_link)):
         resort = resort_name_and_link[i][0]
         resort_dictionary[resort] = create_dictionary()
@@ -59,6 +67,9 @@ def go():
 
         link = resort_name_and_link[i][1]
         resort_dictionary[resort]['link'] = link
+
+        rate = rating_list[i]
+        resort_dictionary[resort]['Rating'] = rate
 
     # Looking at all of the individual ski resorts main page
     for resort in resort_dictionary:
@@ -109,7 +120,8 @@ def go():
         resort_dictionary[resort]['Elevation'] = resort_overview_list[1]
         resort_dictionary[resort]['Number Lifts'] = resort_overview_list[2]
         if 'N/A' in resort_overview_list[3]:
-            resort_dictionary[resort]['Lift tickets'] = 'N/A'
+            resort_dictionary[resort]['Min Ticket Price'] = 'N/A'
+            resort_dictionary[resort]['Max Ticket Price'] = 'N/A'
         else: 
             tic_price = resort_overview_list[3]
             tic_price = re.findall('[0-9]+.[0-9]+', tic_price)
@@ -136,8 +148,9 @@ def go():
             resort_dictionary[resort]['Zip Code'] = zip_code
         town = re.search('[A-Za-z]+', city).group()
         resort_dictionary[resort]['City'] = town
-        print()
-        print(resort_dictionary[resort])    
+
+    return resort_dictionary  
+          
 
 
 def is_absolute_url(url):
