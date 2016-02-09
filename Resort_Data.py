@@ -3,7 +3,6 @@
 import urllib.parse
 import requests
 import bs4
-import util
 from lxml import html
 import re
 
@@ -20,12 +19,15 @@ def create_dictionary():
     dictionary['Advanced Runs'] = 0
     dictionary['Expert Runs'] = 0
     dictionary['Runs'] = 0
+    dictionary['Skiable Terrain'] = 'N/A'
 
     return dictionary
 
 
 def go():
     '''
+    Gets all of the necessary information from the
+    resorts
     '''
     page = requests.get(starting_url)
     page.raise_for_status()
@@ -48,13 +50,7 @@ def go():
         entry.append(resort_url)
 
         resort_name_and_link.append(entry)
-    
-    state_names = html.find_all('div', class_ = 'rRegion')
-    states = []
-    for state_info in state_names:
-        a_tag = state_info.find('a')
-        state = a_tag['title']
-        states.append(state)
+
     # adding the resort id, link and state to the dictionary
     for i in range(len(resort_name_and_link)):
         resort = resort_name_and_link[i][0]
@@ -64,13 +60,15 @@ def go():
         link = resort_name_and_link[i][1]
         resort_dictionary[resort]['link'] = link
 
-        state = states[i]
-        resort_dictionary[resort]['state'] = state
     # Looking at all of the individual ski resorts main page
     for resort in resort_dictionary:
         page = requests.get(resort_dictionary[resort]['link'])
         page.raise_for_status()
         html = bs4.BeautifulSoup(page.text, 'html5lib')
+        # info: state
+        region_info = html.find('div', class_ = 'resort_header_inner_wrap')
+        state = region_info.find('a')
+        resort_dictionary[resort]['State'] = state['title']
         # info: num runs; % beginner, intermediate, advanced, expert;
         # num terrain parks; whether they have night skiing
         terrain_table = html.find_all('p')
@@ -104,8 +102,9 @@ def go():
             if class_name == None:
                 resort_overview_list.append(i.text)
         # adding this info to the dictionary    
-        # print(resort_overview_list)
         open_close = resort_overview_list[0]
+        open_close = re.findall('[0-9]+/[\s]*[0-9]+', open_close)
+        open_close = open_close[0] + '-' + open_close[1]
         resort_dictionary[resort]['Open/Close Dates'] = open_close
         resort_dictionary[resort]['Elevation'] = resort_overview_list[1]
         resort_dictionary[resort]['Number Lifts'] = resort_overview_list[2]
@@ -113,17 +112,32 @@ def go():
             resort_dictionary[resort]['Lift tickets'] = 'N/A'
         else: 
             tic_price = resort_overview_list[3]
-            tic_price = re.match
-            print('tic_price', tic_price)
-            resort_dictionary[resort]['Lift tickets'] = tic_price
-            
+            tic_price = re.findall('[0-9]+.[0-9]+', tic_price)
+            resort_dictionary[resort]['Min Ticket Price'] = tic_price[0]
+            resort_dictionary[resort]['Max Ticket Price'] = tic_price[1]  
+        # obtaining the average snowfall
+        important_dates = html.find('div', id = 'resort_impdates')
+        important_dates = important_dates.find_all('li')
+        for date in important_dates:
+            text = date.text
+            if 'Average Snowfall' in text:
+                average_snowfall = re.search('[0-9]+', text).group()
+                resort_dictionary[resort]['Average Snowfall'] = average_snowfall
+        # obtaining the towns and addresses of the resorts
+        resort_contact = html.find('div', id = 'resort_contact') 
+        address_info = resort_contact.find_all('p')
+        address = address_info[1]
+        resort_dictionary[resort]['Address'] = address.text
+        city = address_info[2].text
+        zip_code = re.search('[0-9]+', city).group()
+        if len(zip_code) == 4:
+            resort_dictionary[resort]['Zip Code'] = '0' + zip_code
+        else:
+            resort_dictionary[resort]['Zip Code'] = zip_code
+        town = re.search('[A-Za-z]+', city).group()
+        resort_dictionary[resort]['City'] = town
+        print()
         print(resort_dictionary[resort])    
-        #break
-
-                
-
-    #print(resort_dictionary['49 Degrees North'])
-
 
 
 def is_absolute_url(url):
