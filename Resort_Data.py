@@ -55,6 +55,7 @@ def go():
         entry.append(resort_name)
         # link to the resort
         resort_url = a_tag['href']
+        #print(resort_url)
         resort_url = convert_if_relative_url(starting_url, resort_url)
         entry.append(resort_url)
 
@@ -63,8 +64,13 @@ def go():
     # adding the resort name, link, and rating to the dictionary
     for i in range(len(resort_name_and_link)):
         resort = resort_name_and_link[i][0]
+        # dealing with the fact that there are two resorts names "Crystal Mountain"
+        if resort == 'Crystal Mountain':
+            resort_link = resort_name_and_link[i][1]
+            state_name = re.findall('/[a-z]+', resort_link)[1][1:]
+            resort = resort + ' - ' + state_name
         resort_dictionary[resort] = create_dictionary()
-        resort_dictionary[resort]['id'] = i
+        resort_dictionary[resort]['id'] = resort
 
         link = resort_name_and_link[i][1]
         resort_dictionary[resort]['link'] = link
