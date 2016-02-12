@@ -1,0 +1,339 @@
+ID,name,city,state,addr,zip,night,beginner,max_price,min_price,intermediate,elev,park,advanced,dates,rating,lfits,area,expert,total_runs,link,avg_snowfall
+1,49 Degrees North,Chewelah,WA,P.O. Box 166,99109,TRUE,30,55,0,40,3931ft - 5774ft,1,25,12/ 6-4/ 5,3,7,2325,5,82,http://www.onthesnow.com/washington/49-degrees-north/ski-resort.html,301
+2,Afton Alps,Hastings,MN,6600 Peller Avenue South,55033,TRUE,42,N/A,N/A,42,1180ft - 1530ft,5,17,11/27-3/27,3,22,250,0,48,http://www.onthesnow.com/minnesota/afton-alps/ski-resort.html,60
+3,Alpental,Snoqualmie,WA,POB 1068,98068,TRUE,4,66,12,17,3140ft - 5420ft,0,38,12/12-5/ 5,3,5,825,42,24,http://www.onthesnow.com/washington/alpental/ski-resort.html,429
+4,Alpine Mountain,Analomink,PA,PO Box 309,18320,TRUE,24,55,0,38,650ft - 1150ft,1,24,1/ 7-3/13,3.1,5,99,14,21,http://www.onthesnow.com/pennsylvania/alpine-mountain/ski-resort.html,50
+5,Alpine Valley,Chesterland,OH,10620 Mayfield,44026,TRUE,33,43,10,34,1260ft - 1500ft,1,33,1/ 3-3/22,2.9,5,72,0,11,http://www.onthesnow.com/ohio/alpine-valley/ski-resort.html,120
+6,Alpine Valley Resort,East,WI,P.O. Box 615,53120,TRUE,40,N/A,N/A,40,1020ft - 1260ft,3,20,11/24-3/16,2.9,13,90,0,20,http://www.onthesnow.com/wisconsin/alpine-valley-resort/ski-resort.html,80
+7,Alpine Valley Ski Area,White,MI,6775 E. Highland Road,48383,TRUE,34,N/A,N/A,36,126ft - 500ft,3,30,11/25-3/15,3,14,100,0,25,http://www.onthesnow.com/michigan/alpine-valley-ski-area/ski-resort.html,20
+8,Alta Ski Area,Alta,UT,P.O. Box 8007,84092,FALSE,25,89,0,40,8529ft - 10550ft,0,35,11/20-4/24,3.9,11,2200,0,116,http://www.onthesnow.com/utah/alta-ski-area/ski-resort.html,560
+9,Alyeska Resort,Girdwood,AK,P.O. Box 249,99587,TRUE,11,75,25,52,250ft - 2750ft,3,37,11/26-4/19,3.1,9,1610,0,76,http://www.onthesnow.com/alaska/alyeska-resort/ski-resort.html,650
+10,Andes Tower Hills Ski Area,Kensington,MN,4505 Andes Road Southwest,56343,TRUE,25,39,0,25,1330ft - 1620ft,2,44,11/21-3/29,2.7,4,35,6,16,http://www.onthesnow.com/minnesota/andes-tower-hills-ski-area/ski-resort.html,55
+11,Angel Fire Resort,Angel,NM,P.O. Box 130,87710,TRUE,18,N/A,N/A,46,8600ft - 10677ft,2,36,12/11-3/20,3.6,7,560,0,79,http://www.onthesnow.com/new-mexico/angel-fire-resort/ski-resort.html,210
+12,Anthony Lakes Mountain Resort,North,OR,47500 Anthony Lake Highway,97867,FALSE,20,35,0,38,7100ft - 8000ft,2,0,12/ 5-4/ 5,3.1,3,1500,42,21,http://www.onthesnow.com/oregon/anthony-lakes-mountain-resort/ski-resort.html,300
+13,Appalachian Ski Mountain,Blowing,NC,PO Box 106,28605,TRUE,25,60,0,50,3635ft - 4000ft,3,25,11/24-4/ 3,3.1,5,27,0,12,http://www.onthesnow.com/north-carolina/appalachian-ski-mtn/ski-resort.html,50
+14,Apple Mountain,Freeland,MI,4519 N. River Road,48623,TRUE,40,35,0,40,600ft - 820ft,0,20,1/ 6-3/15,3,6,80,0,12,http://www.onthesnow.com/michigan/apple-mountain/ski-resort.html,52
+15,Arapahoe Basin Ski Area,Dillon,CO,PO Box 5808,80435,FALSE,10,76,36,30,10779ft - 13050ft,3,37,10/29-6/ 5,3.5,8,960,23,109,http://www.onthesnow.com/colorado/arapahoe-basin-ski-area/ski-resort.html,350
+16,Arizona Snowbowl,Flagstaff,AZ,P.O. Box 40,86002,FALSE,37,69,35,42,9200ft - 11500ft,3,21,11/20-4/10,3,7,777,0,40,http://www.onthesnow.com/arizona/arizona-snowbowl/ski-resort.html,240
+17,Aspen / Snowmass,Aspen,CO,P.O. Box 1248,81612,FALSE,0,139,89,48,7879ft - 12510ft,0,26,11/21-4/17,4.4,43,5547,26,329,http://www.onthesnow.com/colorado/aspen-snowmass/ski-resort.html,300
+18,Attitash,Bartlett,NH,PO Box 308,3812,FALSE,26,79,40,46,600ft - 2350ft,5,28,12/26-4/ 3,3,11,311,0,68,http://www.onthesnow.com/new-hampshire/attitash/ski-resort.html,120
+19,Badger Pass,Yosemite,CA,7082 Glacier Point Rd,95389,FALSE,35,48.5,22,50,7200ft - 7800ft,2,15,12/12-3/29,3.1,5,88,0,10,http://www.onthesnow.com/california/badger-pass/ski-resort.html,300
+20,Bear Creek Mountain Resort,Macungie,PA,101 Doe Mountain Lane,18062,TRUE,30,63,0,40,600ft - 1100ft,3,30,1/ 7-3/22,3.2,6,86,0,23,http://www.onthesnow.com/pennsylvania/bear-creek-mountain-resort/ski-resort.html,30
+21,Bear Mountain,Big Bear Lake,CA,P.O. Box 77,92315,FALSE,24,N/A,N/A,52,7139ft - 8804ft,2,14,11/13-3/29,3.2,12,N/A,10,29,http://www.onthesnow.com/california/bear-mountain/ski-resort.html,100
+22,Bear Valley,Bear Valley,CA,P.O. Box 5038,95223,FALSE,25,69,25,40,6600ft - 8500ft,3,35,11/28-4/13,3.5,9,1680,0,75,http://www.onthesnow.com/california/bear-valley/ski-resort.html,359
+23,Beaver Creek,Vail,CO,PO Box 7,81658,FALSE,19,N/A,N/A,43,8100ft - 11439ft,3,21,11/25-4/10,4.5,25,1832,17,150,http://www.onthesnow.com/colorado/beaver-creek/ski-resort.html,323
+24,Beaver Mountain,Logan,UT,P.O. Box 3455,84323,FALSE,35,48,33,40,7231ft - 8600ft,2,25,12/21-3/29,2.8,5,464,0,48,http://www.onthesnow.com/utah/beaver-mountain/ski-resort.html,400
+25,Beech Mountain Resort,Banner,NC,PO Box 1118,28604,TRUE,30,77,0,40,4675ft - 5504ft,1,30,11/27-3/22,3,7,95,0,15,http://www.onthesnow.com/north-carolina/ski-beech-mountain-resort/ski-resort.html,31
+26,Belleayre,Highmount,NY,P.O. Box 313,12441,FALSE,22,66,40,58,2025ft - 3429ft,2,10,12/ 4-4/12,3.1,8,171,10,50,http://www.onthesnow.com/new-york/belleayre/ski-resort.html,120
+27,Berkshire East,Charlemont,MA,P.O. Box 727,1339,TRUE,37,60,0,44,540ft - 1720ft,2,17,1/ 7-4/ 5,3.1,6,163,2,44,http://www.onthesnow.com/massachusetts/berkshire-east/ski-resort.html,120
+28,Big Boulder,Blakeslee,PA,P.O.Box 1539,18610,TRUE,100,N/A,N/A,0,1700ft - 2175ft,8,0,12/12-4/19,2.9,8,55,0,16,http://www.onthesnow.com/pennsylvania/big-boulder/ski-resort.html,50
+29,Big Powderhorn Mountain,Bessemer,MI,N11375 Powderhorn Road,49911,FALSE,30,59,40,42,1200ft - 1800ft,2,24,12/23-4/ 3,3.2,10,253,3,33,http://www.onthesnow.com/michigan/big-powderhorn-mountain/ski-resort.html,214
+30,Big Sky Resort,Big,MT,P.O. Box 160001,59716,FALSE,15,106,46,25,6800ft - 11166ft,7,42,11/26-4/17,4.2,34,5800,18,306,http://www.onthesnow.com/montana/big-sky-resort/ski-resort.html,400
+31,Big Squaw Mountain Ski Resort,Greenville,ME,P.O. Box 430,4441,FALSE,33,25,25,34,1750ft - 3200ft,0,33,12/26-4/ 4,2.8,1,N/A,0,29,http://www.onthesnow.com/maine/big-squaw-mountain-ski-resort/ski-resort.html,N/A
+32,Bittersweet Ski Area,Otsego,MI,600 River Road,49078,TRUE,30,41,16,40,450ft - 850ft,2,30,12/21-3/22,3,12,100,0,20,http://www.onthesnow.com/michigan/bittersweet-ski-area/ski-resort.html,90
+33,Blackjack Ski Resort,Bessemer,MI,N11251 Black Jack Rd,49911,FALSE,20,51,14,40,385ft - 850ft,2,0,12/26-3/27,2.6,6,170,40,26,http://www.onthesnow.com/michigan/blackjack-ski-resort/ski-resort.html,210
+34,Black Mountain,Jackson,NH,P.O. Box B,3846,FALSE,33,55,30,34,1250ft - 2350ft,0,8,1/ 2-3/28,2.9,4,143,25,45,http://www.onthesnow.com/new-hampshire/black-mountain/ski-resort.html,125
+35,Blacktail Mountain Ski Area,Lakeside,MT,Box 1090,59922,FALSE,15,40,15,70,5235ft - 6675ft,0,15,12/21-4/12,3.1,4,1000,0,25,http://www.onthesnow.com/montana/blacktail-mountain-ski-area/ski-resort.html,250
+36,Blandford Ski Area,Blandford,MA,PO Box 158,1008,FALSE,40,N/A,N/A,50,1035ft - 1685ft,2,10,1/ 9-3/16,2.9,5,158,0,29,http://www.onthesnow.com/massachusetts/blandford-ski-area/ski-resort.html,50
+37,Blue Hills Ski Area,Canton,MA,4001 Washington St,2021,FALSE,13,40,30,25,326ft - 635ft,1,62,1/ 6-4/ 3,3,4,60,0,16,http://www.onthesnow.com/massachusetts/blue-hills-ski-area/ski-resort.html,N/A
+38,Blue Knob,Claysburg,PA,PO Box 247,16625,TRUE,15,60,0,41,2073ft - 3146ft,1,26,1/ 4-3/22,3,5,100,18,34,http://www.onthesnow.com/pennsylvania/blue-knob/ski-resort.html,120
+39,Blue Mountain Resort,Palmerton,PA,PO Box 216,18071,TRUE,41,N/A,N/A,13,460ft - 1600ft,6,13,12/22-4/ 5,3.6,14,164,33,39,http://www.onthesnow.com/pennsylvania/blue-mountain-ski-area/ski-resort.html,33
+40,Bluewood,Dayton,WA,PO Box 88,99328,FALSE,17,39,0,45,4545ft - 5670ft,2,38,12/19-3/15,3,3,355,0,24,http://www.onthesnow.com/washington/bluewood/ski-resort.html,300
+41,Bogus Basin,Boise,ID,2600 Bogus Basin Rd.,83702,TRUE,22,54,0,45,5800ft - 7581ft,0,33,11/27-4/10,3.2,7,2600,0,75,http://www.onthesnow.com/idaho/bogus-basin/ski-resort.html,250
+42,Bolton Valley,Bolton,VT,4302 Bolton Access Rd,5477,TRUE,34,59,0,38,1446ft - 3150ft,3,23,12/31-4/10,3.1,6,300,6,71,http://www.onthesnow.com/vermont/bolton-valley/ski-resort.html,300
+43,Boreal Mountain Resort,Truckee,CA,P.O. Box 39,96161,TRUE,21,59,29,39,7200ft - 7700ft,6,39,11/ 6-4/19,3.4,8,380,0,33,http://www.onthesnow.com/california/boreal/ski-resort.html,400
+44,Boston Mills,Peninsula,OH,P.O. Box 175,44264,TRUE,20,43,10,40,631ft - 871ft,2,40,1/ 6-3/22,2.8,8,40,0,7,http://www.onthesnow.com/ohio/boston-mills/ski-resort.html,51
+45,Bousquet Ski Area,Pittsfield,MA,Dan Fox Dr.,1201,FALSE,34,45,10,33,1125ft - 1875ft,2,33,1/ 6-3/29,2.3,5,200,0,23,http://www.onthesnow.com/massachusetts/bousquet-ski-area/ski-resort.html,83
+46,Boyne Highlands,Harbor,MI,600 Highlands Drive,49740,TRUE,35,N/A,N/A,29,745ft - 1290ft,4,35,12/ 4-3/30,3.6,10,435,2,55,http://www.onthesnow.com/michigan/boyne-highlands/ski-resort.html,140
+47,Boyne Mountain Resort,Boyne,MI,P.O. Box 19,49713,TRUE,57,N/A,N/A,23,620ft - 1120ft,7,17,12/ 4-4/19,3.3,12,415,3,60,http://www.onthesnow.com/michigan/boyne-mountain-resort/ski-resort.html,140
+48,Bradford Ski Area,Bradford,MA,P.O. Box 99,1835,FALSE,10,48,25,80,1300ft - 1547ft,1,10,1/ 6-3/29,2.7,10,48,0,15,http://www.onthesnow.com/massachusetts/bradford-ski-area/ski-resort.html,N/A
+49,Brandywine,Peninsula,OH,PO Box 175,44264,TRUE,27,43,10,27,631ft - 871ft,2,46,1/ 6-4/ 5,3,16,85,0,11,http://www.onthesnow.com/ohio/brandywine/ski-resort.html,51
+50,Brantling Ski Slopes,Sodus,NY,4015 Fish Farm Road,14551,FALSE,30,30,20,40,600ft - 850ft,0,30,1/ 3-4/ 5,2.9,5,20,0,10,http://www.onthesnow.com/new-york/brantling-ski-slopes/ski-resort.html,110
+51,Breckenridge,Breckenridge,CO,P.O. Box 1058,80424,FALSE,11,N/A,N/A,31,9600ft - 12997ft,4,24,11/13-4/24,4.2,34,2908,34,187,http://www.onthesnow.com/colorado/breckenridge/ski-resort.html,300
+52,Bretton Woods,Bretton,NH,Route 302,3575,TRUE,25,89,25,29,1600ft - 3100ft,3,30,11/22-4/21,3.7,10,464,16,97,http://www.onthesnow.com/new-hampshire/bretton-woods/ski-resort.html,200
+53,Brian Head Resort,Brian,UT,P.O. Box 190008,84719,FALSE,30,54,0,35,9600ft - 11306ft,3,35,11/20-4/12,3.3,8,650,0,71,http://www.onthesnow.com/utah/brian-head-resort/ski-resort.html,400
+54,Bridger Bowl,Bozeman,MT,15795 Bridger Canyon Rd.,59715,FALSE,12,54,0,28,6100ft - 8700ft,2,18,12/11-4/ 3,3.2,8,2000,42,105,http://www.onthesnow.com/montana/bridger-bowl/ski-resort.html,350
+55,Brighton Resort,Brighton,UT,12601 Big Cottonwood Canyon Rd,84121,TRUE,21,75,0,39,8754ft - 10500ft,1,25,11/18-4/17,3.5,6,1050,15,66,http://www.onthesnow.com/utah/brighton-resort/ski-resort.html,500
+56,Bristol Mountain,Canandaigua,NY,5662 Route 64,14424,TRUE,35,72,0,45,1000ft - 2200ft,3,20,12/22-4/ 5,3.4,6,160,0,34,http://www.onthesnow.com/new-york/bristol-mountain/ski-resort.html,60
+57,Bromley Mountain,Manchester,VT,PO Box 1130,5255,FALSE,30,73,41,36,1950ft - 3283ft,3,32,11/28-4/10,2.7,8,178,2,47,http://www.onthesnow.com/vermont/bromley-mountain/ski-resort.html,145
+58,Bruce Mound,Neilsville,WI,517 Court St.,54754,TRUE,17,23,9,17,1000ft - 1375ft,2,50,3/13-3/13,3.2,5,40,16,12,http://www.onthesnow.com/wisconsin/bruce-mound/ski-resort.html,42
+59,Brundage Mountain Resort,McCall,ID,P.O. Box 1062,83638,FALSE,20,62,18,50,5839ft - 7639ft,2,10,12/11-4/10,3,5,1500,20,46,http://www.onthesnow.com/idaho/brundage-mountain-resort/ski-resort.html,320
+60,Bryce Resort,Basye,VA,P.O. Box 3,22810,TRUE,38,63,0,50,1250ft - 1750ft,0,13,1/ 7-3/28,2.9,7,25,0,8,http://www.onthesnow.com/virginia/bryce-resort/ski-resort.html,30
+61,Buck Hill,Burnsville,MN,15400 Buck Hill Road,55306,TRUE,34,44,26,34,918ft - 1225ft,0,16,12/19-3/15,3,8,45,16,16,http://www.onthesnow.com/minnesota/buck-hill/ski-resort.html,60
+62,Buena Vista Ski Area,Bemidji,MN,621 Lake Julia Drive NW,56601,TRUE,20,N/A,N/A,55,1280ft - 1510ft,0,25,11/28-3/15,2.9,6,30,0,17,http://www.onthesnow.com/minnesota/buena-vista-ski-area/ski-resort.html,78
+63,Buffalo Ski Club Ski Area,Orchard,NY,P.O. Box 608,14033,TRUE,20,45,30,46,2025ft - 3429ft,1,0,1/12-3/29,3.1,7,225,34,43,http://www.onthesnow.com/new-york/buffalo-ski-club-ski-area/ski-resort.html,N/A
+64,Caberfae Peaks,Cadillac,MI,Caberfae Road,49601,TRUE,35,47,5,33,1060ft - 1568ft,2,32,12/ 4-4/ 3,3.1,5,200,0,34,http://www.onthesnow.com/michigan/caberfae-peaks-ski-golf-resort/ski-resort.html,140
+65,Camden Snow Bowl,Camden,ME,PO Box 1207,4843,TRUE,9,39,0,30,150ft - 1080ft,2,61,1/ 2-4/ 4,2.7,3,100,0,23,http://www.onthesnow.com/maine/camden-snow-bowl/ski-resort.html,69
+66,Camelback Mountain Resort,Tannersville,PA,PO Box 168,18372,TRUE,32,65,0,32,1250ft - 2100ft,5,32,12/22-4/ 5,3,16,160,3,35,http://www.onthesnow.com/pennsylvania/camelback-mountain-resort/ski-resort.html,50
+67,Campgaw Mountain,Mahwah,NJ,200 Campgaw Rd.,7430,TRUE,31,45,0,31,450ft - 726ft,1,23,1/ 7-3/29,3,5,23,15,13,http://www.onthesnow.com/new-jersey/campgaw-mountain/ski-resort.html,45
+68,Canaan Valley Resort,Davis,WV,HC 70 Box 330,26260,TRUE,19,59,0,36,3429ft - 4279ft,1,43,1/ 6-3/20,3.6,5,91,2,47,http://www.onthesnow.com/west-virginia/canaan-valley-resort/ski-resort.html,180
+69,Cannon Mountain,Franconia,NH,Franconia Notch State Park,3580,FALSE,15,75,39,52,1900ft - 4079ft,3,33,12/ 4-4/10,3.2,10,282,0,95,http://www.onthesnow.com/new-hampshire/cannon-mountain/ski-resort.html,160
+70,Cannonsburg,Cannonsburg,MI,P.O. Box 19,49317,FALSE,35,37,0,50,850ft - 1100ft,5,15,1/ 6-3/22,3,10,100,0,21,http://www.onthesnow.com/michigan/cannonsburg/ski-resort.html,100
+71,Cascade Mountain,Portage,WI,W10441 Cascade Mtn. Rd.,53901,TRUE,36,55,0,36,820ft - 1280ft,4,28,12/18-3/20,3.2,11,160,0,36,http://www.onthesnow.com/wisconsin/cascade-mountain/ski-resort.html,56
+72,Cataloochee Ski Area,Maggie,NC,1080 Ski Lodge Road,28751,TRUE,44,65,0,39,4660ft - 5400ft,2,0,11/22-3/27,2.9,5,50,17,18,http://www.onthesnow.com/north-carolina/cataloochee-ski-area/ski-resort.html,50
+73,Catamount,Hillsdale,MA,P.O. Box 639 ,12529,TRUE,33,65,16,42,1000ft - 2000ft,3,19,1/ 7-4/ 5,3.4,7,132,6,36,http://www.onthesnow.com/new-york/catamount-ski-ride-area/ski-resort.html,108
+74,Chestnut Mountain Resort,Galena,IL,P.O. Box 6328,61036,TRUE,30,N/A,N/A,40,565ft - 1040ft,0,20,12/19-3/15,3.1,9,139,10,22,http://www.onthesnow.com/illinois/chestnut-mountain-resort/ski-resort.html,50
+75,Christie Mountain,Bruce,WI,W13755  CTH O,54819,TRUE,37,N/A,N/A,23,1300ft - 1650ft,4,30,12/ 5-3/16,3.1,6,45,10,30,http://www.onthesnow.com/wisconsin/christie-mountain/ski-resort.html,48
+76,Christmas Mountain,Wisconsin,WI,S-944 Christmas Mountain Road,53965,TRUE,40,N/A,N/A,40,1000ft - 1250ft,0,20,12/19-3/22,3,5,40,0,15,http://www.onthesnow.com/wisconsin/christmas-mountain/ski-resort.html,20
+77,Coffee Mill Ski & Snowboard Resort,Wabasha,MN,Box 127,55981,TRUE,35,35,0,29,725ft - 1150ft,1,7,4/30-4/30,3,3,40,29,14,http://www.onthesnow.com/minnesota/coffee-mill-ski-snowboard-resort/ski-resort.html,48
+78,Cooper Spur,Mount,OR,10755 Cooper Spur Road,97041,FALSE,40,32,10,60,3500ft - 4000ft,0,0,12/18-3/29,2.1,2,50,0,10,http://www.onthesnow.com/oregon/cooper-spur/ski-resort.html,100
+79,Copper Mountain Resort,Copper,CO,P.O. Box 3001,80443,FALSE,21,78,54,25,9702ft - 12312ft,6,36,11/11-4/17,4,23,2465,18,142,http://www.onthesnow.com/colorado/copper-mountain-resort/ski-resort.html,305
+80,Cranmore Mountain Resort,North,NH,P.O. Box 1640,3860,FALSE,28,N/A,N/A,44,600ft - 2000ft,4,28,11/27-4/ 5,3.1,7,200,0,57,http://www.onthesnow.com/new-hampshire/cranmore-mountain-resort/ski-resort.html,150
+81,Crested Butte Mountain Resort,Crested Butte,CO,12 Snowmass Rd,81225,FALSE,14,108,59,41,9100ft - 12162ft,1,15,11/25-4/ 3,4.2,15,1547,30,124,http://www.onthesnow.com/colorado/crested-butte-mountain-resort/ski-resort.html,300
+82,Crotched Mountain,Bennington,NH,"615 Francestown Road, Route 47",3442,TRUE,28,64,46,40,1050ft - 2066ft,3,32,1/ 1-4/ 5,3.1,5,100,0,25,http://www.onthesnow.com/new-hampshire/crotched-mountain/ski-resort.html,105
+83,Crystal Mountain,Thompsonville,MI,12500 Crystal Mountain Drive,49683,TRUE,22,72,29,48,757ft - 1132ft,5,30,12/ 5-4/10,3.7,9,103,0,58,http://www.onthesnow.com/michigan/crystal-mountain/ski-resort.html,132
+84,Crystal Mountain,Crystal Mountain,WA,33914 Crystal Mtn Blvd.,98022,FALSE,11,72,0,54,4400ft - 7012ft,1,32,11/21-4/17,3.1,11,2600,3,57,http://www.onthesnow.com/washington/crystal-mountain/ski-resort.html,486
+85,Dartmouth Skiway,Hanover,NH,DCAD Dartmouth College,3755,FALSE,21,47,25,50,973ft - 1942ft,1,25,1/12-3/27,3.1,4,107,4,28,http://www.onthesnow.com/new-hampshire/dartmouth-skiway/ski-resort.html,100
+86,Deer Valley Resort,Park,UT,P.O. Box 1525,84060,FALSE,27,120,23,41,6570ft - 9570ft,0,27,12/ 5-4/10,4.3,21,2026,5,101,http://www.onthesnow.com/utah/deer-valley-resort/ski-resort.html,300
+87,Devils Head,Merrimac,WI,S-6330 Bluff Road,53561,TRUE,30,54,0,40,495ft - 995ft,1,30,12/17-3/20,3.2,12,260,0,27,http://www.onthesnow.com/wisconsin/devils-head/ski-resort.html,45
+88,Diamond Peak,Incline,NV,1210 Ski Way,89451,FALSE,10,64,22,42,6700ft - 8539ft,3,48,12/ 3-4/10,2.8,7,655,0,31,http://www.onthesnow.com/nevada/diamond-peak/ski-resort.html,300
+89,Discovery Ski Area,Anaconda,MT,PO Box 221,59711,FALSE,20,42,0,25,5770ft - 8150ft,1,25,11/26-4/ 5,3.1,8,2000,30,67,http://www.onthesnow.com/montana/discovery-ski-area/ski-resort.html,200
+90,Dodge Ridge,Pinecrest,CA,1 Dodge Ridge Rd,95364,FALSE,20,68,15,40,6600ft - 8200ft,5,40,12/11-4/10,3.1,12,862,0,67,http://www.onthesnow.com/california/dodge-ridge/ski-resort.html,300
+91,Donner Ski Ranch,Norden,CA,P.O. Box 66,95724,FALSE,25,59,20,50,7031ft - 8012ft,1,25,12/ 5-4/12,2.9,8,505,0,52,http://www.onthesnow.com/california/donner-ski-ranch/ski-resort.html,396
+92,Dry Hill Ski Area,Watertown,NY,P.O. Box 202,13601,TRUE,33,35,12,34,650ft - 950ft,1,33,1/ 6-3/29,2.9,3,35,0,7,http://www.onthesnow.com/new-york/dry-hill-ski-area/ski-resort.html,125
+93,Eaglecrest Ski Area,Juneau,AK,155 South Seward St.,99801,FALSE,20,46,21,40,1200ft - 2600ft,1,30,12/19-4/12,3.2,4,640,10,36,http://www.onthesnow.com/alaska/eaglecrest-ski-area/ski-resort.html,350
+94,Eagle Point,Beaver,UT,150 S West Village Circle,84713,FALSE,20,N/A,N/A,35,9100ft - 10600ft,1,45,12/21-3/22,3.3,5,600,0,40,http://www.onthesnow.com/utah/eagle-point/ski-resort.html,400
+95,Eagle Rock,Hazelton,PA,1060 Valley of Lakes,18202,FALSE,50,42,0,7,1260ft - 1810ft,1,43,1/ 5-3/22,3,3,N/A,0,14,http://www.onthesnow.com/pennsylvania/eagle-rock/ski-resort.html,N/A
+96,Eldora Mountain Resort,Nederland,CO,P.O.  Box 1697,80466,FALSE,15,69,12,52,9200ft - 10800ft,3,19,11/20-4/12,3,11,680,15,54,http://www.onthesnow.com/colorado/eldora-mountain-resort/ski-resort.html,311
+97,Elk Mountain Ski Resort,Union,PA,344 Elk Mountain Road,18470,TRUE,22,70,0,37,1692ft - 2692ft,2,41,1/ 3-3/28,3.3,7,180,0,27,http://www.onthesnow.com/pennsylvania/elk-mountain-ski-resort/ski-resort.html,60
+98,Elko SnoBowl,Elko,NV,491 5th Street,89801,FALSE,8,N/A,N/A,90,6300ft - 7000ft,0,1,12/18-3/13,2.6,2,60,1,10,http://www.onthesnow.com/nevada/elko-snobowl/ski-resort.html,24
+99,Elm Creek Winter Recreation Area,Maple,MN,12400 James Deane Parkway,55369,TRUE,20,17,7,60,867ft - 927ft,0,0,12/15-3/20,3.2,3,15,20,3,http://www.onthesnow.com/minnesota/elm-creek/ski-resort.html,45
+100,Enchanted Forest Ski Area,Red River,NM,29 Sangre De Cristo,87558,FALSE,30,18,9,50,9820ft - 10077ft,0,2,11/28-3/22,2.8,0,600,18,33,http://www.onthesnow.com/new-mexico/enchanted-forest-cross-countryski-area/ski-resort.html,240
+101,Four Lakes,Lisle,IL,6005 Forest View Rd.,60532,TRUE,40,28,28,30,400ft - 500ft,1,30,1/ 6-3/15,2.5,7,9,0,7,http://www.onthesnow.com/illinois/four-lakes/ski-resort.html,24
+102,Giants Ridge Resort,Biwabik,MN,P.O. Box 190,55708,TRUE,31,N/A,N/A,44,1472ft - 1972ft,3,25,12/ 5-4/ 5,2.7,7,202,0,35,http://www.onthesnow.com/minnesota/giants-ridge-resort/ski-resort.html,85
+103,Gore Mountain,North,NY,P.O. Box 470,12853,TRUE,10,83,40,51,997ft - 3600ft,6,34,11/27-4/19,3.3,15,438,4,109,http://www.onthesnow.com/new-york/gore-mountain/ski-resort.html,150
+104,Grand Geneva,Lake,WI,PO Box 130,53147,TRUE,40,53,0,30,875ft - 1086ft,1,20,1/ 2-3/22,2.5,5,30,10,18,http://www.onthesnow.com/wisconsin/grand-geneva/ski-resort.html,25
+105,Grand Targhee Resort,Alta,WY,3300 E. Ski Hill Road,83414,FALSE,10,75,0,70,7850ft - 9920ft,1,15,11/20-4/27,3.8,5,2000,5,95,http://www.onthesnow.com/wyoming/grand-targhee-resort/ski-resort.html,500
+106,Granite Gorge,Keene,NH,P.O. Box 545,3431,TRUE,35,47,0,35,800ft - 1325ft,0,15,12/30-3/21,2.9,4,55,15,19,http://www.onthesnow.com/new-hampshire/granite-gorge/ski-resort.html,100
+107,Granite Peak Ski Area,Wausau,WI,P.O. Box 5010,54402,TRUE,30,N/A,N/A,35,1242ft - 1942ft,4,30,12/19-4/12,3.3,7,220,5,75,http://www.onthesnow.com/wisconsin/granite-peak-ski-area/ski-resort.html,75
+108,Great Divide,Marysville,MT,P.O. Box SKI,59640,TRUE,9,40,20,45,5750ft - 7329ft,6,45,11/22-4/10,2.9,6,1600,0,110,http://www.onthesnow.com/montana/great-divide/ski-resort.html,180
+109,Greek Peak,Cortland,NY,2000 NYS Route 392,13045,TRUE,41,64,0,28,1147ft - 2100ft,3,31,1/ 3-4/12,3,8,220,0,33,http://www.onthesnow.com/new-york/greek-peak/ski-resort.html,122
+110,Gunstock,Laconia,NH,PO Box 1307,3247,TRUE,12,82,46,61,900ft - 2300ft,2,0,12/26-4/ 3,3.1,7,227,27,54,http://www.onthesnow.com/new-hampshire/gunstock/ski-resort.html,120
+111,Heavenly Mountain Resort,South Lake Tahoe,CA,4080 Lake Tahoe Blvd,96150,FALSE,20,N/A,N/A,45,6564ft - 10066ft,3,30,11/14-4/17,3.8,28,4800,5,97,http://www.onthesnow.com/california/heavenly-mountain-resort/ski-resort.html,360
+112,Hickory Ski Center,Burnt,NY,P.O. Box 127,12027,FALSE,30,N/A,N/A,30,700ft - 1900ft,0,40,2/ 9-3/29,2.4,3,225,0,19,http://www.onthesnow.com/new-york/hickory-ski-center/ski-resort.html,75
+113,Hidden Valley Ski Area,Eureka,MO,17409 Hidden Valley Drive,63025,TRUE,30,47,5,35,2316ft - 2566ft,0,35,1/10-3/ 8,2.8,7,30,0,13,http://www.onthesnow.com/missouri/hidden-valley-ski-area/ski-resort.html,26
+114,Hilltop Ski Area,Anchorage,AK,7015 Abbott Road,99507,TRUE,80,30,18,10,1796ft - 2090ft,1,0,11/20-3/22,3.4,3,30,10,13,http://www.onthesnow.com/alaska/hilltop-ski-area/ski-resort.html,69
+115,Hogadon,Casper,WY,1800 East K St.,82601,FALSE,10,42,27,30,7400ft - 8000ft,1,60,12/ 6-4/ 3,3,2,92,0,27,http://www.onthesnow.com/wyoming/hogadon/ski-resort.html,N/A
+116,Holiday Mountain,Monticello,NY,99 Holiday Mountain Road,12701,TRUE,30,42,27,27,1150ft - 1550ft,0,31,1/ 9-3/22,3,4,37,12,9,http://www.onthesnow.com/new-york/holiday-mountain/ski-resort.html,50
+117,Holiday Valley,Ellicotville,NY,P.O. Box 370,14731,TRUE,34,69,0,28,1500ft - 2250ft,5,37,12/20-4/12,3.2,13,290,1,58,http://www.onthesnow.com/new-york/holiday-valley/ski-resort.html,180
+118,Holimont Ski Area,Ellicottville,NY,P.O. Box 279,14731,FALSE,26,70,0,28,1560ft - 2260ft,3,45,12/29-4/10,2.9,8,135,0,53,http://www.onthesnow.com/new-york/holimont-ski-area/ski-resort.html,180
+119,Homewood Mountain Resort,Homewood,CA,PO Box 165,96141,FALSE,15,N/A,N/A,50,6229ft - 7879ft,2,25,12/11-4/10,2.9,8,1260,10,64,http://www.onthesnow.com/california/homewood-mountain-resort/ski-resort.html,450
+120,Hoodoo Ski Area,Sisters,OR,"Highway 20, PO Box 20",97759,TRUE,30,48,0,30,4668ft - 5702ft,0,40,12/18-4/14,2.9,5,806,0,34,http://www.onthesnow.com/oregon/hoodoo-ski-area/ski-resort.html,350
+121,Howelsen Hill,Steamboat,CO,P.O. Box 775088,80477,TRUE,20,25,8,30,6695ft - 7135ft,1,50,12/ 4-3/15,3.1,4,50,0,17,http://www.onthesnow.com/colorado/howelsen-hill/ski-resort.html,150
+122,Hunter Mountain,Hunter,NY,P.O. Box 295,12442,FALSE,28,N/A,N/A,24,1600ft - 3200ft,2,33,12/26-4/12,2.9,11,240,16,58,http://www.onthesnow.com/new-york/hunter-mountain/ski-resort.html,120
+123,Hunt Hollow Ski Club,Naples,NY,7532 Co Rd 36,14512,TRUE,32,55,0,21,1000ft - 2030ft,1,37,1/12-4/ 5,0,4,400,11,19,http://www.onthesnow.com/new-york/hunt-hollow-ski-club/ski-resort.html,130
+124,Hyland Ski & Snowboard Area,Bloomington,MN,8800 Chalet Road,55438,TRUE,40,N/A,N/A,40,900ft - 1075ft,1,20,12/11-3/20,2.6,8,35,0,14,http://www.onthesnow.com/minnesota/hyland-ski-snowboard-area/ski-resort.html,55
+125,Indianhead Mountain,Wakefield,MI,500 Indianhead Road,49968,FALSE,20,62,20,30,1297ft - 1935ft,2,50,12/18-4/10,3.5,9,240,0,30,http://www.onthesnow.com/michigan/indianhead-mountain/ski-resort.html,204
+126,Jack Frost,Blakeslee,PA,PO Box 1539,18610,FALSE,100,55,10,0,1400ft - 2000ft,1,0,12/29-3/29,3,9,100,0,20,http://www.onthesnow.com/pennsylvania/jack-frost/ski-resort.html,50
+127,Jackson Hole,Teton Village,WY,3395 Cody Ln,83025,FALSE,9,88,0,34,6310ft - 10450ft,7,41,11/26-4/ 3,4.2,13,2500,17,133,http://www.onthesnow.com/wyoming/jackson-hole/ski-resort.html,450
+128,Jay Peak,Jay,VT,4850 VT Rte 242,5859,FALSE,20,79,16,40,1815ft - 3968ft,3,40,11/27-5/ 8,3.7,9,385,0,78,http://www.onthesnow.com/vermont/jay-peak/ski-resort.html,377
+129,Jiminy Peak,Hancock,MA,37 Corey Rd.,1237,TRUE,53,71,53,27,1230ft - 2380ft,0,13,12/19-4/13,3.5,9,167,7,45,http://www.onthesnow.com/massachusetts/jiminy-peak/ski-resort.html,90
+130,June Mountain,June Lake,CA,P.O. Box 146,93529,FALSE,35,N/A,N/A,45,7545ft - 10089ft,0,20,12/12-3/21,3.1,7,1500,0,35,http://www.onthesnow.com/california/june-mountain/ski-resort.html,250
+131,Kelly Canyon Ski Area,Ririe,ID,Box 367,83443,FALSE,35,N/A,N/A,45,5600ft - 6600ft,1,20,12/17-3/15,2.4,6,740,0,51,http://www.onthesnow.com/idaho/kelly-canyon-ski-area/ski-resort.html,200
+132,Keystone,Keystone,CO,P.O. Box 38,80435,TRUE,14,N/A,N/A,29,9279ft - 12408ft,1,57,11/ 6-4/10,4.1,20,3148,0,131,http://www.onthesnow.com/colorado/keystone/ski-resort.html,230
+133,Killington Resort,Killington,VT,4763 Killington Road,5751,FALSE,28,N/A,N/A,33,1165ft - 4241ft,5,24,10/19-5/29,3.8,22,1509,15,155,http://www.onthesnow.com/vermont/killington-resort/ski-resort.html,250
+134,King Pine,Madison,NH,1251 Eaton Rd,3849,TRUE,44,52,0,31,500ft - 850ft,2,10,12/26-3/27,3,6,48,15,17,http://www.onthesnow.com/new-hampshire/king-pine/ski-resort.html,120
+135,Kirkwood,Kirkwood,CA,PO Box 1,95646,FALSE,12,N/A,N/A,30,7800ft - 9800ft,2,38,11/14-4/10,3.6,15,2300,20,86,http://www.onthesnow.com/california/kirkwood/ski-resort.html,600
+136,Kissing Bridge,Glenwood,NY,P.O. Box 73,14069,TRUE,20,62,0,50,1150ft - 1700ft,5,30,1/ 6-3/29,3,10,700,0,39,http://www.onthesnow.com/new-york/kissing-bridge/ski-resort.html,120
+137,Labrador Mt.,Truxton,NY,"Route 91, PO Box 105",13158,TRUE,33,50,15,34,1125ft - 1825ft,1,33,1/ 6-3/29,2.9,4,250,0,22,http://www.onthesnow.com/new-york/labrador-mt/ski-resort.html,125
+138,Lee Canyon,Las Vegas,NV,6725 Lee Canyon Rd,89124,FALSE,20,70,0,60,8510ft - 11289ft,1,20,11/27-3/29,2.9,3,70,0,30,http://www.onthesnow.com/nevada/las-vegas-ski-and-snowboard-resort/ski-resort.html,120
+139,Liberty,Carroll,PA,78 Country Club Trail,17320,TRUE,35,72,0,40,570ft - 1190ft,3,0,1/ 8-3/22,3,8,100,25,16,http://www.onthesnow.com/pennsylvania/liberty/ski-resort.html,31
+140,Little Switzerland,Slinger,WI,105 Cedar Creek Rd,53086,TRUE,39,N/A,N/A,33,1068ft - 1268ft,3,0,12/19-3/22,3,8,50,28,18,http://www.onthesnow.com/wisconsin/little-switzerland/ski-resort.html,N/A
+141,Lookout Pass Ski Area,Wallace,ID,P.O. Box 108,83846,FALSE,9,42,0,50,4500ft - 5650ft,3,32,11/26-3/22,3.2,4,540,9,34,http://www.onthesnow.com/idaho/lookout-pass-ski-area/ski-resort.html,400
+142,Loon Mountain,Lincoln,NH,60 Loon Mountain Rd.,3251,FALSE,20,85,0,60,950ft - 3050ft,6,17,11/25-4/19,3.9,12,370,3,61,http://www.onthesnow.com/new-hampshire/loon-mountain/ski-resort.html,160
+143,Lost Trail - Powder Mtn,Conner,MT,P.O. Box 311,59827,FALSE,20,40,0,60,6400ft - 8200ft,2,20,12/ 3-3/31,2.9,5,1000,0,69,http://www.onthesnow.com/montana/lost-trail-powder-mtn/ski-resort.html,300
+144,Lost Valley,Auburn,ME,Box 260,4212,TRUE,47,40,25,20,255ft - 495ft,2,33,12/30-3/29,2.7,2,45,0,16,http://www.onthesnow.com/maine/lost-valley/ski-resort.html,50
+145,Loveland,Georgetown,CO,PO Box 899,80444,FALSE,13,N/A,N/A,41,10800ft - 13010ft,1,20,10/29-5/ 3,3.4,10,1800,26,94,http://www.onthesnow.com/colorado/loveland/ski-resort.html,422
+146,Lutsen Mountains,Lutsen,MN, P.O. Box 129,55612,FALSE,26,82,0,44,800ft - 1687ft,5,20,11/26-4/10,3.2,8,393,9,54,http://www.onthesnow.com/minnesota/lutsen-mountains/ski-resort.html,120
+147,Mad River Glen,Waitsfield,VT,P.O. Box 1089,5673,FALSE,20,79,0,35,1600ft - 3637ft,0,45,1/ 9-4/19,3.2,5,115,0,45,http://www.onthesnow.com/vermont/mad-river-glen/ski-resort.html,228
+148,Mad River Mountain,Bellefontaine,OH,P.O. Box 22,43311,TRUE,33,45,0,19,1160ft - 1460ft,4,47,1/ 2-3/22,3.1,12,144,2,20,http://www.onthesnow.com/ohio/mad-river-mountain/ski-resort.html,36
+149,Magic Mountain,Londonderry,VT,P.O. Box 396,5148,FALSE,30,67,32,30,1150ft - 2850ft,1,15,1/16-4/12,3.4,4,195,25,43,http://www.onthesnow.com/vermont/magic-mountain/ski-resort.html,150
+150,Magic Mountain Ski Area,Twin Falls,ID,319 Orchard Dr.,83301,FALSE,25,31,0,25,6500ft - 7200ft,0,20,12/19-3/15,2.9,3,280,30,11,http://www.onthesnow.com/idaho/magic-mountain-ski-area/ski-resort.html,180
+151,Mammoth Mountain Ski Area,Mammoth,CA,P.O. Box 24,93546,FALSE,25,N/A,N/A,40,7952ft - 11052ft,11,20,11/ 5-5/29,4.1,28,3500,15,151,http://www.onthesnow.com/california/mammoth-mountain-ski-area/ski-resort.html,400
+152,Maple Ski Ridge,Schenectady,NY,2725 Mariaville Road,12306,TRUE,11,38,0,44,750ft - 1200ft,0,44,1/ 9-3/12,2.3,3,25,0,10,http://www.onthesnow.com/new-york/maple-ski-ridge/ski-resort.html,N/A
+153,Marquette Mountain,Marquette,MI,4501 M-553,49855,TRUE,15,N/A,N/A,50,757ft - 1357ft,3,35,12/ 3-4/12,3.1,4,169,0,35,http://www.onthesnow.com/michigan/marquette-mountain/ski-resort.html,210
+154,Massanutten,Harrisonburg,VA,PO Box 1227,22840,TRUE,30,N/A,N/A,35,1750ft - 2925ft,2,35,1/ 7-3/22,3.4,8,70,0,14,http://www.onthesnow.com/virginia/massanutten/ski-resort.html,35
+155,Maverick Mountain,Polaris,MT,Box 475 Maverick Mountain Road,59746,FALSE,30,36,22,40,6500ft - 8520ft,0,30,12/26-3/15,2.7,2,255,0,22,http://www.onthesnow.com/montana/maverick-mountain/ski-resort.html,160
+156,McCauley Mountain Ski Center,Old Forge,NY,Town of Webb,13420,FALSE,36,30,15,45,1562ft - 2250ft,1,18,1/ 7-4/ 5,3.2,5,70,0,22,http://www.onthesnow.com/new-york/mccauley-mountain-ski-center/ski-resort.html,200
+157,Meadowlark Ski Lodge,Ten Sleep,WY,426 US-16,82442,FALSE,29,48,30,43,8500ft - 9500ft,1,29,1/16-3/29,2.6,3,300,0,14,http://www.onthesnow.com/wyoming/meadowlark-ski-lodge/ski-resort.html,N/A
+158,Mission Ridge,Wenatchee,WA,P.O. Box 1668,98807,TRUE,0,55,10,0,4570ft - 6820ft,3,0,12/17-4/12,3.1,6,2000,0,56,http://www.onthesnow.com/washington/mission-ridge/ski-resort.html,200
+159,Mohawk Mountain,Cornwall,CT,PO Box 27,6753,TRUE,30,60,15,50,950ft - 1600ft,0,20,1/ 2-3/29,3.2,8,107,0,25,http://www.onthesnow.com/connecticut/mohawk-mountain/ski-resort.html,92
+160,Monarch Mountain,Monarch,CO,#1 Powder Place,81227,FALSE,23,74,30,26,10789ft - 11952ft,2,40,11/20-4/10,3.7,6,800,11,62,http://www.onthesnow.com/colorado/monarch-mountain/ski-resort.html,350
+161,Montage Mountain,Scranton,PA,1000 Montage Mountain Rd,18507,TRUE,35,59,0,30,960ft - 1960ft,2,20,1/ 7-3/31,3.5,7,140,15,26,http://www.onthesnow.com/pennsylvania/sno-mountain/ski-resort.html,47
+162,Montana Snowbowl,Missoula,MT,P.O. Box 8107,59807,TRUE,20,N/A,N/A,40,5000ft - 7600ft,0,40,12/ 4-3/29,3.1,4,950,0,37,http://www.onthesnow.com/montana/montana-snowbowl/ski-resort.html,300
+163,Mont Ripley,Houghton,MI,1400 Townsend Drive,49930,TRUE,21,45,33,29,700ft - 1140ft,2,42,12/24-3/20,2.7,4,112,8,25,http://www.onthesnow.com/michigan/mont-ripley/ski-resort.html,275
+164,Mountain Creek Resort,Vernon,NJ,200 Route 94,7462,TRUE,17,69.99,0,64,440ft - 1480ft,3,19,1/ 6-4/ 1,3.3,10,167,0,46,http://www.onthesnow.com/new-jersey/mountain-creek-resort/ski-resort.html,65
+165,Mountain High,Wrightwood,CA,P.O. Box 3010,92397,TRUE,20,59,0,42,6600ft - 8200ft,1,34,11/ 7-4/10,2.9,14,290,3,59,http://www.onthesnow.com/california/mountain-high/ski-resort.html,108
+166,Mount Ashland,Ashland,OR,P.O. Box 220,97520,TRUE,5,46,0,20,6350ft - 7500ft,2,50,12/13-4/10,2.9,5,220,25,23,http://www.onthesnow.com/oregon/mount-ashland/ski-resort.html,300
+167,Mount Bohemia,Michigan,MI,Lac La Belle,53066,FALSE,0,59,59,1,600ft - 1500ft,0,88,12/27-5/ 3,3.9,2,585,11,102,http://www.onthesnow.com/michigan/mount-bohemia/ski-resort.html,273
+168,Mount Holiday Ski Area,Traverse,MI,3100 Holiday Road,49684,TRUE,30,32,0,40,240ft - 440ft,0,30,1/ 6-3/15,2.9,4,45,0,12,http://www.onthesnow.com/michigan/mount-holiday-ski-area/ski-resort.html,120
+169,Mount Holly,Holly,MI,13536 South Dixie Highway,48442,TRUE,30,N/A,N/A,50,755ft - 1105ft,0,20,11/25-3/15,3.2,13,100,0,19,http://www.onthesnow.com/michigan/mount-holly/ski-resort.html,42
+170,Mount Kato Ski Area,Mankato,MN,20461 Hwy 66,56001,TRUE,21,41,0,42,300ft - 540ft,4,37,11/27-3/22,2.7,10,55,0,19,http://www.onthesnow.com/minnesota/mount-kato-ski-area/ski-resort.html,50
+171,Mount La Crosse,La Crosse,WI,P.O. Box 9,54602,TRUE,30,30,11,20,593ft - 1110ft,1,40,12/26-3/15,2.9,4,100,10,19,http://www.onthesnow.com/wisconsin/mount-la-crosse/ski-resort.html,40
+172,Mount Peter Ski Area,Warwick,NY,Rte 17A & Old Mt Peter Rd,10990,TRUE,43,49,25,21,750ft - 1250ft,1,21,1/ 6-3/29,3.1,5,69,14,14,http://www.onthesnow.com/new-york/mount-peter-ski-area/ski-resort.html,50
+173,Mount Pleasant of Edinboro,Venango,PA, 23301 Plank Rd ,16403,TRUE,22,38,0,56,1200ft - 1540ft,0,22,12/21-3/25,3.1,2,40,0,10,http://www.onthesnow.com/pennsylvania/mount-pleasant-of-edinboro/ski-resort.html,100
+174,Mount Shasta Board & Ski Park,McCloud,CA,4500 Ski Park,96067,FALSE,20,54,12,55,5500ft - 6889ft,3,25,12/17-4/12,2.7,4,425,0,32,http://www.onthesnow.com/california/mount-shasta-board-ski-park/ski-resort.html,300
+175,Mount Snow,Somerset,VT,39 Mount Snow Road,5356,FALSE,14,N/A,N/A,73,1900ft - 3600ft,8,13,11/26-4/19,3.4,20,588,0,80,http://www.onthesnow.com/vermont/mount-snow/ski-resort.html,166
+176,Mount Southington Ski Area,Southington,CT,P.O. Box 347,6489,TRUE,43,56,14,43,100ft - 525ft,2,14,1/ 5-4/ 5,3,7,51,0,14,http://www.onthesnow.com/connecticut/mount-southington-ski-area/ski-resort.html,80
+177,Mount Sunapee,Newbury,NH,P.O. Box 2021 Route 103,3255,FALSE,26,82,49,49,1232ft - 2742ft,4,25,11/27-4/19,2.9,10,232,0,66,http://www.onthesnow.com/new-hampshire/mount-sunapee/ski-resort.html,100
+178,Mt. Abram Ski Resort,Greenwood,ME,Howe Hill Road,4255,TRUE,25,N/A,N/A,50,1050ft - 2250ft,0,20,12/ 5-4/12,3.1,5,560,5,54,http://www.onthesnow.com/maine/mt-abram-ski-resort/ski-resort.html,125
+179,Mt. Bachelor,Bend,OR,P.O. Box 1000,97702,FALSE,15,84,42,25,5700ft - 9064ft,5,35,11/21-5/30,3.4,12,3683,25,88,http://www.onthesnow.com/oregon/mt-bachelor/ski-resort.html,462
+180,Mt. Baker,Bellingham,WA,1420 Iowa St.,98229,FALSE,24,58,25,45,3589ft - 5089ft,0,0,11/19-4/19,3.3,8,1000,31,38,http://www.onthesnow.com/washington/mt-baker/ski-resort.html,682
+181,Mt. Baldy,Mt Baldy ,CA,8401 Mt Baldy Rd,91759,FALSE,20,69,29,40,6500ft - 8600ft,0,20,12/29-3/29,2.8,4,400,20,26,http://www.onthesnow.com/california/mt-baldy/ski-resort.html,178
+182,Mt. Brighton,Brighton,MI,4141 Bauer Road,48116,TRUE,30,N/A,N/A,40,1100ft - 1330ft,5,30,1/ 1-3/22,2.9,12,130,0,24,http://www.onthesnow.com/michigan/mount-brighton/ski-resort.html,60
+183,Mt. Crescent Ski Area,Crescent,IA,P.O. Box 69,51526,TRUE,18,39,5,45,1200ft - 1500ft,1,27,12/27-3/ 8,2.9,2,50,9,11,http://www.onthesnow.com/iowa/mt-crescent-ski-area/ski-resort.html,30
+184,Mt. Hood Meadows,Mt Hood,OR,14040 Hwy 35,97041,TRUE,15,N/A,N/A,50,4522ft - 7300ft,6,20,11/21-5/ 1,3.2,14,2150,15,85,http://www.onthesnow.com/oregon/mt-hood-meadows/ski-resort.html,430
+185,Mt. Hood Ski Bowl,Government Camp,OR,PO Box 280,97028,TRUE,20,53,0,40,3600ft - 5100ft,0,40,12/16-4/13,3.3,9,960,0,65,http://www.onthesnow.com/oregon/mt-hood-ski-bowl/ski-resort.html,300
+186,Mt. Jefferson,Lee,ME,P. O. Box 35,4455,FALSE,33,N/A,N/A,34,351ft - 752ft,0,33,2/ 9-3/29,2.8,3,12,0,10,http://www.onthesnow.com/maine/mt-jefferson/ski-resort.html,N/A
+187,Mt. Rose ,Reno,NV,22222 Mt. Rose Hwy.,89511,FALSE,20,N/A,N/A,30,8260ft - 9700ft,3,40,11/ 4-4/19,3.3,8,1200,10,60,http://www.onthesnow.com/nevada/mt-rose-ski-tahoe/ski-resort.html,300
+188,Mt. Spokane Ski and Snowboard Park,Mead,WA,29500 North Mt. Spokane Park Dr.,99021,TRUE,23,54,0,32,3818ft - 5889ft,3,45,12/11-3/29,3.1,5,1000,0,47,http://www.onthesnow.com/washington/mt-spokane-ski-and-snowboard-park/ski-resort.html,300
+189,Mulligan's Hollow Ski Bowl,Grand,MI,Box 969,49417,TRUE,25,16,12,25,570ft - 700ft,0,25,1/ 7-3/22,0,5,10,25,6,http://www.onthesnow.com/michigan/mulligans-hollow-ski-bowl/ski-resort.html,60
+190,Nashoba Valley,Westford,MA,PO Box 309,1886,TRUE,24,54,42,47,200ft - 440ft,2,29,12/29-3/29,2.6,11,52,0,17,http://www.onthesnow.com/massachusetts/nashoba-valley/ski-resort.html,55
+191,New Hermon Mountain,Hermon,ME,441 Newburg Rd,4981,TRUE,40,27,22,30,100ft - 450ft,0,30,12/26-3/29,2.6,3,70,0,20,http://www.onthesnow.com/maine/new-hermon-mountain/ski-resort.html,90
+192,Nordic Mountain,Wild,WI,W5806 Cty Rd W,54984,TRUE,28,44,0,28,872ft - 1137ft,3,33,11/28-3/22,2.9,7,60,11,18,http://www.onthesnow.com/wisconsin/nordic-mountain/ski-resort.html,80
+193,Nordic Valley Resort,Eden,UT,3567 Nordic Valley Way,84310,TRUE,30,39,25,40,5439ft - 6400ft,0,30,12/19-2/16,2.9,4,88,0,22,http://www.onthesnow.com/utah/wolf-creek/ski-resort.html,300
+194,Northstar California,Truckee,CA,PO Box 129,96160,FALSE,16,N/A,N/A,47,6329ft - 8610ft,7,37,11/14-4/17,3.6,20,3170,0,100,http://www.onthesnow.com/california/northstar-california/ski-resort.html,350
+195,Norway Mountain,Norway,MI,P.O. Box 95,49870,TRUE,6,45,20,33,835ft - 1335ft,2,33,12/ 4-3/29,3,6,186,28,17,http://www.onthesnow.com/michigan/norway-mountain/ski-resort.html,100
+196,Nubs Nob Ski Area,Harbor,MI,500 Nub's Nob Road,49740,TRUE,30,70,47,50,911ft - 1337ft,3,20,11/27-4/10,3,11,248,0,53,http://www.onthesnow.com/michigan/nubs-nob-ski-area/ski-resort.html,135
+197,Oak Mountain,Speculator,NY,141 Novosel Way,12164,TRUE,45,38,0,27,1750ft - 2400ft,1,18,12/31-3/28,0,3,46,9,22,http://www.onthesnow.com/new-york/oak-mountain/ski-resort.html,120
+198,Ober Gatlinburg Ski Resort,Gatlinburg,TN,1001 Parkway,37738,FALSE,20,65,0,60,2700ft - 3300ft,1,20,12/20-3/15,2.8,4,N/A,0,10,http://www.onthesnow.com/tennessee/ober-gatlinburg-ski-resort/ski-resort.html,35
+199,Okemo Mountain Resort,Ludlow,VT,77 Okemo Ridge Road,5149,FALSE,32,97,65,37,1143ft - 3343ft,9,23,11/24-4/27,3.8,20,667,8,121,http://www.onthesnow.com/vermont/okemo-mountain-resort/ski-resort.html,200
+200,Otis Ridge Ski Area,Otis,MA,159 Monterey Road - Route 23,1253,TRUE,30,40,0,40,1300ft - 1700ft,1,30,12/12-3/29,3.1,4,60,0,11,http://www.onthesnow.com/massachusetts/otis-ridge-ski-area/ski-resort.html,70
+201,Pajarito Mountain Ski Area,Los Alamos,NM,P.O. Box 155,87544,FALSE,20,N/A,N/A,50,9031ft - 10441ft,2,30,11/27-4/10,3.1,6,280,0,44,http://www.onthesnow.com/new-mexico/pajarito-mountain-ski-area/ski-resort.html,163
+202,Paoli Peaks,Paoli,IN,P.O. Box 67,47454,TRUE,47,42,0,33,600ft - 900ft,2,13,1/ 4-3/13,3,8,65,7,15,http://www.onthesnow.com/indiana/paoli-peaks/ski-resort.html,18
+203,Park City,Park City,UT,P.O. Box 39,84060,TRUE,9,N/A,N/A,51,6800ft - 10000ft,6,30,11/21-4/10,4.3,41,7300,10,334,http://www.onthesnow.com/utah/park-city-mountain-resort/ski-resort.html,355
+204,Pats Peak,Henniker,NH,PO Box 2448,3242,TRUE,50,66,0,21,690ft - 1460ft,3,11,12/26-3/27,3.1,11,115,18,28,http://www.onthesnow.com/new-hampshire/pats-peak/ski-resort.html,100
+205,Pebble Creek Ski Area,Inkom,ID,P.O. Box 370,83245,TRUE,12,43,3,30,6360ft - 8560ft,2,29,12/22-4/ 3,3.1,3,1100,29,54,http://www.onthesnow.com/idaho/pebble-creek-ski-area/ski-resort.html,250
+206,Peek'n Peak,Findley,NY,P.O. Box 360,14736,TRUE,30,57,0,45,1400ft - 1800ft,4,15,12/26-4/12,3.3,10,110,10,27,http://www.onthesnow.com/new-york/peekn-peak/ski-resort.html,225
+207,Perfect North Slopes,Lawrenceburg,IN,19074 Perfect Lane,47025,TRUE,20,47,35,50,400ft - 800ft,0,20,12/26-3/15,3.1,11,120,10,23,http://www.onthesnow.com/indiana/perfect-north-slopes/ski-resort.html,24
+208,Pico Mountain ,Killington,VT,4763 Killington Road,5751,FALSE,18,N/A,N/A,46,2000ft - 3966ft,0,33,1/ 2-4/ 3,3.5,7,468,3,57,http://www.onthesnow.com/vermont/pico-mountain-at-killington/ski-resort.html,250
+209,Pine Knob Ski Resort,Clartkston,MI,7778 Sashabaw Road,48348,FALSE,20,N/A,N/A,20,1008ft - 1307ft,3,40,11/25-3/15,3.1,6,80,20,14,http://www.onthesnow.com/michigan/pine-knob-ski-resort/ski-resort.html,N/A
+210,Pine Mountain,Iron Mountain,MI,N3332 Pine Mountain Road,49801,TRUE,20,42,15,55,1150ft - 1650ft,3,25,12/25-4/11,3.4,5,160,0,27,http://www.onthesnow.com/michigan/pine-mountain/ski-resort.html,60
+211,Plattekill Mountain,Roxbury,NY,469 Plattekill Mountain Road,12474,FALSE,20,61,30,40,2400ft - 3500ft,1,20,1/ 1-4/17,2.9,4,110,20,38,http://www.onthesnow.com/new-york/plattekill-mountain/ski-resort.html,175
+212,Pomerelle Mountain Resort,Albion,ID,P.O. Box 158,83311,TRUE,40,45,0,40,8000ft - 9000ft,2,20,11/26-3/29,2.8,3,500,0,24,http://www.onthesnow.com/idaho/pomerelle-mountain-resort/ski-resort.html,500
+213,Powderhorn,Mesa,CO, 48338 Powderhorn Rd,81643,FALSE,15,69,34,15,8200ft - 9850ft,2,50,12/ 4-3/23,3.1,4,1600,20,42,http://www.onthesnow.com/colorado/powderhorn/ski-resort.html,250
+214,Powder Mountain,Eden,UT,P.O. Box 450,84310,TRUE,25,69,0,40,6900ft - 9422ft,2,35,12/14-4/ 5,3.3,7,7000,0,144,http://www.onthesnow.com/utah/powder-mountain/ski-resort.html,500
+215,Powder Ridge Park,Middlefield,CT,99 Powder Hill Road,6455,TRUE,42,55,19,37,170ft - 720ft,4,21,1/ 8-3/28,0,5,80,0,19,http://www.onthesnow.com/connecticut/powder-ridge-park/ski-resort.html,80
+216,Powder Ridge Ski Area,Kimball,MN,P.O. Box 339,55353,TRUE,40,N/A,N/A,40,500ft - 790ft,4,20,12/18-3/22,3.1,6,60,0,15,http://www.onthesnow.com/minnesota/powder-ridge-ski-area/ski-resort.html,45
+217,Purgatory,Durango,CO,#1 Skier Place,81301,FALSE,20,85,38,45,8793ft - 10822ft,5,30,11/21-4/10,3.8,9,1360,5,91,http://www.onthesnow.com/colorado/durango-mountain-resort/ski-resort.html,260
+218,Q Burke Mountain Resorts,East Burke,VT,P.O. Box 247,5832,FALSE,14,64,0,42,1210ft - 3267ft,1,34,1/ 6-4/ 5,2.8,6,270,10,50,http://www.onthesnow.com/vermont/burke-mountain/ski-resort.html,217
+219,Ragged Mountain Resort,Danbury,NH,620 Ragged Mountain Road,3230,FALSE,23,79,45,30,1000ft - 2250ft,3,39,12/ 5-4/10,3,7,240,7,56,http://www.onthesnow.com/new-hampshire/ragged-mountain-resort/ski-resort.html,100
+220,Red Lodge Mountain,Red Lodge,MT,P.O. Box 750,59068,FALSE,17,N/A,N/A,45,7016ft - 9416ft,0,28,11/27-4/ 3,3.2,7,1600,10,71,http://www.onthesnow.com/montana/red-lodge-mountain/ski-resort.html,250
+221,Red River Ski Area,Red River,NM,400 Pioneer Rd,87558,FALSE,32,68,38,38,8750ft - 10350ft,3,30,11/25-3/20,3,7,257,0,58,http://www.onthesnow.com/new-mexico/red-river/ski-resort.html,218
+222,Roundtop Mountain Resort,Lewisberry,PA,925 Roundtop Rd.,17339,TRUE,20,72,33,25,800ft - 1400ft,2,40,1/ 6-3/22,2.9,8,103,15,20,http://www.onthesnow.com/pennsylvania/roundtop-mountain-resort/ski-resort.html,30
+223,Royal Mountain Ski Area,Caroga,NY,3072 State Highway 10,12032,FALSE,33,40,0,34,1250ft - 1800ft,0,33,1/ 1-4/19,3,3,35,0,14,http://www.onthesnow.com/new-york/royal-mountain-ski-area/ski-resort.html,90
+224,Saddleback Inc.,Rangeley,ME,P.O. Box 490,4970,FALSE,35,69,0,30,2460ft - 4120ft,2,25,2/ 9-4/19,3.3,5,440,10,66,http://www.onthesnow.com/maine/saddleback-inc/ski-resort.html,200
+225,Sandia Peak,Albuquerque,NM,10 Tramway Loop N.E.,87122,FALSE,31,55,30,46,8677ft - 10377ft,1,23,12/26-3/13,2.7,5,200,0,39,http://www.onthesnow.com/new-mexico/sandia-peak/ski-resort.html,49
+226,Sapphire Valley,Cashiers,NC,P.O. Box 2048,28717,TRUE,0,36,20,0,3200ft - 3450ft,1,0,1/ 9-3/ 8,2.3,3,8,0,2,http://www.onthesnow.com/north-carolina/sapphire-valley/ski-resort.html,24
+227,Schweitzer,Sandpoint,ID,"10,000 Schweitzer Mountain Road",83864,TRUE,10,73,40,40,4000ft - 6400ft,3,35,11/25-4/10,3.6,9,2900,15,92,http://www.onthesnow.com/idaho/schweitzer/ski-resort.html,300
+228,Seven Oaks,Boone,IA,1086 222nd Drive,50036,TRUE,25,N/A,N/A,50,800ft - 975ft,2,25,12/30-3/ 8,2.3,4,35,0,11,http://www.onthesnow.com/iowa/seven-oaks/ski-resort.html,40
+229,Seven Springs,Seven,PA,777 Waterwheel Drive,15622,TRUE,36,65,0,42,2240ft - 2993ft,7,18,12/23-4/ 5,3,14,285,3,33,http://www.onthesnow.com/pennsylvania/seven-springs/ski-resort.html,142
+230,Shanty Creek Resorts – Schuss Mountain,Bellaire,MI,One Shanty Creek Road,49615,TRUE,24,64,40,24,675ft - 1125ft,5,51,12/21-3/22,3,6,70,0,41,http://www.onthesnow.com/michigan/shanty-creek/ski-resort.html,180
+231,Shanty Creek Resorts – Summit Mountain,Bellaire,MI,5780 Shanty Creek Rd,49615,FALSE,18,28,20,45,675ft - 1125ft,1,36,1/19-3/15,0,3,N/A,0,11,http://www.onthesnow.com/michigan/shanty-creek-resorts-–-summit-mountain/ski-resort.html,180
+232,Shawnee Mountain Ski Area,Shawnee,PA,P.O. Box 339,18356,TRUE,26,60,35,48,650ft - 1350ft,2,26,12/26-3/27,3.1,10,125,0,23,http://www.onthesnow.com/pennsylvania/shawnee-mountain-ski-area/ski-resort.html,50
+233,Shawnee Peak,Bridgton,ME,119 Mountain Road,4009,TRUE,25,N/A,N/A,45,600ft - 1900ft,2,20,12/12-4/ 5,2.9,5,239,10,43,http://www.onthesnow.com/maine/shawnee-peak/ski-resort.html,110
+234,Showdown Montana,Neihart,MT,P.O. Box 92,59465,FALSE,28,43,0,44,6800ft - 8200ft,1,28,12/18-4/ 4,3.1,4,640,0,36,http://www.onthesnow.com/montana/showdown-ski-area/ski-resort.html,250
+235,Sierra-at-Tahoe,Twin Bridges,CA,1111 Sierra-at-Tahoe Road,95735,FALSE,25,93,29,50,6639ft - 8852ft,5,15,11/20-4/30,3.3,14,2000,10,46,http://www.onthesnow.com/california/sierra-at-tahoe/ski-resort.html,480
+236,Silver Mountain,Kellogg,ID,610 Bunker Avenue,83837,TRUE,20,54,0,40,4100ft - 6300ft,3,30,12/18-3/29,3,7,1600,10,80,http://www.onthesnow.com/idaho/silver-mountain/ski-resort.html,300
+237,Silverton Mountain,Silverton,CO,P.O. Box 856,81433,FALSE,0,49,49,0,10400ft - 13487ft,0,0,12/21-4/12,2.9,1,1819,100,69,http://www.onthesnow.com/colorado/silverton-mountain/ski-resort.html,400
+238,Sipapu Ski Resort,Vadito,NM,Null,87579,FALSE,20,44,22,40,8200ft - 9254ft,4,30,11/20-4/12,3,6,200,10,42,http://www.onthesnow.com/new-mexico/sipapu-ski-and-summer-resort/ski-resort.html,190
+239,Ski Apache,Ruidoso,NM,Box 220,88312,FALSE,18,68,35,55,9600ft - 11500ft,3,27,11/26-4/ 3,3.1,9,750,0,55,http://www.onthesnow.com/new-mexico/ski-apache/ski-resort.html,185
+240,Ski Big Bear,Lackawaxen,PA,HC1 BOX 1A 353,18435,TRUE,33,57,0,28,600ft - 1250ft,1,33,12/26-4/ 5,2.7,6,26,6,18,http://www.onthesnow.com/pennsylvania/big-bear/ski-resort.html,69
+241,Ski Brule,Iron Mountain,MI,397 Brule Mountain Road,49935,TRUE,35,25,0,35,1360ft - 1860ft,3,24,11/22-4/20,4.5,11,150,6,17,http://www.onthesnow.com/michigan/ski-brule/ski-resort.html,150
+242,Ski Butternut,Great,MA,380 State Road - Route 23,1230,FALSE,36,60,15,36,800ft - 1800ft,2,27,12/29-4/ 5,3,11,110,0,22,http://www.onthesnow.com/massachusetts/ski-butternut/ski-resort.html,115
+243,Ski China Peak,Lakeshore,CA,P.O. Box 236,93634,FALSE,11,75,23,28,7029ft - 8708ft,3,33,11/27-4/ 3,3.1,11,450,28,45,http://www.onthesnow.com/california/ski-china-peak/ski-resort.html,300
+244,Ski Cooper,Leadville,CO,P.O. Box 896,80461,FALSE,28,48,0,36,10400ft - 11700ft,2,36,11/27-4/10,3.3,4,400,0,39,http://www.onthesnow.com/colorado/ski-cooper/ski-resort.html,260
+245,Ski Granby Ranch,Granby,CO,P.O. Box 1110,80446,TRUE,36,64,0,40,8202ft - 9202ft,6,24,12/17-3/27,3.1,5,406,0,40,http://www.onthesnow.com/colorado/ski-granby-ranch/ski-resort.html,220
+246,Ski Mystic at Deer Mountain,Lead,SD,11187 Deer Mountain Rd,57754,TRUE,20,42,4,30,6039ft - 6850ft,2,25,12/25-3/22,2.7,4,590,25,45,http://www.onthesnow.com/south-dakota/ski-mystic-at-deer-mountain/ski-resort.html,200
+247,Ski Santa Fe,Santa Fe,NM,"2209 Brothers Road, Suite 220",87505,FALSE,20,72,52,40,10350ft - 12075ft,1,40,11/26-4/ 3,3.1,7,660,0,79,http://www.onthesnow.com/new-mexico/ski-santa-fe/ski-resort.html,225
+248,Ski Sawmill,Morris,PA,383 Oregon Hill Rd.,16938,TRUE,35,37,20,25,1700ft - 2215ft,1,40,1/ 9-3/29,3.1,5,15,0,14,http://www.onthesnow.com/pennsylvania/ski-sawmill/ski-resort.html,24
+249,Ski Snowstar Winter Sports Park,Andalusia,IL,9500 126th St. West,61232,TRUE,15,34,0,40,527ft - 790ft,1,45,1/ 2-3/15,2.9,6,28,0,15,http://www.onthesnow.com/illinois/ski-snowstar-winter-sports-park/ski-resort.html,38
+250,Ski Sundown,New Hartford,CT,PO Box 208,6057,TRUE,50,60,18,25,450ft - 1075ft,2,19,1/ 8-4/ 3,3.1,5,70,6,16,http://www.onthesnow.com/connecticut/ski-sundown/ski-resort.html,45
+251,Ski Ward,Shrewsbury,MA,1000 Main St,1545,TRUE,30,45,10,50,210ft - 420ft,1,20,1/ 4-3/15,2.9,4,45,0,11,http://www.onthesnow.com/massachusetts/ski-ward/ski-resort.html,80
+252,Sleeping Giant Ski Resort,Cody,WY,348 Yellowstone Highway,82414,FALSE,15,N/A,N/A,36,6600ft - 7400ft,2,37,12/26-3/ 8,3.3,3,184,12,47,http://www.onthesnow.com/wyoming/sleeping-giant-ski-resort/ski-resort.html,300
+253,Smugglers' Notch Resort,Smugglers Notch,VT,4323 Vermont Route 108 South,5464,FALSE,19,72,0,50,1030ft - 3639ft,6,25,11/27-4/17,3.6,8,1000,6,78,http://www.onthesnow.com/vermont/smugglers-notch-resort/ski-resort.html,322
+254,Snowbasin,Huntsville,UT,P.O. Box 460,84317,FALSE,11,99,0,43,6400ft - 9350ft,4,24,11/25-4/10,3.7,12,3000,22,104,http://www.onthesnow.com/utah/snowbasin/ski-resort.html,300
+255,Snowbird,Snowbird,UT,P.O. Box 929000,84092,TRUE,27,N/A,N/A,38,7760ft - 11000ft,1,20,11/20-5/ 9,4.3,11,2500,15,169,http://www.onthesnow.com/utah/snowbird/ski-resort.html,500
+256,Snow Creek,Weston,MO,P.O. Box 567,64098,TRUE,22,N/A,N/A,39,800ft - 1100ft,2,39,1/ 2-3/13,2.6,5,30,0,12,http://www.onthesnow.com/missouri/snow-creek/ski-resort.html,20
+257,Snow King Resort,Jackson,WY,PO Box SKI,83001,TRUE,15,47,0,25,6237ft - 7808ft,2,20,12/ 5-3/27,2.6,3,400,40,32,http://www.onthesnow.com/wyoming/snow-king-resort/ski-resort.html,300
+258,Snow Ridge,Turin,NY,PO Box 100 Route 26,13473,TRUE,14,39,30,33,1350ft - 2000ft,2,33,1/ 1-4/ 3,2.9,6,130,19,21,http://www.onthesnow.com/new-york/snow-ridge/ski-resort.html,230
+259,Snowshoe Mountain Resort,Snowshoe,WV,P.O. Box 10,26209,TRUE,36,N/A,N/A,33,3347ft - 4847ft,5,19,1/ 2-4/ 5,3.5,14,251,3,57,http://www.onthesnow.com/west-virginia/snowshoe-mountain-resort/ski-resort.html,180
+260,Snow Snake Mountain Ski Area,Harrison,MI,3407 E. Mannsiding Road,48625,TRUE,30,27,0,50,1020ft - 1230ft,2,20,1/ 6-3/15,2.9,6,40,0,12,http://www.onthesnow.com/michigan/snow-snake-mountain-ski-area/ski-resort.html,N/A
+261,Snow Summit,Big Bear Lake,CA,P.O. Box 77,92315,TRUE,19,N/A,N/A,54,7000ft - 8200ft,3,19,11/13-3/29,3.1,14,240,8,26,http://www.onthesnow.com/california/snow-summit/ski-resort.html,100
+262,Snow Trails,Mansfield,OH,P.O. Box 1456,44901,TRUE,20,49,16,60,1173ft - 1475ft,3,20,1/ 7-3/23,2.9,9,80,0,17,http://www.onthesnow.com/ohio/snow-trails/ski-resort.html,50
+263,Snow Valley,Running,CA,P.O. Box 2337,92382,TRUE,14,66,25,46,6800ft - 7841ft,6,32,11/28-3/22,3,12,240,7,28,http://www.onthesnow.com/california/snow-valley/ski-resort.html,160
+264,Snowy Range Ski & Recreation Area,Centennial,WY,Po Box 247,82055,FALSE,30,45,0,40,8797ft - 9662ft,2,30,11/27-4/ 3,3.1,5,75,0,27,http://www.onthesnow.com/wyoming/snowy-range-ski-recreation-area/ski-resort.html,250
+265,Soda Springs,Truckee,CA,P.O. Box 39,96160,FALSE,23,69,39,31,6700ft - 7352ft,0,46,12/17-3/29,3,4,200,0,13,http://www.onthesnow.com/california/soda-springs/ski-resort.html,400
+266,Soldier Mountain Ski Area,Fairfield,ID,P.O. Box 510,83327,FALSE,20,38,10,50,5800ft - 7200ft,2,10,12/18-3/15,2.4,3,1142,20,36,http://www.onthesnow.com/idaho/soldier-mountain-ski-area/ski-resort.html,N/A
+267,Solitude Mountain Resort,Brighton,UT,12000 Big Cottonwood Canyon,84121,FALSE,10,79,0,40,7987ft - 10035ft,0,36,11/21-4/17,3.5,8,1200,14,77,http://www.onthesnow.com/utah/solitude-mountain-resort/ski-resort.html,500
+268,Song Mountain,Tully,NY,PO Box 149,13159,TRUE,50,50,15,29,1240ft - 1940ft,0,13,12/24-4/19,2.8,5,93,8,24,http://www.onthesnow.com/new-york/song-mountain/ski-resort.html,125
+269,Spirit Mountain,Duluth,MN,9500 Spirit Mountain Place,55810,TRUE,30,48,5,35,620ft - 1320ft,2,35,12/ 4-3/29,2.9,7,175,0,22,http://www.onthesnow.com/minnesota/spirit-mountain/ski-resort.html,100
+270,Spout Springs,Weston,OR,79327 Highway 204,97813,TRUE,45,35,25,35,4850ft - 5500ft,0,20,1/ 3-3/22,3.1,4,200,0,14,http://www.onthesnow.com/oregon/spout-springs/ski-resort.html,118
+271,Spring Mountain Ski Area,Spring,PA,P.O. Box 276,19478,TRUE,37,43,5,50,78ft - 527ft,1,13,1/ 6-3/15,2.8,6,45,0,9,http://www.onthesnow.com/pennsylvania/spring-mountain-ski-area/ski-resort.html,20
+272,Squaw Valley ,Olympic Valley,CA,PO Box 2007,96146,TRUE,9,134,66,38,6200ft - 9050ft,5,53,11/12-5/ 2,3.9,42,6000,0,197,http://www.onthesnow.com/california/squaw-valley-usa/ski-resort.html,450
+273,Steamboat,Steamboat,CO,2305 Mt. Werner Circle,80487,TRUE,14,99,57,42,6900ft - 10568ft,5,44,11/25-4/10,4.3,18,2965,0,165,http://www.onthesnow.com/colorado/steamboat/ski-resort.html,352
+274,Stevens Pass Resort,Skykomish,WA,P.O. Box 98,98288,TRUE,6,69,0,48,4060ft - 5845ft,4,28,12/ 4-4/19,3.2,10,1125,18,50,http://www.onthesnow.com/washington/stevens-pass-resort/ski-resort.html,460
+275,Stowe Mountain Resort,Stowe,VT,5781 Mountain Rd.,5672,FALSE,16,N/A,N/A,55,2035ft - 4395ft,0,29,11/25-4/19,3.6,13,485,14,115,http://www.onthesnow.com/vermont/stowe-mountain-resort/ski-resort.html,314
+276,Stratton Mountain,Stratton,VT,RR #1 Box 145,5155,FALSE,41,N/A,N/A,31,1872ft - 3875ft,4,17,11/28-4/13,3.7,11,670,11,97,http://www.onthesnow.com/vermont/stratton-mountain/ski-resort.html,180
+277,Sugar Bowl Resort,Norden,CA,P.O. Box 5,95724,TRUE,17,103,51,45,6883ft - 8383ft,3,26,11/20-4/10,3.4,13,1650,12,103,http://www.onthesnow.com/california/sugar-bowl-resort/ski-resort.html,500
+278,Sugarbush,Warren,VT,1840 Sugarbush Access Road,5674,FALSE,20,75,57,45,1482ft - 4083ft,5,28,11/26-4/10,3.4,16,508,7,111,http://www.onthesnow.com/vermont/sugarbush/ski-resort.html,262
+279,Sugarloaf,Carrabassett,ME,5092 Access Road,4947,FALSE,23,86,59,34,1417ft - 4237ft,3,28,11/21-5/ 3,3.2,13,1230,16,162,http://www.onthesnow.com/maine/sugarloaf/ski-resort.html,200
+280,Sugar Mountain Resort,Banner,NC,P.O. Box 369,28604,TRUE,33,72,34,43,4100ft - 5300ft,1,19,11/15-3/29,2.8,8,125,5,21,http://www.onthesnow.com/north-carolina/sugar-mountain-resort/ski-resort.html,77
+281,Suicide Six,Woodstock,VT,14 The Green,5091,FALSE,30,66,10,40,550ft - 1200ft,0,30,1/12-3/22,3.1,3,100,0,23,http://www.onthesnow.com/vermont/suicide-six/ski-resort.html,90
+282,Sunburst,Kewaskum,WI,8355 Prospect Drive,53040,TRUE,15,N/A,N/A,46,866ft - 1100ft,4,31,11/28-3/22,2.8,9,37,8,13,http://www.onthesnow.com/wisconsin/sunburst/ski-resort.html,50
+283,Sundance,Sundance,UT,"RR #3, Box A-1",84604,FALSE,35,65,21,45,6100ft - 8250ft,1,20,12/ 4-4/ 3,3.5,5,450,0,45,http://www.onthesnow.com/utah/sundance/ski-resort.html,320
+284,Sunday River,Newry,ME,PO Box 4500,4217,TRUE,21,89,45,32,825ft - 3150ft,5,23,10/19-5/ 1,3.4,15,870,23,135,http://www.onthesnow.com/maine/sunday-river/ski-resort.html,167
+285,Sundown Mountain,Dubuque,IA,16991 Asbury Road,52002,TRUE,30,44,0,60,583ft - 1058ft,2,0,12/25-3/22,2.7,6,55,10,21,http://www.onthesnow.com/iowa/sundown-mountain/ski-resort.html,45
+286,Sunlight Mountain Resort,Glenwood,CO,10901 County Road 117,81601,FALSE,20,60,0,55,7885ft - 9895ft,1,20,12/ 4-4/ 3,3,3,680,5,67,http://www.onthesnow.com/colorado/sunlight-mountain-resort/ski-resort.html,250
+287,Sunrise Park Resort,Greer,AZ,P.O. Box 117,85927,TRUE,40,66,39,40,9200ft - 11100ft,2,20,11/26-3/29,2.9,7,800,0,65,http://www.onthesnow.com/arizona/sunrise-park-resort/ski-resort.html,250
+288,Sun Valley,Sun Valley,ID,P.O. Box 10,83353,FALSE,36,N/A,N/A,42,5750ft - 9150ft,0,20,11/26-4/15,4.2,19,2054,2,80,http://www.onthesnow.com/idaho/sun-valley/ski-resort.html,220
+289,Swain,Swain,NY,P.O. Box 44,14884,TRUE,27,54,0,39,1320ft - 1970ft,3,33,1/ 7-4/ 2,3,5,120,0,33,http://www.onthesnow.com/new-york/swain/ski-resort.html,130
+290,Swiss Valley,Jones,MI,Route #1,49061,TRUE,36,39,0,36,975ft - 1200ft,2,27,1/12-3/22,2.9,7,60,0,11,http://www.onthesnow.com/michigan/swiss-valley/ski-resort.html,60
+291,Tahoe Donner,Truckee,CA,11509 Northwoods Blvd.,96161,FALSE,40,47,16,60,6750ft - 7350ft,4,0,12/11-4/10,2.7,5,120,0,16,http://www.onthesnow.com/california/tahoe-donner/ski-resort.html,400
+292,Tamarack Resort,Tamarack,ID,PMB 3003,83615,FALSE,17,62,18,45,4900ft - 7700ft,3,38,12/11-3/27,3.7,6,1000,0,42,http://www.onthesnow.com/idaho/tamarack-resort/ski-resort.html,300
+293,Taos Ski Valley,Taos,NM,P.O. Box 90,87525,FALSE,15,86,48,17,9206ft - 12481ft,2,32,11/26-4/ 3,4.1,15,1294,36,112,http://www.onthesnow.com/new-mexico/taos-ski-valley/ski-resort.html,305
+294,Telluride,Telluride,CO,565 Mountain Village Blvd.,81435,FALSE,16,118,0,30,8725ft - 13150ft,4,54,11/25-4/ 3,4.4,18,2000,0,147,http://www.onthesnow.com/colorado/telluride/ski-resort.html,309
+295,Terry Peak Ski Area,Lead,SD,P.O. Box 774,57754,FALSE,20,53,0,50,5900ft - 7100ft,1,15,12/ 5-3/29,3,5,450,15,29,http://www.onthesnow.com/south-dakota/terry-peak-ski-area/ski-resort.html,150
+296,Teton Pass Ski Resort,Choteau,MT,PO Box 1354,59422,FALSE,15,39,0,35,6189ft - 7200ft,1,40,12/18-3/21,3,3,330,10,43,http://www.onthesnow.com/montana/teton-pass-ski-area/ski-resort.html,250
+297,The Homestead,Glen,MI,1 Wood Ridge Road,49636,TRUE,27,50,20,53,580ft - 900ft,1,20,1/ 2-3/ 6,2.6,5,16,0,15,http://www.onthesnow.com/michigan/the-homestead/ski-resort.html,150
+298,The Homestead Ski Area,Hot Springs,VA,PO Box 2000,24445,FALSE,33,49,29,33,2500ft - 3200ft,0,34,1/ 9-3/29,2.7,5,45,0,10,http://www.onthesnow.com/virginia/the-homestead-ski-area/ski-resort.html,50
+299,The Summit at Snoqualmie,Snoqualmie,WA,P.O. Box 1068,98068,TRUE,17,66,12,37,2640ft - 5420ft,2,37,12/11-5/ 5,2.8,25,1994,10,112,http://www.onthesnow.com/washington/the-summit-at-snoqualmie/ski-resort.html,429
+300,Thunder Ridge,Patterson,NY,"Rt. #22, PO Box 627",12563,TRUE,40,50,12,40,770ft - 1270ft,0,20,1/ 7-3/22,3,6,100,0,30,http://www.onthesnow.com/new-york/thunder-ridge/ski-resort.html,N/A
+301,Timberline Four Seasons,Davis,WV,HC 70 Box 488,26260,TRUE,34,N/A,N/A,32,3267ft - 4268ft,1,14,12/22-3/22,3.3,4,100,20,39,http://www.onthesnow.com/west-virginia/timberline-four-seasons/ski-resort.html,150
+302,Timberline Lodge,TImberline,OR,Mountain Services Office,97028,TRUE,25,70,26,50,6000ft - 8539ft,5,25,11/21-5/25,3.1,6,1415,0,41,http://www.onthesnow.com/oregon/timberline-lodge/ski-resort.html,550
+303,Timber Ridge,Gobles,MI,07500 23 1/2 Street,49055,TRUE,44,39,0,38,600ft - 850ft,2,0,1/ 4-3/15,3.1,8,50,19,16,http://www.onthesnow.com/michigan/timber-ridge/ski-resort.html,N/A
+304,Titus Mountain,Malone,NY,215 Johnson Rd.,12953,TRUE,34,45,23,38,825ft - 2025ft,3,22,1/ 2-4/ 5,3,10,200,6,50,http://www.onthesnow.com/new-york/titus-mountain/ski-resort.html,100
+305,Toggenburg Mountain,Fabius,NY,P.O. Box 162,13063,TRUE,33,50,15,33,1300ft - 2000ft,2,34,1/ 8-3/29,2.8,5,85,0,21,http://www.onthesnow.com/new-york/toggenburg-mountain/ski-resort.html,130
+306,Treetops Resort,Gaylord,MI,3962 Wilkinson Road,49735,TRUE,17,N/A,N/A,43,1120ft - 1345ft,4,39,12/11-3/27,2.8,5,80,0,23,http://www.onthesnow.com/michigan/treetops-resort/ski-resort.html,175
+307,Trollhaugen,Dresser,W,2232 100th Avenue,54009,TRUE,26,N/A,N/A,39,920ft - 1200ft,3,35,12/17-3/28,2.6,8,86,0,24,http://www.onthesnow.com/wisconsin/trollhaugen/ski-resort.html,50
+308,Tussey Mountain,Boalsburg,PA,P.O. Box 885,16827,TRUE,40,45,0,40,1230ft - 1750ft,1,0,1/ 7-3/29,2.9,5,38,20,8,http://www.onthesnow.com/pennsylvania/tussey-mountain/ski-resort.html,41
+309,Tuxedo Ridge at Sterling Forest,Tuxedo,NY,581 Route 17A,10987,TRUE,14,60,0,28,785ft - 1185ft,0,42,4/30-4/30,2.9,4,35,16,12,http://www.onthesnow.com/new-york/tuxedo-ridge-at-sterling-forest/ski-resort.html,36
+310,Tyrol Basin,Mt.Horeb,WI,3487 Bohn Road,53572,TRUE,23,48,0,33,860ft - 1160ft,5,40,11/28-3/29,3,5,32,4,18,http://www.onthesnow.com/wisconsin/tyrol-basin/ski-resort.html,41
+311,Vail,Vail,CO,P.O. Box 7,81658,FALSE,18,N/A,N/A,29,8120ft - 11570ft,3,28,11/20-4/10,4.1,31,5289,25,195,http://www.onthesnow.com/colorado/vail/ski-resort.html,353
+312,Villa Olivia,Bartlett,IL,1401 W. Lake St.,60103,TRUE,40,39,16,40,320ft - 500ft,1,10,1/ 2-3/16,2.9,7,15,10,7,http://www.onthesnow.com/illinois/villa-olivia/ski-resort.html,25
+313,Wachusett Mountain Ski Area,Princeton,MA,499 Mountain Road,1541,TRUE,19,N/A,N/A,62,1006ft - 2006ft,2,19,12/20-4/10,3.3,8,112,0,26,http://www.onthesnow.com/massachusetts/wachusett-mountain-ski-area/ski-resort.html,100
+314,Waterville Valley,Waterville,NH,P.O. Box 540,3215,FALSE,20,N/A,N/A,60,1983ft - 4004ft,4,18,11/27-4/14,3.2,11,220,2,50,http://www.onthesnow.com/new-hampshire/waterville-valley/ski-resort.html,148
+315,Welch Village,Welch,MN,Box 146,55089,TRUE,31,54,44,50,700ft - 1060ft,1,15,11/27-3/21,3,10,125,4,50,http://www.onthesnow.com/minnesota/welch-village/ski-resort.html,45
+316,West Mountain,Glen,NY,59 West Mountain Rd.,12804,TRUE,36,48,32,55,460ft - 1470ft,1,9,1/ 6-4/ 5,2.9,5,124,0,29,http://www.onthesnow.com/new-york/west-mountain/ski-resort.html,80
+317,Whaleback Mountain,Enfiled,NH,Enfield,3748,TRUE,23,45,22,41,1100ft - 1800ft,2,23,1/10-3/29,3.1,3,85,13,30,http://www.onthesnow.com/new-hampshire/whaleback-mountain/ski-resort.html,110
+318,Whitecap Mountain,Upson,WI,9106 W County Road E,54565,FALSE,33,45,17,33,1295ft - 1750ft,1,22,12/17-3/22,2.9,7,400,12,43,http://www.onthesnow.com/wisconsin/whitecap-mountain/ski-resort.html,200
+319,Whiteface Mountain Resort,Wilmington,NY,Whiteface Mountain Route 86,12997,FALSE,20,92,58,42,1220ft - 4650ft,5,38,11/27-4/19,3.1,11,288,0,80,http://www.onthesnow.com/new-york/whiteface-mountain-resort/ski-resort.html,168
+320,Whitefish Mountain Resort,Whitefish,MT,P.O. Box 1400,59937,TRUE,12,73,31,40,4464ft - 6816ft,3,42,12/ 5-4/10,3.3,14,3000,6,105,http://www.onthesnow.com/montana/whitefish-mountain-resort/ski-resort.html,300
+321,White Pass,White,WA,P.O. Box 3030,98937,TRUE,20,62,5,60,4500ft - 6550ft,2,20,11/28-4/26,3.3,8,1402,0,45,http://www.onthesnow.com/washington/white-pass/ski-resort.html,350
+322,White Pine Ski Area,Pinedale,WY,P.O. Box 1420,82941,FALSE,28,N/A,N/A,32,8400ft - 9500ft,0,40,12/ 4-3/28,2,2,370,0,25,http://www.onthesnow.com/wyoming/white-pine-ski-area/ski-resort.html,150
+323,Whitetail Resort,Mercersburg,PA,13805 Blairs Valley Rd.,17236,TRUE,32,77,0,45,865ft - 1800ft,2,0,1/ 7-3/27,3.2,9,120,23,25,http://www.onthesnow.com/pennsylvania/whitetail-resort/ski-resort.html,40
+324,Wildcat Mountain,Jackson,NH,P.O. Box R,3846,FALSE,21,79,40,46,1950ft - 4062ft,1,33,11/25-5/ 1,3,5,225,0,48,http://www.onthesnow.com/new-hampshire/wildcat-mountain/ski-resort.html,200
+325,Wild Mountain Ski & Snowboard Area,Taylors,MN,P.O. Box 235,55084,TRUE,33,49,0,34,812ft - 1112ft,4,33,11/20-3/20,3.1,8,100,0,26,http://www.onthesnow.com/minnesota/wild-mountain-ski-snowboard-area/ski-resort.html,50
+326,Willamette Pass,Eugene,OR,PO Box 5550,97405,TRUE,21,49,30,45,5120ft - 6683ft,2,10,12/18-3/22,3.2,6,555,24,29,http://www.onthesnow.com/oregon/willamette-pass/ski-resort.html,430
+327,Willard Mountain,Greenwich,NY,PO Box 65,12834,TRUE,30,40,36,40,910ft - 1415ft,0,30,1/ 7-4/ 5,2.8,5,50,0,14,http://www.onthesnow.com/new-york/willard-mountain/ski-resort.html,80
+328,Wilmot Mountain,Wilmot,WI,P.O. Box 177,53192,TRUE,30,42,16,30,800ft - 1030ft,0,40,12/25-3/22,3,8,135,0,25,http://www.onthesnow.com/wisconsin/wilmot-mountain/ski-resort.html,70
+329,Windham Mountain,Windham,NY,P.O. Box 459,12496,TRUE,30,82,47,43,1500ft - 3100ft,6,16,12/20-4/ 3,3.4,12,285,11,54,http://www.onthesnow.com/new-york/windham-mountain/ski-resort.html,105
+330,Wintergreen Resort,Wintergreen,VA,PO Box 706,22958,TRUE,23,85,0,35,2512ft - 3514ft,2,42,1/ 7-3/22,3,5,129,0,27,http://www.onthesnow.com/virginia/wintergreen-resort/ski-resort.html,34
+331,Winter Park Resort,Winter,CO,P.O. Box 36,80482,FALSE,24,N/A,N/A,38,9000ft - 12060ft,8,34,11/18-4/26,4,25,3081,5,153,http://www.onthesnow.com/colorado/winter-park-resort/ski-resort.html,354
+332,Winterplace Ski Resort,Flat,WV,PO Box 1,25841,TRUE,37,68,0,40,2997ft - 3600ft,2,23,12/23-3/27,2.8,9,90,0,27,http://www.onthesnow.com/west-virginia/winterplace-ski-resort/ski-resort.html,100
+333,Wisp,McHenry,MD,296 Marsh Hill Road,21541,TRUE,35,N/A,N/A,38,2415ft - 3115ft,3,27,12/26-3/22,3.5,12,172,0,34,http://www.onthesnow.com/maryland/wisp/ski-resort.html,100
+334,Wolf Creek Ski Area,Pagosa,CO,P.O. Box 2800,81147,FALSE,20,65,6,35,10300ft - 11904ft,0,25,10/31-4/ 3,3.4,8,1600,20,77,http://www.onthesnow.com/colorado/wolf-creek-ski-area/ski-resort.html,430
+335,Wolf Ridge Ski Resort,Mars Hill,NC,578 Valey View Circle,28754,TRUE,27,56,0,60,4000ft - 4700ft,1,13,12/23-3/15,3,4,65,0,15,http://www.onthesnow.com/north-carolina/wolf-ridge-ski-resort/ski-resort.html,65
+336,Woodbury Ski Area,Woodbury,CT,785 Washington Road,6798,TRUE,25,44,17,25,430ft - 730ft,2,25,11/24-4/ 5,2.4,5,50,25,12,http://www.onthesnow.com/connecticut/woodbury-ski-area/ski-resort.html,70
+337,Woods Valley Ski Area,Westernville,NY,Box 215,13486,TRUE,20,43,31,60,900ft - 1400ft,0,20,12/30-4/ 4,3,6,25,0,21,http://www.onthesnow.com/new-york/woods-valley-ski-area/ski-resort.html,180
+338,Yawgoo Valley,Slocum,RI,Box 41,2877,TRUE,30,47,23.5,40,70ft - 315ft,0,30,1/ 2-3/22,2.4,4,30,0,13,http://www.onthesnow.com/rhode-island/yawgoo-valley/ski-resort.html,40
