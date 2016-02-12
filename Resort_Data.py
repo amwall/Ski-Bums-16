@@ -25,17 +25,19 @@ def create_dictionary():
     return dictionary
 
 
-def go():
+def create_resort_dictionary():
     '''
     Gets all of the necessary information from the
     resorts
+
+    Returns a list of dictionaries
     '''
     page = requests.get(starting_url)
     page.raise_for_status()
     html = bs4.BeautifulSoup(page.text, 'html5lib')
 
-    resort_dictionary = {} # key is resort name and the entry is another 
-                           # dictionary containing all of the info
+    resort_dictionary = {} # key is an id for the resort and the entry is 
+                           # another dictionary containing all of the info
     # getting the rating of the resorts (out of 5 stars)
     rating_tags = html.find_all('b', class_ = 'rating_small')
     rating_list = []
@@ -64,19 +66,14 @@ def go():
     # adding the resort name, link, and rating to the dictionary
     for i in range(len(resort_name_and_link)):
         resort = resort_name_and_link[i][0]
-        # dealing with the fact that there are two resorts names "Crystal Mountain"
-        if resort == 'Crystal Mountain':
-            resort_link = resort_name_and_link[i][1]
-            state_name = re.findall('/[a-z]+', resort_link)[1][1:]
-            resort = resort + ' - ' + state_name
-        resort_dictionary[resort] = create_dictionary()
-        resort_dictionary[resort]['id'] = resort
+        resort_dictionary[i] = create_dictionary()
+        resort_dictionary[i]['Resort Name'] = resort
 
         link = resort_name_and_link[i][1]
-        resort_dictionary[resort]['link'] = link
+        resort_dictionary[i]['link'] = link
 
         rate = rating_list[i]
-        resort_dictionary[resort]['Rating'] = rate
+        resort_dictionary[i]['Rating'] = rate
 
     # Looking at all of the individual ski resorts main page
     for resort in resort_dictionary:
@@ -159,12 +156,13 @@ def go():
         else:
             resort_dictionary[resort]['City'] = ''
 
-        #print(resort_dictionary[resort])
-        #print()
+    resort_list = [{}] * len(resort_dictionary)
 
-    return resort_dictionary 
+    for resort in resort_dictionary:
+        resort_info = resort_dictionary[resort]
+        resort_list[resort] = resort_info
 
-          
+    return resort_list
 
 
 def is_absolute_url(url):
