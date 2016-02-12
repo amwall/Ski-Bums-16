@@ -1,4 +1,5 @@
 # Trying to scrape http://onthesnow.com
+# Alison Wall
 
 import urllib.parse
 import requests
