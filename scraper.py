@@ -6,6 +6,7 @@ import requests
 import bs4
 from lxml import html
 import re
+from urllib.request import urlopen
 
 starting_url = 'http://www.onthesnow.com/united-states/ski-resorts.html'
 limiting_domain = 'onthesnow.com'
@@ -24,6 +25,37 @@ def create_dictionary():
     dictionary['Average Snowfall'] = 'N/A'
 
     return dictionary
+
+
+GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
+
+
+def latitude_and_longitude(address, city, state, zip_code):
+    '''
+    '''
+    num_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    if address != '' and address[0] in num_list:
+        location = address.split()
+        location = '+'.join(location) + '+' + '+'.join(state.split())
+    elif city != '':
+        city = '+'.join(city.split())
+        state = '+'.join(state.split())
+        location = city + '+' + state
+    else:
+        location = zip_code
+
+    url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
+             'address=' + location + '&key=' + GEOCODING_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+    lat = re.findall('"lat"\s:\s[0-9\.\-]+', text)
+    lat = float(re.findall('[0-9\.\-]+', lat[0])[0])
+    lng = re.findall('"lng"\s:\s[0-9\.\-]+', text)
+    lng = float(re.findall('[0-9\.\-]+', lng[0])[0])
+
+    return lat, lng
 
 
 def create_resort_list():
@@ -156,6 +188,12 @@ def create_resort_list():
             resort_dictionary[resort]['City'] = town
         else:
             resort_dictionary[resort]['City'] = ''
+
+        lat, lon = latitude_and_longitude(resort_dictionary[resort]['Address'],
+                resort_dictionary[resort]['City'], resort_dictionary[resort]['State'],
+                resort_dictionary[resort]['Zip Code'])
+        resort_dictionary[resort]['Latitude'] = lat
+        resort_dictionary[resort]['Longitude'] = lon
 
     resort_list = [{}] * len(resort_dictionary)
 
