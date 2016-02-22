@@ -65,70 +65,33 @@ def create_main_sql_table(read_file, db_name):
     conn.commit()
     conn.close()
 
-def create_forecast_table(read_file, db_name):
-    
-    '''
-    
-    '''
-    
-    F_TABLE = 'forecast'
+def create_weather_tables(table_name, file_name, db_name):
     
     conn = lite.connect(db_name)
     c = conn.cursor()
     
-    fields, weather_data = csv_reader(read_file)
-
-    exec_stmt = 'CREATE TABLE'
-    exec_stmt += " 'main' ("
+    fields, rows = csv_reader(file_name)
+    
+    drop = "DROP TABLE IF EXISTS " + table_name
+    c.execute(drop)
     
     cols = []
     for field in fields:
-        if field in ('city','zip', 'name', 'state', 'addr', 'elev', 'dates', 'link'):
+        if field[2:6] in 'wthr_dscr':
+            kind = 'TEXT'
+        elif field in ('wthr', 'dscr'):
             kind = 'TEXT'
         else:
-            kind = 'INTEGER'
+            kind = 'REAL'
         col =  "'" + field + "' " + kind
         cols.append(col)
+        
     cols[0] = cols[0] + ' PRIMARY KEY'
     cols = ", ".join(cols)
-    exec_stmt += cols + ");"
+    exec_stmt = 'CREATE TABLE ' + table_name + '(' + cols + ')'
     c.execute(exec_stmt)
     
-    prm_slots = ['?'] * len(fields)
-    prm_slots = "(" + ",".join(prm_slots) + ")" 
-    insert_stmt = 'INSERT INTO main VALUES' + prm_slots
-    c.executemany(insert_stmt, resort_list)
-
     conn.commit()
     conn.close()
-
-def create_current_table(read_file, db_name):
-    '''
     
-    '''
     
-    conn = lite.connect(db_name)
-    c = conn.cursor()
-    
-    fields, weather_data = csv_reader(read_file)
-
-    exec_stmt = 'CREATE TABLE'
-    exec_stmt += " 'current' ("
-    
-    cols = []
-    for field in fields:
-        kind = 'INTEGER'
-        col =  "'" + field + "'"    + " " + kind
-        cols.append(col)
-    cols[0] = cols[0] + ' PRIMARY KEY'
-    cols = ", ".join(cols)
-    exec_stmt += cols + ");"
-    c.execute(exec_stmt)
-    
-    prm_slots = ['?'] * len(fields)
-    prm_slots = "(" + ",".join(prm_slots) + ")" 
-    insert_stmt = 'INSERT INTO current VALUES' + prm_slots
-    c.executemany(insert_stmt, resort_list)
-
-    conn.commit()
-    conn.close()
