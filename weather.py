@@ -1,6 +1,6 @@
 # Using Weather Data
 #
-# Wesbite
+# Website
 
 import sqlite3 as lite
 import csv
@@ -153,7 +153,7 @@ def update_weather_tables(table_name, read_file, db_name):
     fields, weather_data = database.csv_reader(read_file)
     
     refresh = "DELETE FROM " + table_name
-    c.exectute(refresh)
+    c.execute(refresh)
     
     prm_slots = ['?'] * len(fields)
     prm_slots = "(" + ",".join(prm_slots) + ")" 
@@ -161,11 +161,10 @@ def update_weather_tables(table_name, read_file, db_name):
     c.executemany(insert_stmt, weather_data)
 
     conn.commit()
-    conn.close()
             
 if __name__ == '__main__':
     
-    get_current("ski-resorts.db", "CSVs\current_weather.csv")
-    get_forecast("ski-resorts.db", "CSVs\forecast_weather.csv")
-    update_weather_tables('current', "CSVs\current_weather.csv", "ski-resorts.db")
-    update_weather_tables('forecast', 'CSVs\forecast_weather.csv', 'ski-resorts.db')
+    get_current("ski-resorts.db", "CSVs/current_weather.csv")
+    get_forecast("ski-resorts.db", "CSVs/forecast_weather.csv")
+    update_weather_tables('current', "CSVs/current_weather.csv", "ski-resorts.db")
+    update_weather_tables('forecast', 'CSVs/forecast_weather.csv', 'ski-resorts.db')
