@@ -74,6 +74,7 @@ def create_weather_tables(table_name, file_name, db_name):
     
     drop = "DROP TABLE IF EXISTS " + table_name
     c.execute(drop)
+    conn.commit()
     
     cols = []
     for field in fields:
@@ -93,5 +94,4 @@ def create_weather_tables(table_name, file_name, db_name):
     
     conn.commit()
     conn.close()
-    
     
