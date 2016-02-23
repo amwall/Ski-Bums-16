@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Ski Resort Finder</title>
+
+</head>
+
+<body>
+    <h1>Ski Resort Finder</h1>
+
+    <h3>Location</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+    Current location (street address, city and state, or zip code): <input type = 'text' name = 'current_location' required = True/>
+
+    <h3>Travel Time</h3>
+
+    Max travel time (hours): <input type = 'text' name = 'max_drive_time' />
+
+    <h3>Ticket Price</h3>
+
+    Maximum price you want to pay for a ticket: <input type = 'text' name = 'max_tic_price' />
+
+    <h3>Other search parameters (required)</h3>
+
+    Would you like the resort to have night skiing?
+    <input type = 'radio' name = 'night skiing' value = 'Yes' /> Yes <input type = 'radio' name = 'night skiing' value = 'Indifferent' /> Indifferent
+
+    <p> For the following, rank for importance on a scale from 1 (indifferent) to 5 (important): </p>
+
+    Terrain Parks: <input type = 'radio' name = 'Terrain parks' value = '1' /> 1 <input type = 'radio' name = 'Terrain parks' value = '2' /> 2 <input type = 'radio' name = 'Terrain parks' value = '3' /> 3 <input type = 'radio' name = 'Terrain parks' value = '4' /> 4 <input type = 'radio' name = 'Terrain parks' value = '5' /> 5
+
+    <h5></h5>
+
+    Beginner Runs: <input type = 'radio' name = 'Beginner runs' value = '1' /> 1 <input type = 'radio' name = 'Beginner runs' value = '2' /> 2 <input type = 'radio' name = 'Beginner runs' value = '3' /> 3 <input type = 'radio' name = 'Beginner runs' value = '4' /> 4 <input type = 'radio' name = 'Beginner runs' value = '5' /> 5
+
+    <h5></h5>
+    
+    Intermediate Runs: <input type = 'radio' name = 'Intermediate runs' value = '1' /> 1 <input type = 'radio' name = 'Intermediate runs' value = '2' /> 2 <input type = 'radio' name = 'Intermediate runs' value = '3' /> 3 <input type = 'radio' name = 'Intermediate runs' value = '4' /> 4 <input type = 'radio' name = 'Intermediate runs' value = '5' /> 5
+
+    <h5></h5>
+    
+    Advanced Runs: <input type = 'radio' name = 'Advanced runs' value = '1' /> 1 <input type = 'radio' name = 'Advanced runs' value = '2' /> 2 <input type = 'radio' name = 'Advanced runs' value = '3' /> 3 <input type = 'radio' name = 'Advanced runs' value = '4' /> 4 <input type = 'radio' name = 'Advanced runs' value = '5' /> 5
+
+    <h5></h5>
+    
+    Expert Runs: <input type = 'radio' name = 'Expert runs' value = '1' /> 1 <input type = 'radio' name = 'Expert runs' value = '2' /> 2 <input type = 'radio' name = 'Expert runs' value = '3' /> 3 <input type = 'radio' name = 'Expert runs' value = '4' /> 4 <input type = 'radio' name = 'Expert runs' value = '5' /> 5
+
+
+    <h3>Date</h3>
+
+    Preferred Date to Ski (month/day): <input type = 'text' name = 'date'/>
+
+    <h4></h4>
+
+    <input type = 'checkbox' name = 'driving dir' vale = 'True' /> Return Driving Directions
+
+    <h4></h4>
+
+    <input type = 'submit' name = 'submit' value = 'Submit' />
+    </form>
+
+</body>
+</html>
