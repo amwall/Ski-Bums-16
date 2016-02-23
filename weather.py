@@ -8,6 +8,7 @@ import requests
 import json
 import time
 import database
+import sys
 
 # API Quick Facts
 #   Limits:
@@ -26,6 +27,7 @@ def query_resorts(db_name):
     c = conn.cursor()
     query = "SELECT ID, zip FROM main"
     resorts = c.execute(query)
+    conn.commit()
     return resorts
 
 
@@ -45,10 +47,14 @@ def get_current(db_name, output_file):
     for ID, z_code in resort_loc:
         time.sleep(1.1)
         req_addr = zip_url.format(z_code) + "&units=imperial" + API_KEY
-        r = requests.get(req_addr)
+        try:
+            r = requests.get(req_addr)
+        except ConnectionError:
+            time.sleep(5)
+            r = requests.get(req_addr)
+            
         json_str = r.text
         weather = json.loads(json_str)
-        
         wthr = weather['weather'][0]['main']
         dscr = weather['weather'][0]['description']
         temp = weather['main']['temp']
@@ -105,7 +111,12 @@ def get_forecast(db_name, output_file):
     for ID, z_code in resort_locs:
         time.sleep(1.1)
         req_addr =  zip_url.format(z_code) + "&units=imperial" + API_KEY
-        r = requests.get(req_addr)
+        try:
+            r = requests.get(req_addr)
+        except ConnectionError:
+            time.sleep(5)
+            r = requests.get(req_addr)
+            
         json_str = r.text
         weather = json.loads(json_str)
         fcast_data = [ID]
@@ -155,16 +166,21 @@ def update_weather_tables(table_name, read_file, db_name):
     refresh = "DELETE FROM " + table_name
     c.execute(refresh)
     
+    conn.commit()
+    
     prm_slots = ['?'] * len(fields)
     prm_slots = "(" + ",".join(prm_slots) + ")" 
     insert_stmt = 'INSERT INTO ' + table_name + ' VALUES ' + prm_slots
     c.executemany(insert_stmt, weather_data)
-
+    
     conn.commit()
             
-if __name__ == '__main__':
+def do_current():
     
     get_current("ski-resorts.db", "CSVs/current_weather.csv")
-    get_forecast("ski-resorts.db", "CSVs/forecast_weather.csv")
     update_weather_tables('current', "CSVs/current_weather.csv", "ski-resorts.db")
+
+def do_forecast():
+    
+    get_forecast("ski-resorts.db", "CSVs/forecast_weather.csv")
     update_weather_tables('forecast', 'CSVs/forecast_weather.csv', 'ski-resorts.db')
