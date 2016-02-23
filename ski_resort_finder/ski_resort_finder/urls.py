@@ -1,4 +1,4 @@
-"""mysite URL Configuration
+"""ski_resort_finder URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -17,10 +17,5 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-<<<<<<< HEAD
     url(r'^admin/', include(admin.site.urls)),
-=======
-    url(r'^ski_bums/', include('ski_bums.urls')),
-    url(r'^admin/', include(admin.site.urls)), 
->>>>>>> 670b231acead2067b7d1e9bff36e1716f3e4ee14
 ]
