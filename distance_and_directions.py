@@ -9,6 +9,7 @@ from urllib.request import urlopen
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
 
+
 def destination(resort_dictionary, resort):
     '''
  
