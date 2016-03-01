@@ -12,17 +12,22 @@ def index(request):
                            'Intermediate Slopes', 'Advanced Slopes', 'Expert Slopes',
                            'Amount of Runs', 'Amount of Skiable Terrain', 'Average Snowfall'],
             }
-    #if request.method == 'POST':
+    if request.method == 'POST':
+        print(request.POST)
+
+
+        info['results'] = [..., ..., .]
+
         #request.POST[]
         # this is where we interact with the database
 
     #else: 
         # what to output when loading the page for the first time 
 
-    template = loader.get_template('ski_bums/index.html')
+    #template = loader.get_template('ski_bums/index.html')
 
-    return HttpResponse(template.render(info, request))
-    # return render(request, 'ski_bums/index.html', info)
+    #return HttpResponse(template.render(info, request))
+     return render(request, 'ski_bums/index.html', info)
 
 
         
