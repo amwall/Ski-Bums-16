@@ -34,7 +34,7 @@ def destination(resort_dictionary, resort):
     return destination
     
 
-def travel_time(resort_dictionary, resort, current_location):
+def travel_time_minutes(resort_dictionary, resort, current_location):
     '''
     Find the time it takes to drive from a user's current location 
     to a resort. 
@@ -56,6 +56,28 @@ def travel_time(resort_dictionary, resort, current_location):
     minutes = float(re.findall('[0-9]+', values[1])[0])
 
     return minutes
+
+
+def travel_time_words(resort_dictionary, resort, current_location):
+    '''
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    end = destination(resort_dictionary, resort)
+    
+    url = ('https://maps.googleapis.com/maps/api/directions/json?' +
+            'origin=' + current + '&' + 'destination=' + end +  
+            '&key=' + DIRECTIONS_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+
+    values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
+    time_travel = values[1][1]
+
+    return travel_time
 
 
 def get_directions(resort_dictionary, resort, current_location):
@@ -115,4 +137,6 @@ def get_directions(resort_dictionary, resort, current_location):
     direct_and_dist.append('Total travel time is ' + time_travel)
 
     return direct_and_dist
+
+
 
