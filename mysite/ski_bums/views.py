@@ -41,7 +41,7 @@ def index(request):
     if request.method == 'POST':
         print(request.POST)
 
-    opti_order = (request.POST, resort_dict)
+    #opti_order = (request.POST, resort_dict)
 
 
     
@@ -57,6 +57,33 @@ def index(request):
 
     #return HttpResponse(template.render(info, request))
     return render(request, 'ski_bums/index.html', info)
+
+
+def results(request):
+    info = {'parameters': ['Night Skiing', 'Terrain Parks', 'Beginner Slopes',
+                           'Intermediate Slopes', 'Advanced Slopes', 'Expert Slopes',
+                           'Amount of Runs', 'Amount of Skiable Terrain', 'Average Snowfall'],
+            'one': '49 Degrees North',
+            'info_one': ['a', 'b', 'c'],
+            'title': ['Driving Directions', 'Turn Right'],
+            }
+    print("AAAAAAAAAAAAA")
+    if request.method == 'POST':
+        print(request.POST)
+        print()
+        print(request.POST['current_location'])
+
+
+    #else:
+        # what to output if someone were type /results into the url
+    return render(request, 'ski_bums/results.html', info)
+
+
+# output of the performace algorithm should be in the form:
+#
+#
+# def obtain_info(category, [list resorts])
+
 
 
         

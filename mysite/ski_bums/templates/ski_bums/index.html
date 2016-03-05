@@ -9,9 +9,11 @@
 
     <h3>Location</h3>
 
-    <form action="" method="post">
+    <form action="results" method="post">
         {% csrf_token %}
     Current location (street address, city and state, or zip code): <input type = 'text' name = 'current_location' required = True/>
+    <br>
+    (Example Inputs: 5801 S Ellis Ave Chicago, IL OR Chicago, IL OR 60637)
 
     <h3>Travel Time</h3>
 
@@ -53,11 +55,11 @@
 
     <h4></h4>
 
-    <input type = 'checkbox' name = 'driving dir' vale = 'True' /> Return Driving Directions
+    <input type = 'checkbox' name = 'driving dir' value = 'True' /> Return Driving Directions
 
     <h4></h4>
 
-    <input type = 'submit' name = 'submit' value = 'Submit' />
+    <input type = 'submit' value = 'Submit' />
     </form>
 
 </body>
