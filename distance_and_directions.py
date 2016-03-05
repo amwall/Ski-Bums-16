@@ -3,7 +3,6 @@
 import re
 from urllib.request import urlopen
 
-
 # **Will need to change the inputs into some of the functions
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
