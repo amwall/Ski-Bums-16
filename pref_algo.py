@@ -1,4 +1,5 @@
 def create_dictionary():
+    
     dictionary = {}
     dictionary['Night Skiing'] = False
     dictionary['Terrain Parks'] = 0
@@ -11,10 +12,8 @@ def create_dictionary():
     dictionary['Average Snowfall'] = 'N/A'
 
     return dictionary
-    
 
 def optimal_score(ter, beg, inte, adv, exp, resort_dict):
-    
     
     ter_score = resort_dict['Terrain Parks'] * ter 
     beg_score = resort_dict['Beginner Parks'] * beg
@@ -23,12 +22,11 @@ def optimal_score(ter, beg, inte, adv, exp, resort_dict):
     exp_score = resort_dict['Expert Parks'] * exp
     
     score = beg_score + int_score + adv_score + exp_score + ter_score
-    
 
     return (score)
 
-
 def create_dict():
+    
     dic = {'resort_1':{'Terrain Parks':10, 'Beginner Parks':20, 'Intermidiate Parks':30, 
             'Advanced Parks':40, 'Expert Parks':50}, 'resort_2':{'Terrain Parks':20, 'Beginner Parks':30, 'Intermidiate Parks':40,
             'Advanced Parks':50, 'Expert Parks':10},'resort_3':{'Terrain Parks':30, 'Beginner Parks':40, 'Intermidiate Parks':50,
@@ -39,6 +37,7 @@ def create_dict():
     return dic
 
 def create_pref(ter, beg, inte, adv, exp):
+    
     dic = {}
     dic['Terrain Parks'] = ter
     dic['Beginner Parks'] = beg
@@ -47,8 +46,6 @@ def create_pref(ter, beg, inte, adv, exp):
     dic['Expert Parks'] = exp 
 
     return dic
-
-
 
 def optimal_order(pref_dict, resort_dict):
     order_list = []
