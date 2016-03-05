@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title> Results </title> 
+    <style>
+    table {
+        width:100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+    table#t01 tr:nth-child(even) {
+        background-color: LightCyan;
+    }
+    table#t01 tr:nth-child(odd) {
+       background-color: #eee;
+    }
+    table#t01 th    {
+        background-color: LightBlue;
+        color: black;
+    }
+    </style>
+</head>
+<body>
+    <h1>Results</h1>
+    <table id="t01">
+        <caption><font size="5"><strong>General Information</strong></font></caption>  
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>      
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>      
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>        
+            <td>94</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>        
+            <td>80</td>
+        </tr>
+        <tr>
+            {% for info in info_one %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <h3>
+        {% if title %}
+        Driving Directions
+        {% endif %}
+    </h3>
+    <ol>
+        {% if title %}
+        {% for x in title %}
+        <li>{{ x }}</li>
+        {% endfor %}
+        {% endif %}
+    </ol>
+
+
+</body>
+</html>
