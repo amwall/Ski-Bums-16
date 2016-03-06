@@ -1,6 +1,5 @@
 
-
-
+import directions
 # Fields we have:
 #     
 #     Details:
@@ -48,16 +47,21 @@ def build_ranking(search_dict, database_name):
     
     db = lite.connect(DATABASE_FILENAME)
     db.create_function('score_size', 2, score_size)
-    
+    db.create_function('')
+    cursor = db.cursor
+
+    parameters = []
     
     query = 'SELECT main.ID, (size_score + run_score) AS total_scr'
     
     ### SCORE RUNS ###
-    query += score_runs(search_dict)
+    addition, parameters = score_runs(search_dict, parameters)
+    query += addition
     
     ### SCORE SIZE ###
     choice = search_dict['Resort Size'][0]
-    " score_size(main.num_runs, " + choice + ') AS size_score'
+    parameters.append(choice)
+    query += " score_size(main.num_runs, ?) AS size_score"
     
     ### SCORE DISTANCE ###
     
@@ -94,17 +98,15 @@ def score_size(num_runs, choice):
     else:
         scr = num_runs * lrg_mlt
     
-    return mlt
+    return scr
     
-def score_runs(query, search_dict):
+def score_runs(search_dict, parameters):
     
     score_dict = {1: 0,
                   2: 1,
                   3: 1.5,
                   4: 3,
                   5: 5}
-    
-    parameters = []
     
     beg_prf = int(search_dict['Beginner runs'][0])
     int_prf = int(search_dict['Intermediate runs'][0])
@@ -117,7 +119,7 @@ def score_runs(query, search_dict):
     exp_mlt = score_dict[exp_prf]
     
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
-    query += "((main.beginner * ?) + (main.intermediate * ?) + \
+    query = "((main.beginner * ?) + (main.intermediate * ?) + \
               (main.advanced * ?) + (main.expert * ?)) AS run_score"
     
     return query
