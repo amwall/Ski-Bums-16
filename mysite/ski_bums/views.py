@@ -53,7 +53,6 @@ def results(request):
             info['drive_3'] = dir_list[2]
 
 
-
     #else:
         # what to output if someone were type /results into the url
     return render(request, 'ski_bums/results.html', info)
