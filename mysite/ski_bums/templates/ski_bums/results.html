@@ -3,7 +3,7 @@
     <title> Results </title> 
     <style>
     table {
-        width:100%;
+        width:70%;
     }
     table, th, td {
         border: 1px solid black;
@@ -23,47 +23,125 @@
         background-color: LightBlue;
         color: black;
     }
+    table#t02 tr:nth-child(even) {
+        background-color: #C3FDB8;
+    }
+    table#t02 tr:nth-child(odd) {
+       background-color: white;
+    }
+    table#t02 th    {
+        background-color: #6AFB92;
+        color: black;
+    }
+    table#t03 tr:nth-child(even) {
+        background-color: #E0B0FF;
+    }
+    table#t03 tr:nth-child(odd) {
+       background-color: #eee;
+    }
+    table#t03 th    {
+        background-color: #9E7BFF;
+        color: black;
+    }
     </style>
 </head>
 <body>
     <h1>Results</h1>
+    <h2>Based on your seach inputs, here are the top three ski resorts we recommend</h2>
     <table id="t01">
-        <caption><font size="5"><strong>General Information</strong></font></caption>  
+        <caption><font size="5"><strong>{{ one }}</strong></font></caption>  
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>      
-            <th>Points</th>
+            <th>Category</th>
+            <th></th>      
         </tr>
         <tr>
-            <td>Jill</td>
-            <td>Smith</td>      
-            <td>50</td>
+            {% for info in state_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
         </tr>
         <tr>
-            <td>Eve</td>
-            <td>Jackson</td>        
-            <td>94</td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>        
-            <td>80</td>
-        </tr>
-        <tr>
-            {% for info in info_one %}
+            {% for info in time_1 %}
             <td>{{ info }}</td>
             {% endfor %}
         </tr>
     </table>
 
+    <h3>Weather</h3>
+
     <h3>
-        {% if title %}
+        {% if drive_1 %}
         Driving Directions
         {% endif %}
     </h3>
     <ol>
-        {% if title %}
-        {% for x in title %}
+        {% if drive_1 %}
+        {% for x in drive_1 %}
+        <li>{{ x }}</li>
+        {% endfor %}
+        {% endif %}
+    </ol>
+
+    <table id="t02">
+        <caption><font size="5"><strong>{{ two }}</strong></font></caption>  
+        <tr>
+            <th>Category</th>
+            <th></th>      
+        </tr>
+        <tr>
+            {% for info in state_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in time_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <h3>Weather</h3>
+
+    <h3>
+        {% if drive_2 %}
+        Driving Directions
+        {% endif %}
+    </h3>
+    <ol>
+        {% if drive_2 %}
+        {% for x in drive_2 %}
+        <li>{{ x }}</li>
+        {% endfor %}
+        {% endif %}
+    </ol>
+
+    <table id="t03">
+        <caption><font size="5"><strong>{{ three }}</strong></font></caption>  
+        <tr>
+            <th>Category</th>
+            <th></th>      
+        </tr>
+        <tr>
+            {% for info in state_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in time_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <h3>Weather</h3>
+
+    <h3>
+        {% if drive_3 %}
+        Driving Directions
+        {% endif %}
+    </h3>
+    <ol>
+        {% if drive_2 %}
+        {% for x in drive_3 %}
         <li>{{ x }}</li>
         {% endfor %}
         {% endif %}
