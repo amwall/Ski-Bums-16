@@ -21,37 +21,46 @@
 
     <h3>Ticket Price</h3>
 
-    Maximum price you want to pay for a ticket: <input type = 'text' name = 'max_tic_price' />
+    Maximum price you want to pay for a ticket: $<input type = 'text' name = 'max_tic_price' />
 
     <h3>Other search parameters (required)</h3>
 
     Would you like the resort to have night skiing?
-    <input type = 'radio' name = 'night skiing' value = 'Yes' /> Yes <input type = 'radio' name = 'night skiing' value = 'Indifferent' /> Indifferent
+    <input required = True type = 'radio' name = 'night skiing' value = 'Yes' /> Yes <input type = 'radio' name = 'night skiing' value = 'Indifferent' /> Indifferent
+
+    <br>
+
+    What size would you like to resort to be?
+    <input required = True type = 'radio' name = 'Resort Size' value = 'Small' /> Small <input type = 'radio' name = 'Resort Size' value = 'Medium' /> Medium <input type = 'radio' name = 'Resort Size' value = 'Large' /> Large
 
     <p> For the following, rank for importance on a scale from 1 (indifferent) to 5 (important): </p>
 
-    Terrain Parks: <input type = 'radio' name = 'Terrain parks' value = '1' /> 1 <input type = 'radio' name = 'Terrain parks' value = '2' /> 2 <input type = 'radio' name = 'Terrain parks' value = '3' /> 3 <input type = 'radio' name = 'Terrain parks' value = '4' /> 4 <input type = 'radio' name = 'Terrain parks' value = '5' /> 5
+    Terrain Parks: <input required = True type = 'radio' name = 'Terrain parks' value = '1' /> 1 <input type = 'radio' name = 'Terrain parks' value = '2' /> 2 <input type = 'radio' name = 'Terrain parks' value = '3' /> 3 <input type = 'radio' name = 'Terrain parks' value = '4' /> 4 <input type = 'radio' name = 'Terrain parks' value = '5' /> 5
 
     <h5></h5>
 
-    Beginner Runs: <input type = 'radio' name = 'Beginner runs' value = '1' /> 1 <input type = 'radio' name = 'Beginner runs' value = '2' /> 2 <input type = 'radio' name = 'Beginner runs' value = '3' /> 3 <input type = 'radio' name = 'Beginner runs' value = '4' /> 4 <input type = 'radio' name = 'Beginner runs' value = '5' /> 5
-
-    <h5></h5>
-    
-    Intermediate Runs: <input type = 'radio' name = 'Intermediate runs' value = '1' /> 1 <input type = 'radio' name = 'Intermediate runs' value = '2' /> 2 <input type = 'radio' name = 'Intermediate runs' value = '3' /> 3 <input type = 'radio' name = 'Intermediate runs' value = '4' /> 4 <input type = 'radio' name = 'Intermediate runs' value = '5' /> 5
+    Beginner Runs: <input required = True type = 'radio' name = 'Beginner runs' value = '1' /> 1 <input type = 'radio' name = 'Beginner runs' value = '2' /> 2 <input type = 'radio' name = 'Beginner runs' value = '3' /> 3 <input type = 'radio' name = 'Beginner runs' value = '4' /> 4 <input type = 'radio' name = 'Beginner runs' value = '5' /> 5
 
     <h5></h5>
     
-    Advanced Runs: <input type = 'radio' name = 'Advanced runs' value = '1' /> 1 <input type = 'radio' name = 'Advanced runs' value = '2' /> 2 <input type = 'radio' name = 'Advanced runs' value = '3' /> 3 <input type = 'radio' name = 'Advanced runs' value = '4' /> 4 <input type = 'radio' name = 'Advanced runs' value = '5' /> 5
+    Intermediate Runs: <input required = True type = 'radio' name = 'Intermediate runs' value = '1' /> 1 <input type = 'radio' name = 'Intermediate runs' value = '2' /> 2 <input type = 'radio' name = 'Intermediate runs' value = '3' /> 3 <input type = 'radio' name = 'Intermediate runs' value = '4' /> 4 <input type = 'radio' name = 'Intermediate runs' value = '5' /> 5
 
     <h5></h5>
     
-    Expert Runs: <input type = 'radio' name = 'Expert runs' value = '1' /> 1 <input type = 'radio' name = 'Expert runs' value = '2' /> 2 <input type = 'radio' name = 'Expert runs' value = '3' /> 3 <input type = 'radio' name = 'Expert runs' value = '4' /> 4 <input type = 'radio' name = 'Expert runs' value = '5' /> 5
+    Advanced Runs: <input required = True type = 'radio' name = 'Advanced runs' value = '1' /> 1 <input type = 'radio' name = 'Advanced runs' value = '2' /> 2 <input type = 'radio' name = 'Advanced runs' value = '3' /> 3 <input type = 'radio' name = 'Advanced runs' value = '4' /> 4 <input type = 'radio' name = 'Advanced runs' value = '5' /> 5
+
+    <h5></h5>
+    
+    Expert Runs: <input required = True type = 'radio' name = 'Expert runs' value = '1' /> 1 <input type = 'radio' name = 'Expert runs' value = '2' /> 2 <input type = 'radio' name = 'Expert runs' value = '3' /> 3 <input type = 'radio' name = 'Expert runs' value = '4' /> 4 <input type = 'radio' name = 'Expert runs' value = '5' /> 5
 
 
     <h3>Date</h3>
 
-    Preferred Date to Ski (month/day): <input type = 'text' name = 'date'/>
+    Are you planning on skiing within the next week? <input required = True type = 'radio' name = 'week' value = 'Yes' /> Yes <input type = 'radio' name = 'week' value = 'No' /> No
+
+    <h4></h4>
+
+    If yes, what date are you planning on skiing? (month/day) <input type = 'text' name = 'date' /> 
 
     <h4></h4>
 
