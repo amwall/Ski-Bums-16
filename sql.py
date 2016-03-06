@@ -1,54 +1,59 @@
 
-import directions
-# Fields we have:
-#     
-#     Details:
-#       Runs
-#         beginner
-#         intermediate
-#         advanced
-#         expert
-#       Special
-#         night
-#         park
-#         avg_snowfall
-#         rating
-#     Travel Time:
-#         Sort out distance matrix use
-#     
-#     Location:
-#         city
-#         state
-#     Size:
-#         lifts
-#         area
-#         total_runs
-#     Cost:
-#         max_price
-#         min_price
-#         
-#     Weather:
-#         seven day forecast
-#             - precipitation
-#         current
-# 
-#     Notes on Website:
-#         - (Most important)
-#         - Include size
-#         - Terrain Park (Should this be the same type of decision as Night skiing)
-#         
-#     Scoring procedure:
-#         Linear?
-#         |  1  |  2  |  3  |  4  |  5  |
-#     lin |  0     1     2     3     4
-#     non |  0     1    1.5    3     5
+from directions import destination, travel_time_hours
+
+def compress():
+
+
+    # Fields we have:
+    #     
+    #     Details:
+    #       Runs
+    #         beginner
+    #         intermediate
+    #         advanced
+    #         expert
+    #       Special
+    #         night
+    #         park
+    #         avg_snowfall
+    #         rating
+    #     Travel Time:
+    #         Sort out distance matrix use
+    #     
+    #     Location:
+    #         city
+    #         state
+    #     Size:
+    #         lifts
+    #         area
+    #         total_runs
+    #     Cost:
+    #         max_price
+    #         min_price
+    #         
+    #     Weather:
+    #         seven day forecast
+    #             - precipitation
+    #         current
+    # 
+    #     Notes on Website:
+    #         - (Most important)
+    #         - Include size
+    #         - Terrain Park (Should this be the same type of decision as Night skiing)
+    #         
+    #     Scoring procedure:
+    #         Linear?
+    #         |  1  |  2  |  3  |  4  |  5  |
+    #     lin |  0     1     2     3     4
+    #     non |  0     1    1.5    3     5
+    pass
     
 def build_ranking(search_dict, database_name):
     
     db = lite.connect(DATABASE_FILENAME)
     db.create_function('score_size', 2, score_size)
-    db.create_function('')
-    cursor = db.cursor
+    db.create_function('travel_time', 5, travel_time_hours)
+    cursor = db.cursor()
 
     parameters = []
     
@@ -64,8 +69,14 @@ def build_ranking(search_dict, database_name):
     query += " score_size(main.num_runs, ?) AS size_score"
     
     ### SCORE DISTANCE ###
+    if search_dict['max_drive_time'][0] == "":
+        max_time = str(int(search_dict['max_drive_time'][0] + 0.5))
+        cur_loc = search_dict['current_locations'][0]
+        parameters.extend([cur_loc, max_time])
+        query += " WHERE travel_time(addr,city,state,zip,?) <= ?"
     
-    
+    # Night Skiing
+    if night_skiing
     query += score + ' FROM main '
     
     run_fnc = '(SELECT )'
