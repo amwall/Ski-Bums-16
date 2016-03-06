@@ -1,12 +1,11 @@
 
-import scrapping
-import database
+import scraper
 import weather
+import database
 
-
-
-
-if __name__ == '__main__':
+def build_csv():
     
-    scrapping.create_dictionary()
+    resort_dict = scraper.create_resort_list()
+    database.csv_writer(resort_dict)
+    
     
