@@ -57,7 +57,7 @@ def build_ranking(search_dict, database_name):
 
     parameters = []
     
-    query = 'SELECT main.ID, (size_score + run_score) AS total_scr'
+    query = 'SELECT ID, (size_score + run_score) AS total_scr'
     
     ### SCORE RUNS ###
     addition, parameters = score_runs(search_dict, parameters)
@@ -66,22 +66,37 @@ def build_ranking(search_dict, database_name):
     ### SCORE SIZE ###
     choice = search_dict['Resort Size'][0]
     parameters.append(choice)
-    query += " score_size(main.num_runs, ?) AS size_score"
+    query += " score_size(num_runs, ?) AS size_score"
     
-    ### SCORE DISTANCE ###
+    # Connect table
+    query += ' FROM main'
+    
+    ### CUTTING ATTRIBUTES ###
+    where = []
+    ### DISTANCE ###
     if search_dict['max_drive_time'][0] == "":
         max_time = str(int(search_dict['max_drive_time'][0] + 0.5))
         cur_loc = search_dict['current_locations'][0]
         parameters.extend([cur_loc, max_time])
-        query += " WHERE travel_time(addr,city,state,zip,?) <= ?"
+        where.append(" travel_time(addr,city,state,zip,?) <= ?")
     
-    # Night Skiing
-    if night_skiing
-    query += score + ' FROM main '
+    ### NIGHT SKIING ###
+    if search_dict['night_skiing'][0] != 'Indifferent':
+        where.append(" night = 1")
     
-    run_fnc = '(SELECT )'
-    
+    where = " AND".join(where)
+    query += where
     query += ' ORDER BY score DESC LIMIT 10'
+    parameters = tuple(parameters)
+    exc = cursor.execute(query, parameters)
+    output = exc.fetchall()
+    
+    resort_ids = []
+    for resorts in output:
+        resort_id = output[0]
+        resort_ids.append(resort_id)
+    
+    return resort_ids
     
 def score_size(num_runs, choice):
     
