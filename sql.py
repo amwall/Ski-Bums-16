@@ -1,53 +1,7 @@
+# sql.py
 
 from directions import destination, travel_time_hours
 
-def compress():
-
-
-    # Fields we have:
-    #     
-    #     Details:
-    #       Runs
-    #         beginner
-    #         intermediate
-    #         advanced
-    #         expert
-    #       Special
-    #         night
-    #         park
-    #         avg_snowfall
-    #         rating
-    #     Travel Time:
-    #         Sort out distance matrix use
-    #     
-    #     Location:
-    #         city
-    #         state
-    #     Size:
-    #         lifts
-    #         area
-    #         total_runs
-    #     Cost:
-    #         max_price
-    #         min_price
-    #         
-    #     Weather:
-    #         seven day forecast
-    #             - precipitation
-    #         current
-    # 
-    #     Notes on Website:
-    #         - (Most important)
-    #         - Include size
-    #         - Terrain Park (Should this be the same type of decision as Night skiing)
-    #         
-    #     Scoring procedure:
-    #         Linear?
-    #         |  1  |  2  |  3  |  4  |  5  |
-    #     lin |  0     1     2     3     4
-    #     non |  0     1    1.5    3     5
-    pass
-    
 def build_ranking(search_dict, database_name):
     
     db = lite.connect(DATABASE_FILENAME)
@@ -57,7 +11,7 @@ def build_ranking(search_dict, database_name):
 
     parameters = []
     
-    query = 'SELECT ID, (size_score + run_score) AS total_scr'
+    query = 'SELECT ID, (size_score + run_score) AS total_score,'
     
     ### SCORE RUNS ###
     addition, parameters = score_runs(search_dict, parameters)
@@ -74,7 +28,7 @@ def build_ranking(search_dict, database_name):
     ### CUTTING ATTRIBUTES ###
     where = []
     ### DISTANCE ###
-    if search_dict['max_drive_time'][0] == "":
+    if search_dict['max_drive_time'][0]:
         max_time = str(int(search_dict['max_drive_time'][0] + 0.5))
         cur_loc = search_dict['current_locations'][0]
         parameters.extend([cur_loc, max_time])
@@ -82,11 +36,24 @@ def build_ranking(search_dict, database_name):
     
     ### NIGHT SKIING ###
     if search_dict['night_skiing'][0] != 'Indifferent':
-        where.append(" night = 1")
+        where.append(" night=1")
+    
+    ### MAX TICKET ###
+    if search_dict['max_tic_price'][0]:
+        price = search_dict['max_tic_price'][0]
+        parameters.append(price)
+        where.append(" max_price <= ?")
+    
+    ### Terrain Park ###
+    if int(search_dict['Terrain parks']) > 1:
+        where.append(" park > 0")
     
     where = " AND".join(where)
     query += where
-    query += ' ORDER BY score DESC LIMIT 10'
+    query += ' ORDER BY total_score DESC LIMIT 3'
+    
+    print(query)
+    print(parameters)
     parameters = tuple(parameters)
     exc = cursor.execute(query, parameters)
     output = exc.fetchall()
@@ -145,26 +112,7 @@ def score_runs(search_dict, parameters):
     exp_mlt = score_dict[exp_prf]
     
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
-    query = "((main.beginner * ?) + (main.intermediate * ?) + \
-              (main.advanced * ?) + (main.expert * ?)) AS run_score"
+    query = " (main.beginner * ?) + (main.intermediate * ?) + \
+              (main.advanced * ?) + (main.expert * ?) AS run_score"
     
-    return query
-    
-    '''
-    SELECT ID (run_scr + size_scr + loc_scr) AS total_scr,
-    WHERE distance > ?
-    ORDER BY total_scr
-    LIMIT 3
-    '''
-    
-    
-def score_runs():
-    pass
-    
-def score_weather():
-    pass
-    
-def score_size():
-    pass
-
-    
+    return query, parameters
