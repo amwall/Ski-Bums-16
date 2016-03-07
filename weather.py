@@ -63,7 +63,9 @@ def get_current(db_name, output_file):
         spd = weather['wind']['speed']
 
         if 'rain' in weather:
-            rain = weather['rain']['3h']
+            rain = weather['rain']
+            if '3h' in rain:
+                rain = rain['3h']
         else:
             rain = 0
 
@@ -156,7 +158,8 @@ def get_forecast(db_name, output_file):
 
 def update_weather_tables(table_name, read_file, db_name):
     '''
-
+    This function is used to update weather tables in the central database. It
+    is called every time m
     '''
     conn = lite.connect(db_name)
     c = conn.cursor()
@@ -175,17 +178,21 @@ def update_weather_tables(table_name, read_file, db_name):
 
     conn.commit()
 
-def do_current():
+def do_current(database_name, csv_name):
 
-    get_current("resort-data.db", "CSVs/current_weather.csv")
-    update_weather_tables('current', "CSVs/current_weather.csv", "resort-data.db")
+    get_current(database_name, csv_name)
+    update_weather_tables('current', csv_name, database_name)
 
-def do_forecast():
+def do_forecast(database_name, csv_name):
 
-    get_forecast("resort-data.db", "CSVs/forecast_weather.csv")
-    update_weather_tables('forecast', 'CSVs/forecast_weather.csv', 'resort-data.db')
+    get_forecast(database_name, csv_name)
+    update_weather_tables('forecast', csv_name, database_name)
 
 if __name__ == "__main__":
-
-    do_current()
-    do_forecast()
+    
+    if len(sys.argv) != 4:
+        print("usage: python3 {} <database name> <current filename> <forecast filename>".format(sys.argv[0]))
+        sys.exit(1)
+        
+    do_current(sys.argv[1], sys.argv[2])
+    do_forecast(sys.argv[1], sys.argv[3])
