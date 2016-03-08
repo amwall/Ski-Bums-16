@@ -23,50 +23,46 @@ def date_distance(date_ski):
     return list(range(delta.days))
     
 
-
-<<<<<<< HEAD
-def grab_weather(id_list, days_list, check = 'no'):
-=======
 def grab_weather(id_list, days_list, check):
     
->>>>>>> beb4673d75e4630abe0fb23178a9ff40d3641b95
     select = 'SELECT '
-    fields = 'wthr, dscr, temp, snow '
+    fields = 'c.ID, c.wthr, c.dscr, c.temp, c.snow'
 
     snow_fall = []
     addition = None
     for day in days_list:
         if addition == None:
-            addition = '(snow_' + str(day + 1)
+            addition = '(f.snow_' + str(day + 1)
         else:
-            addition = addition + ' + snow_' + str(day + 1) 
+            addition = addition + ' + f.snow_' + str(day + 1) 
     addition = addition + ') as [Total Snow Fall] '
     snow_fall.append(addition)
 
-    weather = 'wthr_' + str(days_list[-1]) + ', '
-    description = 'dscr_' + str(days_list[-1]) + ', '
-    average_day = 'avg_day_' + str(days_list[-1]) + ', '
+    weather = 'f.wthr_' + str(days_list[-1] + 1) + ', '
+    description = 'f.dscr_' + str(days_list[-1] + 1) + ', '
+    average_day = 'f.avg_day_' + str(days_list[-1] + 1) + ', '
 
-    fro_cur = 'FROM current '
-    fro_for = 'FROM forecast '
+    fro_cur = ' FROM current AS c '
     new_id = []
     for person in id_list:
         change = str(person)
         new_id.append(change)
     customer_id = "(" + ", ".join(new_id) + ")"
-    where = 'WHERE ID IN ' + customer_id
+    where = 'WHERE c.ID IN ' + customer_id
     if check == 'yes':
-        sql_string = (select + fields + fro_cur + where + ' UNION ' + select + weather + 
-                description + average_day + snow_fall[0] + fro_for + where)
+        sql_string = (select + fields + ', ' + weather + description + average_day +
+                      snow_fall[0] + 'FROM current AS c JOIN forecast AS f ON (c.ID = f.ID) ' +
+                      where)
     else:
         sql_string = select + fields + fro_cur + where
 
     print(sql_string)
+    
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
     execute = cursor.execute(sql_string, [])
-    output = execute.fetchall()
+    current_weather = execute.fetchall()
     connection.close()
-
-    print(output)
+    
+    return current_weather
         
