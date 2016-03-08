@@ -3,7 +3,7 @@
     <title> Results </title> 
     <style>
     table {
-        width:70%;
+        width:60%;
     }
     table, th, td {
         border: 1px solid black;
@@ -24,13 +24,13 @@
         color: black;
     }
     table#t02 tr:nth-child(even) {
-        background-color: #C3FDB8;
+        background-color: #98FF98;
     }
     table#t02 tr:nth-child(odd) {
-       background-color: white;
+       background-color: #eee;
     }
     table#t02 th    {
-        background-color: #6AFB92;
+        background-color: #52D017;
         color: black;
     }
     table#t03 tr:nth-child(even) {
@@ -47,12 +47,22 @@
 </head>
 <body>
     <h1>Results</h1>
-    <h2>Based on your seach inputs, here are the top three ski resorts we recommend</h2>
+
+    <p> <a href="{% url 'info' %}">Browse Resorts</a></p>
+
+    {% if state_1 %}
+    <p><font size = "4">Based on your seach inputs, here are the ski resort(s) we recommend</font></p>
+
     <table id="t01">
-        <caption><font size="5"><strong>{{ one }}</strong></font></caption>  
+        <caption><font size="5"><strong>{{ name_1 }}</strong></font></caption>  
         <tr>
             <th>Category</th>
             <th></th>      
+        </tr>
+        <tr>
+            {% for info in id_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
         </tr>
         <tr>
             {% for info in state_1 %}
@@ -61,6 +71,56 @@
         </tr>
         <tr>
             {% for info in time_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in elev_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in price_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in beg_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in int_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in adv_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in exp_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in night_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in terrain_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in runs_1 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in area_1 %}
             <td>{{ info }}</td>
             {% endfor %}
         </tr>
@@ -80,12 +140,18 @@
         {% endfor %}
         {% endif %}
     </ol>
+    {% endif %}
 
+    {% if state_2 %}
     <table id="t02">
-        <caption><font size="5"><strong>{{ two }}</strong></font></caption>  
+        <caption><font size="5"><strong>{{ name_2 }}</strong></font></caption>  
         <tr>
             <th>Category</th>
             <th></th>      
+        <tr>
+            {% for info in id_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
         </tr>
         <tr>
             {% for info in state_2 %}
@@ -94,6 +160,56 @@
         </tr>
         <tr>
             {% for info in time_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in elev_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in price_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in beg_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in int_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in adv_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in exp_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in night_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in terrain_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in runs_2 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in area_2 %}
             <td>{{ info }}</td>
             {% endfor %}
         </tr>
@@ -113,12 +229,18 @@
         {% endfor %}
         {% endif %}
     </ol>
+    {% endif %}
 
+    {% if state_3 %}
     <table id="t03">
-        <caption><font size="5"><strong>{{ three }}</strong></font></caption>  
+        <caption><font size="5"><strong>{{ name_3 }}</strong></font></caption>  
         <tr>
             <th>Category</th>
             <th></th>      
+        <tr>
+            {% for info in id_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
         </tr>
         <tr>
             {% for info in state_3 %}
@@ -127,6 +249,56 @@
         </tr>
         <tr>
             {% for info in time_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in elev_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in price_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in beg_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in int_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in adv_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in exp_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in night_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in terrain_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in runs_3 %}
+            <td>{{ info }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for info in area_3 %}
             <td>{{ info }}</td>
             {% endfor %}
         </tr>
@@ -140,13 +312,13 @@
         {% endif %}
     </h3>
     <ol>
-        {% if drive_2 %}
+        {% if drive_3 %}
         {% for x in drive_3 %}
         <li>{{ x }}</li>
         {% endfor %}
         {% endif %}
     </ol>
-
+    {% endif %}
 
 </body>
 </html>

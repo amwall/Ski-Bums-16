@@ -19,44 +19,71 @@ def index(request):
 
 
 def results(request):
-    info = {'one': '49 Degrees North',
-            'state_1': ['State', 'WA'],
-            'two': 'Afton Alps',
-            'state_2': ['State', 'MN'],
-            'three': 'Alpental',
-            'state_3': ['State', 'WA'],
-            }
+    info = {}
     if request.method == 'POST':
         print(request.POST)
         print()
         current_location = request.POST['current_location']
-        addr_info = sql_info([1,2,3])
-        print(addr_info)
-        dir_list = []
-        drive_time = []
-        for i in range(len(addr_info)):
-            directions = get_directions(addr_info[i][0], addr_info[i][1],
-                                        addr_info[i][2], addr_info[i][3],
-                                        current_location)
-            dir_list.append(directions)
-            time = travel_time_words(addr_info[i][0], addr_info[i][1],
-                                     addr_info[i][2], addr_info[i][3],
-                                     current_location)
-            drive_time.append(time)
-        
-        info['time_1'] = ['Driving Time', drive_time[0]]
-        info['time_2'] = ['Driving Time', drive_time[1]]
-        info['time_3'] = ['Driving Time', drive_time[2]]
-        if 'driving dir' in request.POST:
-            info['drive_1'] = dir_list[0]
-            info['drive_2'] = dir_list[1]
-            info['drive_3'] = dir_list[2]
+        id_ranking = [1, 2, 3]
+        if id_ranking != []:
+            addr_info = sql_info(id_ranking)
+            dir_list = []
+            drive_time = []
+            general_info = general_information(id_ranking)
+            for i in range(len(addr_info)):
+                # adding general information about the resort to the dictionary
+                info['name_' + str(i + 1)] = general_info[i][0]
+                info['id_' + str(i + 1)] = ['ID', general_info[i][1]]
+                info['state_' + str(i + 1)] = ['State', general_info[i][2]]
+                info['elev_' + str(i + 1)] = ['Elevation', general_info[i][3]]
+                info['price_' + str(i + 1)] = ['Max Ticket Price', general_info[i][4]]
+                info['beg_' + str(i + 1)] = ['Beginner Slopes', str(general_info[i][5]) + '%']
+                info['int_' + str(i + 1)] = ['Intermediate Slopes', str(general_info[i][6]) + '%']
+                info['adv_' + str(i + 1)] = ['Advanced Slopes', str(general_info[i][7]) + '%']
+                info['exp_' + str(i + 1)] = ['Expert Slopes', str(general_info[i][8]) + '%']
+                if general_info[i][9] == '0':
+                    info['night_' + str(i + 1)] = ['Night Skiing', 'No']
+                else:
+                    info['night_' + str(i + 1)] = ['Night Skiing', 'Yes']
+                if general_info[i][10] == '0':
+                    info['terrain_' + str(i + 1)] = ['Terrain Parks', 'No']
+                else:
+                    info['terrain_' + str(i + 1)] = ['Terrain Parks', 'Yes']
+                info['runs_' + str(i + 1)] = ['Total Number of Runs', general_info[i][11]]
+                info['area_' + str(i + 1)] = ['Total Area', str(general_info[i][12]) + ' acres']
 
 
+                # adding directions/ driving time  to the dictionary
+                directions = get_directions(addr_info[i][0], addr_info[i][1],
+                                            addr_info[i][2], addr_info[i][3],
+                                            current_location)
+                dir_list.append(directions)
+                time = travel_time_words(addr_info[i][0], addr_info[i][1],
+                                         addr_info[i][2], addr_info[i][3],
+                                         current_location)
+                drive_time.append(time)
 
-    #else:
-        # what to output if someone were type /results into the url
+                info['time_' + str(i + 1)] = ['Driving Time', drive_time[i]]
+
+                if 'driving dir' in request.POST:
+                    info['drive_' + str(i + 1)] = dir_list[i]
+
     return render(request, 'ski_bums/results.html', info)
+
+
+def info(request):
+
+    sql_string = 'SELECT ID, name, state, dates, rating FROM main'
+    connection = sqlite3.connect(DATABASE_FILENAME)
+    cursor = connection.cursor()
+    execute = cursor.execute(sql_string, [])
+    resort_list = execute.fetchall()
+    connection.close()
+    c = {}
+    for i in range(len(resort_list)):
+        c['info' + str(i)] = resort_list[i]
+
+    return render(request, 'ski_bums/info.html', c)
 
 
 # stuff with driving directions
@@ -67,10 +94,39 @@ DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
 
+def where_statement(resort_ids):
+    '''
+    '''
+    if len(resort_ids) == 1:
+        where = 'id = ?'
+    elif len(resort_ids) == 2:
+        where = 'id = ? or id = ?'
+    elif len(resort_ids) == 3:
+        where = 'id = ? or id = ? or id = ?'
+
+    return 'WHERE ' + where
+
+def general_information(resort_ids):
+    '''
+    '''
+    where = where_statement(resort_ids)
+    sql_string = ('SELECT name, ID, state, elev, max_price, beginner, intermediate, ' +
+                  'advanced, expert, night, park, total_runs, area ' +
+                  'FROM main ' + where)
+    connection = sqlite3.connect(DATABASE_FILENAME)
+    cursor = connection.cursor()
+    execute = cursor.execute(sql_string, resort_ids)
+    output = execute.fetchall()
+    connection.close()
+
+    return output
+
+
 def sql_info(resort_ids):
     '''
     '''
-    sql_string = 'SELECT addr, city, state, zip FROM main WHERE id = ? or id = ? or id = ?'
+    where = where_statement(resort_ids)
+    sql_string = 'SELECT addr, city, state, zip FROM main ' + where
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
     execute = cursor.execute(sql_string, resort_ids)
