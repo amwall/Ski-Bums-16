@@ -1,8 +1,16 @@
 from datetime import date
+import datetime
 import re
+import sqlite3
+import os
 
-def date_distance(date_today, date_ski):
+DATA_DIR = os.path.dirname(__file__)
+DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+
+def date_distance(date_ski):
     
+    date_today = datetime.date.today().strftime('%m/%d/%Y')
+
     dat_lis = re.findall('[0-9]+',date_today)
     ski_lis = re.findall('[0-9]+',date_ski)
     print(dat_lis)
@@ -16,8 +24,12 @@ def date_distance(date_today, date_ski):
     
 
 
+<<<<<<< HEAD
+def grab_weather(id_list, days_list, check = 'no'):
+=======
 def grab_weather(id_list, days_list, check):
     
+>>>>>>> beb4673d75e4630abe0fb23178a9ff40d3641b95
     select = 'SELECT '
     fields = 'wthr, dscr, temp, snow '
 
@@ -25,15 +37,15 @@ def grab_weather(id_list, days_list, check):
     addition = None
     for day in days_list:
         if addition == None:
-            addition = '(' + str(day + 1) + '_snow'
+            addition = '(snow_' + str(day + 1)
         else:
-            addition = addition + ' + ' + str(day + 1) + '_snow' 
+            addition = addition + ' + snow_' + str(day + 1) 
     addition = addition + ') as [Total Snow Fall] '
     snow_fall.append(addition)
 
-    weather = str(days_list[-1]) + '_wthr, '
-    description = str(days_list[-1]) + '_dscr, '
-    average_day = str(days_list[-1]) + '_avg_day, '
+    weather = 'wthr_' + str(days_list[-1]) + ', '
+    description = 'dscr_' + str(days_list[-1]) + ', '
+    average_day = 'avg_day_' + str(days_list[-1]) + ', '
 
     fro_cur = 'FROM current '
     fro_for = 'FROM forecast '
@@ -44,8 +56,17 @@ def grab_weather(id_list, days_list, check):
     customer_id = "(" + ", ".join(new_id) + ")"
     where = 'WHERE ID IN ' + customer_id
     if check == 'yes':
-        return (select + fields + fro_cur + where + ' UNION ' + select + weather + 
+        sql_string = (select + fields + fro_cur + where + ' UNION ' + select + weather + 
                 description + average_day + snow_fall[0] + fro_for + where)
     else:
-        return select + fields + fro_cur + where
+        sql_string = select + fields + fro_cur + where
+
+    print(sql_string)
+    connection = sqlite3.connect(DATABASE_FILENAME)
+    cursor = connection.cursor()
+    execute = cursor.execute(sql_string, [])
+    output = execute.fetchall()
+    connection.close()
+
+    print(output)
         
