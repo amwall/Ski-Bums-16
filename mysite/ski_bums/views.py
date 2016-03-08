@@ -31,8 +31,8 @@ def results(request):
         print(request.POST)
         print()
         current_location = request.POST['current_location']
-        #id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
-        id_ranking = [1, 5, 8]
+        id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
+            # id_ranking = [1, 5, 8]
         if id_ranking != []:
             addr_info = sql_info(id_ranking)
             dir_list = []
@@ -157,6 +157,7 @@ def destination(addr, city, state, zip_code):
     '''
  
     '''
+    print(addr,city,state,zip_code)
     num_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
     if addr[0] in num_list:
@@ -165,7 +166,7 @@ def destination(addr, city, state, zip_code):
     elif city != '':
         city = '+'.join(city.split())
         state = '+'.join(state.split())
-        destination = city + '+' + state
+        destination = city + '+' + state + '+' + zip_code
     else:
         destination = zip_code
 
@@ -177,10 +178,14 @@ def travel_time_hours(addr, city, state, zip_code, current_location):
     Find the time it takes to drive from a user's current location 
     to a resort. 
     '''
+    
+    current_location = str(current_location)
+    print(current_location)
+    print(zip_code)
     current = current_location.split()
     current = '+'.join(current)
 
-    end = destination(addr, city, state, str(zip_code))
+    end = destination(addr, city, state, zip_code)
     
     url = ('https://maps.googleapis.com/maps/api/distancematrix/json?' +
             'origins=' + current + '&' + 'destinations=' + end +  
@@ -290,7 +295,7 @@ def build_ranking(search_dict, database_name):
 
     parameters = []
 
-    query = 'SELECT ID, size_score + run_score AS total_score,'
+    query = 'SELECT ID, '  #size_score + run_score AS total_score,'
 
     ### SCORE RUNS ###
     addition, parameters = score_runs(search_dict, parameters)
@@ -298,9 +303,10 @@ def build_ranking(search_dict, database_name):
 
     ### SCORE SIZE ###
     choice = search_dict['Resort Size']
-    parameters.append(choice)
-    query += " score_size(num_runs, " + "'" + choice + "')" + " AS size_score"
-
+    # parameters.append(choice)
+    # query += " score_size(total_runs, " + "'" + choice + "')" + " AS size_score, "
+    
+    query += "score_size(total_runs, " + "'" + choice + "')"  +  ' AS total_score'
     # Connect table
     query += ' FROM main WHERE'
 
@@ -308,7 +314,7 @@ def build_ranking(search_dict, database_name):
     where = []
     ### DISTANCE ###
     if search_dict['max_drive_time'][0]:
-        max_time = str(int(search_dict['max_drive_time']) + 0.5)
+        max_time = int(search_dict['max_drive_time']) + 0.5
         cur_loc = search_dict['current_location']
         parameters.extend([cur_loc, max_time])
         where.append(" travel_time(addr,city,state,zip,?) <= ?")
@@ -339,10 +345,11 @@ def build_ranking(search_dict, database_name):
     output = exc.fetchall()
 
     resort_ids = []
-    for resorts in output:
-        resort_id = output[0]
+    for i in range(len(output)):
+        resort_id = output[i][0]
         resort_ids.append(resort_id)
-
+    
+    print(resort_ids)
     return resort_ids
 
 def score_size(num_runs, choice):
@@ -355,18 +362,18 @@ def score_size(num_runs, choice):
     # MEDIUM: 35-100
     # Large: 100 +
 
-    if choice == 'SMALL':
-        sml_mlt = 5
-        med_mlt = 3
-        lrg_mlt = 1
-    elif choice == 'MEDIUM':
-        sml_mlt = 2
-        med_mlt = 5
-        lrg_mlt = 2
-    else:
+    if choice == 'Small':
+        sml_mlt = 1.5
+        med_mlt = 1
+        lrg_mlt = 0.5
+    elif choice == 'Medium':
         sml_mlt = 1
-        med_mlt = 3
-        lrg_mlt = 5
+        med_mlt = 2
+        lrg_mlt = 1
+    else:
+        sml_mlt = 0.5
+        med_mlt = 1
+        lrg_mlt = 0.5
 
     if num_runs >= 100:
         scr = num_runs * lrg_mlt
@@ -396,9 +403,10 @@ def score_runs(search_dict, parameters):
 
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
     query = " beginner * ? + intermediate * ? + \
-              advanced * ? + expert * ? AS run_score, "
+              advanced * ? + expert * ? + "
 
     return query, parameters
+
 
 
 def date_distance(date_ski):
