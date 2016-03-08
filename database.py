@@ -68,7 +68,7 @@ def create_main_table(read_file, db_name):
     conn.close()
 
 def create_weather_tables(table_name, file_name, db_name):
-    
+        
     conn = lite.connect(db_name)
     c = conn.cursor()
     
