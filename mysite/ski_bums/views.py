@@ -12,6 +12,11 @@ import os
 # run python manage.py runserver 
 from django.http import HttpResponse
 
+DATA_DIR = os.path.dirname(__file__)
+DATABASE_FILENAME = os.path.join(DATA_DIR, '/../../ski-resorts.db')
+
+DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
+DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
 
 def index(request):
     
@@ -24,7 +29,7 @@ def results(request):
         print(request.POST)
         print()
         current_location = request.POST['current_location']
-        id_ranking = build_ranking(request.POST)
+        id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
         if id_ranking != []:
             addr_info = sql_info(id_ranking)
             dir_list = []
@@ -90,12 +95,6 @@ def info(request):
 
 
 # stuff with driving directions
-
-DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, '/../../ski-resorts.db')
-
-DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
-DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
 
 def where_statement(resort_ids):
     '''
@@ -269,7 +268,7 @@ def build_ranking(search_dict, database_name):
     the primary keys for the resorts
     '''
 
-    db = lite.connect(database_name)
+    db = sqlite3.connect(database_name)
     db.create_function('score_size', 2, score_size)
     db.create_function('travel_time', 5, travel_time_hours)
     cursor = db.cursor()
@@ -294,13 +293,13 @@ def build_ranking(search_dict, database_name):
     where = []
     ### DISTANCE ###
     if search_dict['max_drive_time'][0]:
-        max_time = str(int(search_dict['max_drive_time'][0] + 0.5))
-        cur_loc = search_dict['current_locations'][0]
+        max_time = str(int(search_dict['max_drive_time'][0]) + 0.5)
+        cur_loc = search_dict['current_location'][0]
         parameters.extend([cur_loc, max_time])
         where.append(" travel_time(addr,city,state,zip,?) <= ?")
 
     ### NIGHT SKIING ###
-    if search_dict['night_skiing'][0] != 'Indifferent':
+    if search_dict['night skiing'][0] != 'Indifferent':
         where.append(" night=1")
 
     ### MAX TICKET ###
@@ -377,7 +376,7 @@ def score_runs(search_dict, parameters):
     beg_mlt = score_dict[search_dict['Beginner runs'][0]]
     int_mlt = score_dict[search_dict['Intermediate runs'][0]]
     exp_mlt = score_dict[search_dict['Expert runs'][0]]
-    adv_mlt = score_dict[seacrh_dict['Advanced runs'][0]]
+    adv_mlt = score_dict[search_dict['Advanced runs'][0]]
 
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
     query = " (main.beginner * ?) + (main.intermediate * ?) + \
