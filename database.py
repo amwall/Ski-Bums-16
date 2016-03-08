@@ -29,7 +29,7 @@ def csv_reader(filename):
             
         return fields, row_list
     
-def create_main_sql_table(read_file, db_name):
+def create_main_table(read_file, db_name):
     
     '''
     This function is used to create an sql table from a list of fields, where the
@@ -48,6 +48,8 @@ def create_main_sql_table(read_file, db_name):
     for field in fields:
         if field in ('city','zip', 'name', 'state', 'addr', 'elev', 'dates', 'link'):
             kind = 'TEXT'
+        elif field in ('lat', 'lon'):
+            kind = 'REAL'
         else:
             kind = 'INTEGER'
         col =  "'" + field + "' " + kind
