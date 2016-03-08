@@ -13,13 +13,10 @@ def date_distance(date_ski):
 
     dat_lis = re.findall('[0-9]+',date_today)
     ski_lis = re.findall('[0-9]+',date_ski)
-    print(dat_lis)
-    print(ski_lis)
     
     d0 = date(int(dat_lis[2]), int(dat_lis[0]), int(dat_lis[1]))
     d1 = date(int(ski_lis[2]), int(ski_lis[0]), int(ski_lis[1]))
     delta = d1 - d0
-    print(delta.days)
     return list(range(delta.days))
     
 
@@ -56,8 +53,6 @@ def grab_weather(id_list, days_list, check):
     else:
         sql_string = select + fields + fro_cur + where
 
-    print(sql_string)
-    
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
     execute = cursor.execute(sql_string, [])

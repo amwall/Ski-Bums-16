@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 
+from datetime import date
+import datetime
 import re
 from urllib.request import urlopen
 import sqlite3
@@ -13,7 +15,7 @@ import os
 from django.http import HttpResponse
 
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, '/../../ski-resorts.db')
+DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
@@ -29,7 +31,8 @@ def results(request):
         print(request.POST)
         print()
         current_location = request.POST['current_location']
-        id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
+        #id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
+        id_ranking = [1, 5, 8]
         if id_ranking != []:
             addr_info = sql_info(id_ranking)
             dir_list = []
@@ -72,6 +75,18 @@ def results(request):
 
                 if 'driving dir' in request.POST:
                     info['drive_' + str(i + 1)] = dir_list[i]
+
+            if request.POST['week'] == 'Yes':
+                days_list = date_distance(request.POST['date'])
+                weather = grab_weather(id_ranking, days_list, request.POST['week'])
+            else:
+                weather = grab_weather(id_ranking, [], request.POST['week'])
+            for i in range(len(weather)):
+                current = weather[i][1:5]
+                info['current_' + str(i + 1)] = ['Current Weather'] + list(current)
+                if request.POST['week'] == 'Yes':
+                    forecast = weather[i][5:]
+                    info['forecast_' + str(i + 1)] = ['Forecast for ' + request.POST['date']] + list(forecast)
 
     return render(request, 'ski_bums/results.html', info)
 
@@ -385,6 +400,58 @@ def score_runs(search_dict, parameters):
     return query, parameters
 
 
+def date_distance(date_ski):
+    
+    date_today = datetime.date.today().strftime('%m/%d/%Y')
 
+    dat_lis = re.findall('[0-9]+',date_today)
+    ski_lis = re.findall('[0-9]+',date_ski)
+    
+    d0 = date(int(dat_lis[2]), int(dat_lis[0]), int(dat_lis[1]))
+    d1 = date(int(ski_lis[2]), int(ski_lis[0]), int(ski_lis[1]))
+    delta = d1 - d0
+    return list(range(delta.days))
+    
 
+def grab_weather(id_list, days_list, check):
+    
+    select = 'SELECT '
+    fields = 'c.ID, c.wthr, c.dscr, c.temp, c.snow'
+
+    if days_list != []:
+        snow_fall = []
+        addition = None
+        for day in days_list:
+            if addition == None:
+                addition = '(f.snow_' + str(day + 1)
+            else:
+                addition = addition + ' + f.snow_' + str(day + 1) 
+        addition = addition + ') as [Total Snow Fall] '
+        snow_fall.append(addition)
+
+        weather = 'f.wthr_' + str(days_list[-1] + 1) + ', '
+        description = 'f.dscr_' + str(days_list[-1] + 1) + ', '
+        average_day = 'f.avg_day_' + str(days_list[-1] + 1) + ', '
+
+    fro_cur = ' FROM current AS c '
+    new_id = []
+    for person in id_list:
+        change = str(person)
+        new_id.append(change)
+    customer_id = "(" + ", ".join(new_id) + ")"
+    where = 'WHERE c.ID IN ' + customer_id
+    if check == 'Yes':
+        sql_string = (select + fields + ', ' + weather + description + average_day +
+                      snow_fall[0] + 'FROM current AS c JOIN forecast AS f ON (c.ID = f.ID) ' +
+                      where)
+    else:
+        sql_string = select + fields + fro_cur + where
+
+    connection = sqlite3.connect(DATABASE_FILENAME)
+    cursor = connection.cursor()
+    execute = cursor.execute(sql_string, [])
+    current_weather = execute.fetchall()
+    connection.close()
+    
+    return current_weather
         
