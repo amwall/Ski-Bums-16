@@ -180,7 +180,7 @@ def travel_time_hours(addr, city, state, zip_code, current_location):
     current = current_location.split()
     current = '+'.join(current)
 
-    end = destination(addr, city, state, zip_code)
+    end = destination(addr, city, state, str(zip_code))
     
     url = ('https://maps.googleapis.com/maps/api/distancematrix/json?' +
             'origins=' + current + '&' + 'destinations=' + end +  
@@ -290,26 +290,26 @@ def build_ranking(search_dict, database_name):
 
     parameters = []
 
-    query = 'SELECT ID, (size_score + run_score) AS total_score,'
+    query = 'SELECT ID, size_score + run_score AS total_score,'
 
     ### SCORE RUNS ###
     addition, parameters = score_runs(search_dict, parameters)
     query += addition
 
     ### SCORE SIZE ###
-    choice = search_dict['Resort Size'][0]
+    choice = search_dict['Resort Size']
     parameters.append(choice)
-    query += " score_size(num_runs, ?) AS size_score"
+    query += " score_size(num_runs, " + "'" + choice + "')" + " AS size_score"
 
     # Connect table
-    query += ' FROM main'
+    query += ' FROM main WHERE'
 
     ### CUTTING ATTRIBUTES ###
     where = []
     ### DISTANCE ###
     if search_dict['max_drive_time'][0]:
-        max_time = str(int(search_dict['max_drive_time'][0]) + 0.5)
-        cur_loc = search_dict['current_location'][0]
+        max_time = str(int(search_dict['max_drive_time']) + 0.5)
+        cur_loc = search_dict['current_location']
         parameters.extend([cur_loc, max_time])
         where.append(" travel_time(addr,city,state,zip,?) <= ?")
 
@@ -318,8 +318,8 @@ def build_ranking(search_dict, database_name):
         where.append(" night=1")
 
     ### MAX TICKET ###
-    if search_dict['max_tic_price'][0]:
-        price = int(search_dict['max_tic_price'][0]) + 15
+    if search_dict['max_tic_price']:
+        price = int(search_dict['max_tic_price']) + 15
         parameters.append(str(price))
         where.append(" (max_price <= ? OR max_price='N/A')")
 
@@ -332,8 +332,9 @@ def build_ranking(search_dict, database_name):
     query += ' ORDER BY total_score DESC LIMIT 3'
 
     print(query)
-    print(parameters)
+    
     parameters = tuple(parameters)
+    print(parameters)
     exc = cursor.execute(query, parameters)
     output = exc.fetchall()
 
@@ -394,8 +395,8 @@ def score_runs(search_dict, parameters):
     adv_mlt = score_dict[search_dict['Advanced runs'][0]]
 
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
-    query = " (main.beginner * ?) + (main.intermediate * ?) + \
-              (main.advanced * ?) + (main.expert * ?) AS run_score"
+    query = " beginner * ? + intermediate * ? + \
+              advanced * ? + expert * ? AS run_score, "
 
     return query, parameters
 
