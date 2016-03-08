@@ -100,9 +100,9 @@ def get_forecast(db_name, output_file):
 
     labels = ['ID']
     for day_num in range(NUM_DAYS):
-        fields = "{d}_wthr {d}_dscr {d}_avg_day {d}_avg_night \
-                  {d}_t_min {d}_t_max {d}_pres {d}_humd {d}_w_spd \
-                  {d}_rain {d}_snow".format(d=str(day_num+1))
+        fields = "wthr_{d} dscr_{d} avg_day_{d} avg_night_{d} \
+                  t_min_{d} t_max_{d} pres_{d} humd_{d} w_spd_{d} \
+                  rain_{d} snow_{d}".format(d=str(day_num + 1))
         fields = fields.split()
         labels = labels + fields
 
