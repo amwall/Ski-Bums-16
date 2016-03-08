@@ -17,6 +17,7 @@ def date_distance(date_today, date_ski):
 
 
 def grab_weather(id_list, days_list, check):
+    
     select = 'SELECT '
     fields = 'wthr, dscr, temp, snow '
 
@@ -48,15 +49,3 @@ def grab_weather(id_list, days_list, check):
     else:
         return select + fields + fro_cur + where
         
-    
-    
-
-
-    
-
-
-
-
-
-
-
