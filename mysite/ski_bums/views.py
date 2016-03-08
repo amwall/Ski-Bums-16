@@ -70,7 +70,6 @@ def results(request):
 
     return render(request, 'ski_bums/results.html', info)
 
-<<<<<<< HEAD
 
 def info(request):
 
@@ -85,11 +84,9 @@ def info(request):
         c['info' + str(i)] = resort_list[i]
 
     return render(request, 'ski_bums/info.html', c)
-=======
+
     #else:
         # what to output if someone were type /results into the url
-    return render(request, 'ski_bums/results.html', info)
->>>>>>> 82435ca944ed52c39e3ca8538d6d956a65278305
 
 
 # stuff with driving directions
