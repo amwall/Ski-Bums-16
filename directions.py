@@ -1,18 +1,26 @@
-from lxml import html
 import re
 from urllib.request import urlopen
+import sqlite3
+import os
 
+
+DATA_DIR = os.path.dirname(__file__)
+DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+
+DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
+DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
 GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
 
 
-def cur_lat_and_long(current_location):
+def latitude_and_longitude(current_location):
     '''
+    Return the user's current latitide and longitude.
     '''
     current = current_location.split()
     current = '+'.join(current)
 
     url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
-            'address=' + current + '&key=' + GEOCODING_ID)
+             'address=' + current + '&key=' + GEOCODING_ID)
 
     url = urlopen(url)
     text = url.read()
@@ -25,19 +33,55 @@ def cur_lat_and_long(current_location):
     return lat, lng
 
 
+def where_statement(resort_ids):
+    '''
+    Writes the where statement for a sql query
+    using the length of resort_ids list.
+    '''
+    if len(resort_ids) == 1:
+        where = 'id = ?'
+    elif len(resort_ids) == 2:
+        where = 'id = ? or id = ?'
+    elif len(resort_ids) == 3:
+        where = 'id = ? or id = ? or id = ?'
+
+    return 'WHERE ' + where
+
+
+def sql_info(resort_ids):
+    '''
+    Given a list of resort ids, write the sql statement 
+    and access the information from the ski-resorts database 
+    to use an inputs into the following funcitons.
+    '''
+    where = where_statement(resort_ids)
+    sql_string = 'SELECT addr, city, state, zip FROM main ' + where
+    connection = sqlite3.connect(DATABASE_FILENAME)
+    cursor = connection.cursor()
+    execute = cursor.execute(sql_string, resort_ids)
+    output = execute.fetchall()
+    connection.close()
+
+    return output
+
+
 def destination(addr, city, state, zip_code):
     '''
- 
+    Given the location information for a resort, return 
+    the string needed input into url to use the Google API.
     '''
     num_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
+    # the API doesn't accept PO boxes as addresses so need the check
+    # that the first character is a number. Also I check for address
+    # first because it gives the most precise information. 
     if addr[0] in num_list:
         destination = addr.split()
         destination = '+'.join(destination) + '+' + '+'.join(state.split())
+    # If address is not available, city is the next most precise
     elif city != '':
         city = '+'.join(city.split())
         state = '+'.join(state.split())
-        destination = city + '+' + state
+        destination = city + '+' + state + '+' + zip_code
     else:
         destination = zip_code
 
@@ -46,8 +90,8 @@ def destination(addr, city, state, zip_code):
 
 def travel_time_hours(addr, city, state, zip_code, current_location):
     '''
-    Find the time it takes to drive from a user's current location 
-    to a resort. 
+    Given a user's current location and location information for a 
+    resort, return the driving time in hours. 
     '''
     current = current_location.split()
     current = '+'.join(current)
@@ -57,12 +101,119 @@ def travel_time_hours(addr, city, state, zip_code, current_location):
     url = ('https://maps.googleapis.com/maps/api/distancematrix/json?' +
             'origins=' + current + '&' + 'destinations=' + end +  
             '&key=' + DISTANCE_MATRIX_ID)
-
+    # Have to read the results from Google as a text file and use re
     url = urlopen(url)
     text = url.read()
     text = text.decode('utf-8')
     values = re.findall('"value"\s:\s[0-9]+', text)
-    meters = float(re.findall('[0-9]+', values[0])[0])
     minutes = float(re.findall('[0-9]+', values[1])[0])
 
     return minutes / 60
+
+
+def distance_traveled(addr, city, state, zip_code, current_location):
+    '''
+    Given a user's current location and location information for a 
+    resort, return the number of miles.
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    end = destination(addr, city, state, zip_code)
+    
+    url = ('https://maps.googleapis.com/maps/api/distancematrix/json?' +
+            'origins=' + current + '&' + 'destinations=' + end +  
+            '&key=' + DISTANCE_MATRIX_ID)
+    # Have to read the results from Google as a text file and use re
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+    values = re.findall('"value"\s:\s[0-9]+', text)
+    miles = float(re.findall('[0-9]+', values[0])[0]) * 0.00062137
+
+    return miles
+
+
+def travel_time_words(addr, city, state, zip_code, current_location):
+    '''
+    Given a user's current location and location information for a 
+    resort, return the driving time in words. 
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    end = destination(addr, city, state, zip_code)
+    
+    url = ('https://maps.googleapis.com/maps/api/directions/json?' +
+            'origin=' + current + '&' + 'destination=' + end +  
+            '&key=' + DIRECTIONS_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+    values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
+    travel_time = values[1][1]
+
+    return travel_time
+
+
+def get_directions(addr, city, state, zip_code, current_location):
+    '''
+    Given a user's current location and location information for a 
+    resort, return a list with the driving directions
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    end = destination(addr, city, state, zip_code)
+    
+    url = ('https://maps.googleapis.com/maps/api/directions/json?' +
+            'origin=' + current + '&' + 'destination=' + end +  
+            '&key=' + DIRECTIONS_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+
+    values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
+    time_travel = values[1][1]
+
+    distances = []
+    for i in values[2::2]:
+        distances.append(i[1])
+
+    instructions = re.findall(
+                '("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
+    directions = []
+    for i in instructions:
+        directions.append(i[1])
+
+    l = []
+    for i in directions:
+        x = re.findall('([A-Za-z\s]+)([A-Za-z0-9\s\-]+)', i)
+        l.append(x)
+    
+    directions = []
+    for turn in l:
+        new = ''
+        first_term = turn[0][0]
+        if first_term == 'u':
+            for i in turn[1:len(turn) - 1:2]:
+                new += i[1][4:] + ' '
+        else:
+            new += first_term + ' '
+            for i in turn[2:len(turn) - 1:2]:
+                new += i[1][4:] + ' '
+
+        directions.append(new)
+
+    direct_and_dist = []
+    for i in range(len(directions)):
+        entry = directions[i] + 'and continue for ' + distances[i]
+        direct_and_dist.append(entry)
+
+    miles = distance_traveled(addr, city, state, zip_code, current_location)
+    direct_and_dist.append('Total travel time is ' + time_travel)
+    direct_and_dist.append('Total miles traveled: ' + str(miles) + 'mi')
+
+    return direct_and_dist
