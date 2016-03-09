@@ -34,7 +34,7 @@ def results(request):
                 info['id_' + str(i + 1)] = ['ID', general_info[i][1]]
                 info['state_' + str(i + 1)] = ['State', general_info[i][2]]
                 info['elev_' + str(i + 1)] = ['Elevation', general_info[i][3]]
-                info['price_' + str(i + 1)] = ['Max Ticket Price', general_info[i][4]]
+                info['price_' + str(i + 1)] = ['Max Ticket Price', '$' + str(general_info[i][4])]
                 info['beg_' + str(i + 1)] = ['Beginner Slopes', str(general_info[i][5]) + '%']
                 info['int_' + str(i + 1)] = ['Intermediate Slopes', str(general_info[i][6]) + '%']
                 info['adv_' + str(i + 1)] = ['Advanced Slopes', str(general_info[i][7]) + '%']
