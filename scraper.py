@@ -36,7 +36,7 @@ def latitude_and_longitude(address, city, state, zip_code):
     num_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     if address != '' and address[0] in num_list:
         location = address.split()
-        location = '+'.join(location) + '+' + '+'.join(state.split())
+        location = '+'.join(location) + '+' + city + '+' + '+'.join(state.split()) + '+' + zip_code
     elif city != '':
         city = '+'.join(city.split())
         state = '+'.join(state.split())
@@ -90,8 +90,8 @@ def create_resort_list():
         entry.append(resort_name)
         # link to the resort
         resort_url = a_tag['href']
-        #print(resort_url)
-        resort_url = convert_if_relative_url(starting_url, resort_url)
+        resort_url = 'http://www.' + limiting_domain + resort_url 
+
         entry.append(resort_url)
 
         resort_name_and_link.append(entry)
@@ -204,53 +204,4 @@ def create_resort_list():
     return resort_list
 
 
-def is_absolute_url(url):
-    '''
-    Is url an absolute URL?
-    '''
-    if len(url) == 0:
-        return False
-    return len(urllib.parse.urlparse(url).netloc) != 0
 
-
-
-def convert_if_relative_url(current_url, new_url):
-    '''
-    Attempt to determine whether new_url is a relative URL and if so,
-    use current_url to determine the path and create a new absolute
-    URL.  Will add the protocol, if that is all that is missing.
-
-    Inputs:
-        current_url: absolute URL
-        new_url: 
-
-    Outputs:
-        new absolute URL or None, if cannot determine that
-        new_url is a relative URL.
-
-    Examples:
-        convert_if_relative_url("http://cs.uchicago.edu", "pa/pa1.html") yields 
-            'http://cs.uchicago.edu/pa/pa.html'
-
-        convert_if_relative_url("http://cs.uchicago.edu", "foo.edu/pa.html") yields
-            'http://foo.edu/pa.html'
-    '''
-    if len(new_url) == 0 or not is_absolute_url(current_url):
-        return None
-
-    if is_absolute_url(new_url):
-        return new_url
-
-    parsed_url = urllib.parse.urlparse(new_url)
-    path_parts = parsed_url.path.split("/")
-
-    if len(path_parts) == 0:
-        return None
-
-    ext = path_parts[0][-4:]
-    if ext in [".edu", ".org", ".com", ".net"]:
-        return parsed_url.scheme + new_url
-    elif new_url[:3] == "www":
-        return parsed_url.scheme + new_path
-    else:
-        return urllib.parse.urljoin(current_url, new_url)
