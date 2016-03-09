@@ -262,7 +262,7 @@ def build_ranking(search_dict, database_name):
     if search_dict['max_tic_price']:
         price = int(search_dict['max_tic_price'])
         parameters.append(price)
-        where.append(" max_price <= ?")
+        where.append(" (max_price <= ? OR max_price='N/A')")
 
     ### Terrain Park ###
     if int(search_dict['Terrain parks']) > 1:
