@@ -31,7 +31,7 @@ def general_information(resort_ids):
     '''
     '''
     where = where_statement(resort_ids)
-    sql_string = ('SELECT name, ID, state, elev, max_price, beginner, intermediate, ' +
+    sql_string = ('SELECT name, ID, city, state, elev, max_price, beginner, intermediate, ' +
                   'advanced, expert, night, park, total_runs, area ' +
                   'FROM main ' + where)
     connection = sqlite3.connect(DATABASE_FILENAME)

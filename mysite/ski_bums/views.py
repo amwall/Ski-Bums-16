@@ -32,23 +32,24 @@ def results(request):
                 # adding general information about the resort to the dictionary
                 info['name_' + str(i + 1)] = general_info[i][0]
                 info['id_' + str(i + 1)] = ['ID', general_info[i][1]]
-                info['state_' + str(i + 1)] = ['State', general_info[i][2]]
-                info['elev_' + str(i + 1)] = ['Elevation', general_info[i][3]]
-                info['price_' + str(i + 1)] = ['Max Ticket Price', '$' + str(general_info[i][4])]
-                info['beg_' + str(i + 1)] = ['Beginner Slopes', str(general_info[i][5]) + '%']
-                info['int_' + str(i + 1)] = ['Intermediate Slopes', str(general_info[i][6]) + '%']
-                info['adv_' + str(i + 1)] = ['Advanced Slopes', str(general_info[i][7]) + '%']
-                info['exp_' + str(i + 1)] = ['Expert Slopes', str(general_info[i][8]) + '%']
-                if general_info[i][9] == '0':
+                info['city_' + str(i + 1)] = ['City', general_info[i][2]]
+                info['state_' + str(i + 1)] = ['State', general_info[i][3]]
+                info['elev_' + str(i + 1)] = ['Elevation', general_info[i][4]]
+                info['price_' + str(i + 1)] = ['Max Ticket Price', '$' + str(general_info[i][5])]
+                info['beg_' + str(i + 1)] = ['Beginner Slopes', str(general_info[i][6]) + '%']
+                info['int_' + str(i + 1)] = ['Intermediate Slopes', str(general_info[i][7]) + '%']
+                info['adv_' + str(i + 1)] = ['Advanced Slopes', str(general_info[i][8]) + '%']
+                info['exp_' + str(i + 1)] = ['Expert Slopes', str(general_info[i][9]) + '%']
+                if general_info[i][10] == '0':
                     info['night_' + str(i + 1)] = ['Night Skiing', 'No']
                 else:
                     info['night_' + str(i + 1)] = ['Night Skiing', 'Yes']
-                if general_info[i][10] == '0':
+                if general_info[i][11] == '0':
                     info['terrain_' + str(i + 1)] = ['Terrain Parks', 'No']
                 else:
                     info['terrain_' + str(i + 1)] = ['Terrain Parks', 'Yes']
-                info['runs_' + str(i + 1)] = ['Total Number of Runs', general_info[i][11]]
-                info['area_' + str(i + 1)] = ['Total Area', str(general_info[i][12]) + ' acres']
+                info['runs_' + str(i + 1)] = ['Total Number of Runs', general_info[i][12]]
+                info['area_' + str(i + 1)] = ['Total Area', str(general_info[i][13]) + ' acres']
 
 
                 # adding directions/ driving time  to the dictionary
@@ -89,7 +90,7 @@ def results(request):
 
 def info(request):
 
-    sql_string = 'SELECT ID, name, state, dates, rating FROM main'
+    sql_string = 'SELECT ID, name, city, state, dates, rating FROM main'
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
     execute = cursor.execute(sql_string, [])
