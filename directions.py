@@ -1,3 +1,30 @@
+from lxml import html
+import re
+from urllib.request import urlopen
+
+GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
+
+
+def cur_lat_and_long(current_location):
+    '''
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
+            'address=' + current + '&key=' + GEOCODING_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+    lat = re.findall('"lat"\s:\s[0-9\.\-]+', text)
+    lat = float(re.findall('[0-9\.\-]+', lat[0])[0])
+    lng = re.findall('"lng"\s:\s[0-9\.\-]+', text)
+    lng = float(re.findall('[0-9\.\-]+', lng[0])[0])
+
+    return lat, lng
+
+
 def destination(addr, city, state, zip_code):
     '''
  
