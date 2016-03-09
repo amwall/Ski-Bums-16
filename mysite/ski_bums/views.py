@@ -14,11 +14,13 @@ import os
 # run python manage.py runserver 
 from django.http import HttpResponse
 
+
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
-DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8' 
+DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
+GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
 
 def index(request):
     
@@ -32,7 +34,7 @@ def results(request):
         print()
         current_location = request.POST['current_location']
         id_ranking = build_ranking(request.POST, DATABASE_FILENAME)
-            # id_ranking = [1, 5, 8]
+        # id_ranking = [1, 5, 8]
         if id_ranking != []:
             addr_info = sql_info(id_ranking)
             dir_list = []
@@ -291,6 +293,7 @@ def build_ranking(search_dict, database_name):
     db = sqlite3.connect(database_name)
     db.create_function('score_size', 2, score_size)
     db.create_function('travel_time', 5, travel_time_hours)
+    db.create_function('time_between', 4, compute_time_between)
     cursor = db.cursor()
 
     parameters = []
@@ -308,17 +311,25 @@ def build_ranking(search_dict, database_name):
     
     query += "score_size(total_runs, " + "'" + choice + "')"  +  ' AS total_score'
     # Connect table
-    query += ' FROM main WHERE'
 
     ### CUTTING ATTRIBUTES ###
     where = []
     ### DISTANCE ###
     if search_dict['max_drive_time'][0]:
-        max_time = int(search_dict['max_drive_time']) + 0.5
+        
+        # query += " time_between(lon,lat,?,?) AS travel_time"
+        
+        where.append(" time_between(lon,lat,?,?) <= ?")
+        max_time = str(int(search_dict['max_drive_time']) + 0.5)
         cur_loc = search_dict['current_location']
-        parameters.extend([cur_loc, max_time])
-        where.append(" travel_time(addr,city,state,zip,?) <= ?")
-
+        u_lat, u_lon = cur_lat_and_long(cur_loc)
+        parameters.extend([u_lon, u_lat, max_time])
+        # max_time = str(int(search_dict['max_drive_time']) + 0.5)
+        # cur_loc = search_dict['current_location']
+        # parameters.extend([cur_loc, max_time])
+        # where.append(" travel_time(addr,city,state,zip,?) <= ?")
+    
+    query += ' FROM main WHERE'
     ### NIGHT SKIING ###
     if search_dict['night skiing'][0] != 'Indifferent':
         where.append(" night=1")
@@ -361,19 +372,20 @@ def score_size(num_runs, choice):
     # SMALL: 1-35
     # MEDIUM: 35-100
     # Large: 100 +
+    print("check")
 
     if choice == 'Small':
-        sml_mlt = 1.5
-        med_mlt = 1
-        lrg_mlt = 0.5
-    elif choice == 'Medium':
-        sml_mlt = 1
-        med_mlt = 2
+        sml_mlt = 5
+        med_mlt = 3
         lrg_mlt = 1
+    elif choice == 'Medium':
+        sml_mlt = 2
+        med_mlt = 5
+        lrg_mlt = 2
     else:
-        sml_mlt = 0.5
-        med_mlt = 1
-        lrg_mlt = 0.5
+        sml_mlt = 1
+        med_mlt = 3
+        lrg_mlt = 5
 
     if num_runs >= 100:
         scr = num_runs * lrg_mlt
@@ -389,12 +401,12 @@ def score_runs(search_dict, parameters):
     A function for builds a portion of the SQL query that scores based on the
     percentage of runs that are of a given difficulty.
     '''
-
+    print("check run")
     score_dict = {'1': 0,
-                  '2': .5,
-                  '3': 1,
-                  '4': 2,
-                  '5': 4}
+                  '2': .25,
+                  '3': .5,
+                  '4': 1,
+                  '5': 2}
 
     beg_mlt = score_dict[search_dict['Beginner runs'][0]]
     int_mlt = score_dict[search_dict['Intermediate runs'][0]]
@@ -404,10 +416,10 @@ def score_runs(search_dict, parameters):
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
     query = " beginner * ? + intermediate * ? + \
               advanced * ? + expert * ? + "
-
+    
+    
+    print('escaped run')
     return query, parameters
-
-
 
 def date_distance(date_ski):
     
@@ -464,3 +476,50 @@ def grab_weather(id_list, days_list, check):
     
     return current_weather
         
+def compute_time_between(lon1, lat1, lon2, lat2):
+
+    '''
+    Converts the output of the haversine formula to walking time in minutes
+    '''
+    print(lon, lat1, lon2,lat2)
+    meters = haversine(lon1, lat1, lon2, lat2)
+    #adjusted downwards to account for manhattan distance
+    driving_speed_per_hr = 70 
+    hrs = meters / driving_speed_per_hr
+    return hrs
+
+def haversine(lon1, lat1, lon2, lat2):
+    '''
+    Calculate the circle distance between two points 
+    on the earth (specified in decimal degrees)
+    '''
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # Haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    # 6367 km is the radius of the Earth
+    km = 6367 * c
+    m = km * 1000
+    return m
+
+def cur_lat_and_long(current_location):
+    '''
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
+            'address=' + current + '&key=' + GEOCODING_ID)
+
+    url = urlopen(url)
+    text = url.read()
+    text = text.decode('utf-8')
+    lat = re.findall('"lat"\s:\s[0-9\.\-]+', text)
+    lat = float(re.findall('[0-9\.\-]+', lat[0])[0])
+    lng = re.findall('"lng"\s:\s[0-9\.\-]+', text)
+    lng = float(re.findall('[0-9\.\-]+', lng[0])[0])
+
+    return lat, lng
