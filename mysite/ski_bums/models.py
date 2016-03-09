@@ -65,7 +65,7 @@ def destination(addr, city, state, zip_code):
 
     if addr[0] in num_list:
         destination = addr.split()
-        destination = '+'.join(destination) + '+' + '+'.join(state.split())
+        destination = '+'.join(destination) + '+' + city + '+' '+'.join(state.split()) + '+' + zip_code
     elif city != '':
         city = '+'.join(city.split())
         state = '+'.join(state.split())
