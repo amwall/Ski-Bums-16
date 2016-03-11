@@ -2,8 +2,6 @@
 import pandas as pd
 import seaborn as sb
 import plotly.offline as py
-from directions import compute_time_between, haversine
-
 
 PATH = "CSVs/ski-resorts.txt"
 
@@ -15,11 +13,16 @@ def read_data(PATH):
 
     
 def snowfall_map(df):
+    '''
+    Create an interactive map showing the location of resorts color coded based
+    on the annual average snowfall
+    '''
     
-    df['text'] = (df['name'] + ' ' + df['city'] + ', ' + df['state'] + ' Avg. Snowfall: ' + df['avg_snowfall'].astype(str))
+    df['text'] = (df['name'] + ' (' + df['city'] + ', ' + df['state'] + ')\
+                  Avg. Snowfall: ' + df['avg_snowfall'].astype(str))
     
-    scl = [ [0,"#C90D34"],[0.1,"#AD1A4C"],[0.2,"#91275F"],[0.3,'#753472'],
-            [0.4,"#594184"],[0.55,"#3D4E97"],[.8,"#215BAA"],[1, '#0569BD' ]]
+    scl = [ [0,"#C90D34"],[0.15,"#AD1A4C"],[0.2,"#91275F"],[0.3,'#753472'],
+            [0.4,"#594184"],[0.5,"#3D4E97"],[.8,"#215BAA"],[1, '#0569BD' ]]
     data = [dict(
             type ='scattergeo',
             locationmode = 'USA-states',
@@ -62,21 +65,21 @@ def network_map(cur_lat, cur_lon, df):
         
     
     resorts = [ dict(
-    type = 'scattergeo',
-    locationmode = 'USA-states',
-    lon = df['lon'],
-    lat = df['lat'],
-    hoverinfo = 'text',
-    text = df['name'],
-    mode = 'markers',
-    marker = dict( 
-        size=2, 
-        color='#1979D2',
-        line = dict(
-            width=2,
-            color='rgba(68, 68, 68, 0)'
-        )
-    ))]
+        type = 'scattergeo',
+        locationmode = 'USA-states',
+        lon = df['lon'],
+        lat = df['lat'],
+        hoverinfo = 'text',
+        text = df['name'],
+        mode = 'markers',
+        marker = dict( 
+            size=2, 
+            color='#1979D2',
+            line = dict(
+                width=2,
+                color='rgba(68, 68, 68, 0)'
+            )
+        ))]
     
     paths = []
     for i in range(1, len(df.index + 1)):
@@ -113,5 +116,4 @@ def network_map(cur_lat, cur_lon, df):
 
     fig = dict( data=paths + resorts, layout=layout )
     url = py.plot(fig, filename='network.html')
-    
         

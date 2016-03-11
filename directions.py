@@ -1,5 +1,5 @@
-from lxml import html
-import re
+# directions.py
+
 from urllib.request import urlopen
 import json
 
@@ -7,14 +7,14 @@ DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
 GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
 
-def cur_lat_and_lon(current_location):
+def get_lat_lon(location):
     '''
     This function is used for getting the GPS coordinates for a given location.
-    Current_location can be any combination of city, state, addr and zip code.
+    location can be any combination of city, state, addr and zip code.
     However, the more fields that are provided the greater likelyhood that
     GPS coordinates will be correct
     '''
-    current = str(current_location).split()
+    current = str(location).split()
     current = '+'.join(current)
     
     url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
@@ -24,9 +24,9 @@ def cur_lat_and_lon(current_location):
     test = request.read().decode("utf-8")
     data = json.loads(test)
     lat = data['results'][0]['geometry']['location']['lat']
-    lng = data['results'][0]['geometry']['location']['lng']
+    lon = data['results'][0]['geometry']['location']['lng']
     
-    return lat, lng
+    return lat, lon
 
 def parse_destination(addr, city, state, zip_code):
     '''
@@ -101,7 +101,7 @@ def get_directions(addr, city, state, zip_code, current_location):
     time = 0
     dist = 0
     for x in range(len(steps)):
-        instr = steps[x]['html_instructions']
+        instr = steps[x]['True_instructions']
         instructions.append(instr)
         dist += steps[x]['distance']['value']
         time += steps[x]['duration']['value']
@@ -118,7 +118,7 @@ def get_directions(addr, city, state, zip_code, current_location):
     # for i in values[2::2]:
     #     distances.append(i[1])
     # 
-    # instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
+    # instructions = re.findall('("True_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
     # directions = []
     # for i in instructions:
     #     directions.append(i[1])

@@ -3,7 +3,7 @@
 
 import csv
 import sqlite3 as lite
-from directions import cur_lat_lon
+from directions import get_lat_lon
     
 def csv_reader(filename):
     
@@ -15,6 +15,13 @@ def csv_reader(filename):
             row_list.append(row)
             
         return fields, row_list
+    
+def csv_writer(labels, data, output_file):
+    
+    with open(output_file, 'w') as csvfile:
+        row_writer = csv.writer(csvfile, lineterminator = '\n')
+        row_writer.writerow(labels)
+        row_writer.writerows(data)
     
 def create_main_table(read_file, db_name):
     
@@ -53,37 +60,29 @@ def create_main_table(read_file, db_name):
 
     conn.commit()
     conn.close()
-    
-def write_to_csv(labels, data, output_file):
-    
-    with open(output_file, 'w') as csvfile:
-        row_writer = csv.writer(csvfile, lineterminator = '\n')
-        row_writer.writerow(labels)
-        row_writer.writerows(data)
+
 
 def get_gps_coordinates(db_name, output_file):
     
     conn = lite.connect(db_name)
     c = conn.cursor()
     
-    query = "SELECT city, state FROM main"
+    query = "SELECT ID, city, state FROM main"
     resorts = c.execute(query)
-    # print(resorts)
+    conn.commit()
+
     coordinates = []
-    for resort in resorts[0]:
+    for resort in resorts:
         ID, city, state = resort
         current_location = city + " " + state
-        lat, lon = cur_lat_lon(current_location)
+        lat, lon = get_lat_lon(current_location)
         info = [ID, lat, lon]
-        corrdinates.append(info)
+        coordinates.append(info)
     
     labels = ['ID', 'lat', 'lon']
-    with open(output_file, 'w') as csvfile:
-        row_writer = csv.writer(csvfile, lineterminator = '\n')
-        row_writer.writerow(labels)
-        row_writer.writerows(data)
     
-
+    csv_writer(labels, coordinates, output_file)
+    
 def create_weather_tables(table_name, file_name, db_name):
         
     conn = lite.connect(db_name)
