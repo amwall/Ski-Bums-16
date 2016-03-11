@@ -79,12 +79,9 @@ def get_current(db_name, output_file):
         data = [ID, wthr, dscr, temp, pres, humd, spd, rain, snow]
         weather_data.append(data)
 
-    fields = ["ID", 'wthr', 'dscr', "temp", "pres", "humd", "spd", "rain", "snow"]
-    weather_data = weather_data
-    with open(output_file, 'w') as csvfile:
-        row_writer = csv.writer(csvfile, lineterminator = '\n')
-        row_writer.writerow(fields)
-        row_writer.writerows(weather_data)
+    labels = ["ID", 'wthr', 'dscr', "temp", "pres", "humd", "spd", "rain", "snow"]
+    
+    write_to_csv(labels, weather_data, output_file)
 
 def get_forecast(db_name, output_file):
 
@@ -149,12 +146,15 @@ def get_forecast(db_name, output_file):
             fcast_data += data
 
         weather_data.append(fcast_data)
-
+    
+    write_to_csv(labels, weather_datadata, output_file)
+        
+def write_to_csv(labels, data, output_file):
+    
     with open(output_file, 'w') as csvfile:
         row_writer = csv.writer(csvfile, lineterminator = '\n')
         row_writer.writerow(labels)
-        row_writer.writerows(weather_data)
-
+        row_writer.writerows(data)
 
 def update_weather_tables(table_name, read_file, db_name):
     '''
@@ -190,6 +190,7 @@ def do_forecast(database_name, csv_name):
 
 if __name__ == "__main__":
     
+    # Code appropriated from programming assignment
     if len(sys.argv) != 4:
         print("usage: python3 {} <database name> <current filename> <forecast filename>".format(sys.argv[0]))
         sys.exit(1)

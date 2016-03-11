@@ -2,21 +2,7 @@
 # database.py
 
 import csv
-import pandas as pd
 import sqlite3 as lite
-
-def csv_writer(info_list, filename):
-    
-    keys = info_list[0].keys()
-    with open(filename, 'w') as csvfile:
-        row_writer = csv.DictWriter(csvfile, keys)
-        row_writer.writeheader()
-        row_writer.writerows(info_list)
-
-def create_dataframe(path):
-    
-    dataframe = pd.read_csv(path, engine='python', parse_dates=True)
-    return dataframe
     
 def csv_reader(filename):
     

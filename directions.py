@@ -9,6 +9,10 @@ GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
 
 def cur_lat_and_long(current_location):
     '''
+    This function is used for getting the GPS coordinates for a given location.
+    Current_location can be any combination of city, state, addr and zip code.
+    However, the more fields that are provided the greater likelyhood that
+    GPS coordinates will be correct
     '''
     current = str(current_location).split()
     current = '+'.join(current)
@@ -17,19 +21,16 @@ def cur_lat_and_long(current_location):
             'address=' + current + '&key=' + GEOCODING_ID)
 
     request = urlopen(url)
-    # print(request.read())
     test = request.read().decode("utf-8")
-    print(test)
     data = json.loads(test)
-    # print(data)
     lat = data['results'][0]['geometry']['location']['lat']
     lng = data['results'][0]['geometry']['location']['lng']
-    print(lat, lng)
+    
     return lat, lng
 
-def destination(addr, city, state, zip_code):
+def parse_destination(addr, city, state, zip_code):
     '''
- 
+    A helper function for pars
     '''
     int_list = list(range(10))
     num_list = list(map(str,int_list)) # create a list of strings
@@ -47,7 +48,7 @@ def destination(addr, city, state, zip_code):
     return destination
     
 
-def call_distance_matrix(addr, city, state, zip_code, current_location):
+def get_distance(addr, city, state, zip_code, current_location):
     '''
     Find the time it takes to drive from a user's current location 
     to a resort. 
