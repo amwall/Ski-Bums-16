@@ -47,7 +47,7 @@ def destination(addr, city, state, zip_code):
     return destination
     
 
-def travel_time_hours(addr, city, state, zip_code, current_location):
+def call_distance_matrix(addr, city, state, zip_code, current_location):
     '''
     Find the time it takes to drive from a user's current location 
     to a resort. 
@@ -64,7 +64,6 @@ def travel_time_hours(addr, city, state, zip_code, current_location):
     url = urlopen(url)
     text = url.read()
     text = text.decode('utf-8')
-    print(text)
     data = json.loads(text)
     
     seconds = data['rows'][0]['elements'][0]['duration']['value']
@@ -75,3 +74,80 @@ def travel_time_hours(addr, city, state, zip_code, current_location):
     
     print(seconds, time_text)
     print(meters, dist_text)
+
+def get_directions(addr, city, state, zip_code, current_location):
+    '''
+    Given a user's current location and a resort, return
+    a list with the directions
+    '''
+    current = current_location.split()
+    current = '+'.join(current)
+
+    end = destination(addr, city, state, zip_code)
+    
+    url = ('https://maps.googleapis.com/maps/api/directions/json?' +
+            'origin=' + current + '&' + 'destination=' + end +  
+            '&key=' + DIRECTIONS_ID)
+    print(url)
+    request = urlopen(url)
+    text = request.read()
+    text = text.decode('utf-8', errors='ignore')
+    data = json.loads(text)
+    
+    steps = data['routes'][0]['legs'][0]['steps']
+    
+    instructions = []
+    time = 0
+    dist = 0
+    for x in range(len(steps)):
+        instr = steps[x]['html_instructions']
+        instructions.append(instr)
+        dist += steps[x]['distance']['value']
+        time += steps[x]['duration']['value']
+        print(instr)
+    print('time', time)
+    print('dist', dist)
+
+    return instructions, time, distance
+    
+    # values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
+    # time_travel = values[1][1]
+    # 
+    # distances = []
+    # for i in values[2::2]:
+    #     distances.append(i[1])
+    # 
+    # instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
+    # directions = []
+    # for i in instructions:
+    #     directions.append(i[1])
+    # 
+    # l = []
+    # for i in directions:
+    #     x = re.findall('([A-Za-z\s]+)([A-Za-z0-9\s\-]+)', i)
+    #     l.append(x)
+    # 
+    # directions = []
+    # for turn in l:
+    #     new = ''
+    #     first_term = turn[0][0]
+    #     if first_term == 'u':
+    #         for i in turn[1:len(turn) - 1:2]:
+    #             new += i[1][4:] + ' '
+    #     else:
+    #         new += first_term + ' '
+    #         for i in turn[2:len(turn) - 1:2]:
+    #             new += i[1][4:] + ' '
+    # 
+    #     directions.append(new)
+    # 
+    # direct_and_dist = []
+    # for i in range(len(directions)):
+    #     entry = directions[i] + 'and continue for ' + distances[i]
+    #     direct_and_dist.append(entry)
+    # 
+    # miles = distance_traveled(addr, city, state, zip_code, current_location)
+    # direct_and_dist.append('Total travel time is ' + time_travel)
+    # direct_and_dist.append('Total miles traveled: ' + str(miles) + 'mi')
+    # 
+    # return direct_and_dist
