@@ -2,6 +2,7 @@
 
 from urllib.request import urlopen
 import json
+from math import sin,cos,radians,asin, sqrt
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
@@ -23,9 +24,14 @@ def get_lat_lon(location):
     request = urlopen(url)
     test = request.read().decode("utf-8")
     data = json.loads(test)
-    lat = data['results'][0]['geometry']['location']['lat']
-    lon = data['results'][0]['geometry']['location']['lng']
     
+    try:
+        lat = data['results'][0]['geometry']['location']['lat']
+        lon = data['results'][0]['geometry']['location']['lng']
+    except:
+        lat = 0
+        lon = 0
+        
     return lat, lon
 
 def parse_destination(addr, city, state, zip_code):
@@ -67,12 +73,17 @@ def get_distance(addr, city, state, zip_code, current_location):
     text = text.decode('utf-8')
     data = json.loads(text)
     
-    seconds = data['rows'][0]['elements'][0]['duration']['value']
-    meters = data['rows'][0]['elements'][0]['distance']['value']
+    try:
+        seconds = data['rows'][0]['elements'][0]['duration']['value']
+        meters = data['rows'][0]['elements'][0]['distance']['value']
     
-    time_text = data['rows'][0]['elements'][0]['duration']['text']
-    dist_text = data['rows'][0]['elements'][0]['distance']['text']
-    
+        time_text = data['rows'][0]['elements'][0]['duration']['text']
+        dist_text = data['rows'][0]['elements'][0]['distance']['text']
+    except:
+        seconds = 'nan'
+        meters = 'nan'
+        time_text = 'nan'
+        dist_text = 'nan'
     print(seconds, time_text)
     print(meters, dist_text)
 
@@ -158,11 +169,14 @@ def compute_time_between(lon1, lat1, lon2, lat2):
     '''
     Converts the output of the haversine formula to walking time in minutes
     '''
+    # print("time check")
+    # print(lon1, lat1, lon2,lat2)
     
     meters = haversine(lon1, lat1, lon2, lat2)
     #adjusted downwards to account for manhattan distance
-    driving_speed_per_hr = 70 
+    driving_speed_per_hr = 70000
     hrs = meters / driving_speed_per_hr
+    # print("hrs",hrs)
     return hrs
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -172,6 +186,7 @@ def haversine(lon1, lat1, lon2, lat2):
     '''
     # convert decimal degrees to radians 
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # print("check 1")
     # Haversine formula 
     dlon = lon2 - lon1 
     dlat = lat2 - lat1 
@@ -180,4 +195,4 @@ def haversine(lon1, lat1, lon2, lat2):
     # 6367 km is the radius of the Earth
     km = 6367 * c
     m = km * 1000
-    return m 
+    return m

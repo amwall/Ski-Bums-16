@@ -1,119 +1,36 @@
-
 import pandas as pd
 import seaborn as sb
-import plotly.offline as py
+from directions import get_lat_lon, compute_time_between
+from database import csv_writer
+import sqlite3 as lite
 
-PATH = "CSVs/ski-resorts.txt"
 
-def read_data(PATH):
+def gather_city_data(city_csv, db_name, output_name):
     
-    df = pd.read_csv(PATH)
-    df.set_index(['ID'], inplace=True)
-    return df
+    conn = lite.connect(db_name)
+    c = conn.cursor()
+    conn.create_function('time_between', 4, compute_time_between)
+    cities = pd.read_csv(city_csv)
+    rows = []
+    for i, city in cities.iterrows():
+        # print(city['City'], city['State'])
+        lat, lon = get_lat_lon(city['City'] + " " + city['State'])
+        params = (lon,lat,lon,lat)
+        query = "SELECT SUM(area), SUM(time_between(lon, lat, ?, ?)), COUNT(*) FROM main WHERE time_between(lon, lat, ?, ?) < 3.25"
+        result = c.execute(query, params)
+        area, time, count = list(result)[0]
+        rows.append((city['City'], city['State'], area, time, count))
+    
+    labels = ['city','state','area','time','number']
+    csv_writer(labels,rows,output_name)
+    
+def analyze_data(city_score_csv):
+    
+    df = pd.read_csv(city_score_csv)
+    avg_area = df['area'].mean()
+    avg_time = df['time'].mean()
+    
 
+def return_user_score(user):
     
-def snowfall_map(df):
-    '''
-    Create an interactive map showing the location of resorts color coded based
-    on the annual average snowfall
-    '''
-    
-    df['text'] = (df['name'] + ' (' + df['city'] + ', ' + df['state'] + ')\
-                  Avg. Snowfall: ' + df['avg_snowfall'].astype(str))
-    
-    scl = [ [0,"#C90D34"],[0.15,"#AD1A4C"],[0.2,"#91275F"],[0.3,'#753472'],
-            [0.4,"#594184"],[0.5,"#3D4E97"],[.8,"#215BAA"],[1, '#0569BD' ]]
-    data = [dict(
-            type ='scattergeo',
-            locationmode = 'USA-states',
-            lon = df['lon'],
-            lat = df['lat'],
-            text = df['text'],
-            mode ='markers',
-            marker = dict(
-                            size=8,
-                            opacity=0.8,
-                            symbol='circle',
-                            colorscale = scl,
-                            cmin = 0,
-                            color = df['avg_snowfall'],
-                            cmax = df['avg_snowfall'].max(),
-                            colorbar=dict(
-                            title="Average Yearly Snowfall"
-                                            ))
-            )]
-    
-    layout = dict(
-             title ='US Ski Resorts <br>(Hover for information)',
-             geo = dict(
-                    scope = 'usa',
-                    projection = dict(type='albers usa'),
-                    showland = True,
-                    landcolor = "rgb(235,235,235)",
-                    subunitcolor = "rgb(200, 200, 200)",
-                    countrycolor = 'rgb(200, 200, 200)',
-                    countrywidth = 0.5,
-                    subunitwidth = 0.5     
-                    ),
-             )
-    
-    fig = dict(data=data, layout=layout )
-    url = py.plot(fig, validate=False, filename='d3-ski-resorts' )
-        
-
-def network_map(cur_lat, cur_lon, df): 
-        
-    
-    resorts = [ dict(
-        type = 'scattergeo',
-        locationmode = 'USA-states',
-        lon = df['lon'],
-        lat = df['lat'],
-        hoverinfo = 'text',
-        text = df['name'],
-        mode = 'markers',
-        marker = dict( 
-            size=2, 
-            color='#1979D2',
-            line = dict(
-                width=2,
-                color='rgba(68, 68, 68, 0)'
-            )
-        ))]
-    
-    paths = []
-    for i in range(1, len(df.index + 1)):
-        paths.append(
-            dict(
-                type = 'scattergeo',
-                locationmode = 'USA-states',
-                lon = [cur_lon, df['lon'][i] ],
-                lat = [cur_lat, df['lat'][i] ],
-                mode = 'lines',
-                line = dict(
-                    width = 1,
-                    color = '#21A14A',
-                ),
-                opacity = 0.5
-            )
-        )
-        
-    layout = dict(
-            title = 'Your location to Resorts <br> (Hover information)',
-            showlegend = False, 
-            geo = dict(
-                    scope = 'usa',
-                    projection = dict(type='albers usa'),
-                    showland = True,
-                    landcolor = "rgb(235,235,235)",
-                    subunitcolor = "rgb(200, 200, 200)",
-                    countrycolor = 'rgb(200, 200, 200)',
-                    countrywidth = 0.5,
-                    subunitwidth = 0.5     
-                    )
-            )
-        
-
-    fig = dict( data=paths + resorts, layout=layout )
-    url = py.plot(fig, filename='network.html')
-        
+    pass
