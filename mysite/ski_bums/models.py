@@ -1,5 +1,5 @@
 from django.db import models
-
+import json
 from datetime import date
 import datetime
 import re
@@ -9,7 +9,7 @@ import os
 from math import sin, asin, sqrt, cos, radians
 
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+DATABASE_FILENAME = os.path.join(DATA_DIR, '../../ski-resorts.db')
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
@@ -160,52 +160,85 @@ def get_directions(addr, city, state, zip_code, current_location):
     url = ('https://maps.googleapis.com/maps/api/directions/json?' +
             'origin=' + current + '&' + 'destination=' + end +  
             '&key=' + DIRECTIONS_ID)
-
-    url = urlopen(url)
-    text = url.read()
-    text = text.decode('utf-8')
-
-    values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
-    time_travel = values[1][1]
-
-    distances = []
-    for i in values[2::2]:
-        distances.append(i[1])
-
-    instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
-    directions = []
-    for i in instructions:
-        directions.append(i[1])
-
-    l = []
-    for i in directions:
-        x = re.findall('([A-Za-z\s]+)([A-Za-z0-9\s\-]+)', i)
-        l.append(x)
     
-    directions = []
-    for turn in l:
-        new = ''
-        first_term = turn[0][0]
-        if first_term == 'u':
-            for i in turn[1:len(turn) - 1:2]:
-                new += i[1][4:] + ' '
-        else:
-            new += first_term + ' '
-            for i in turn[2:len(turn) - 1:2]:
-                new += i[1][4:] + ' '
+    request = urlopen(url)
+    text = request.read()
+    text = text.decode('utf-8', errors='ignore')
+    data = json.loads(text)
+    
+    steps = data['routes'][0]['legs'][0]['steps']
+    
+    instructions = []
+    time = 0
+    dist = 0
+    for x in range(len(steps)):
+        instr = steps[x]['html_instructions']
+        instructions.append(instr)
+        dist += steps[x]['distance']['value']
+        time += steps[x]['duration']['value']
 
-        directions.append(new)
+    return instructions
 
-    direct_and_dist = []
-    for i in range(len(directions)):
-        entry = directions[i] + 'and continue for ' + distances[i]
-        direct_and_dist.append(entry)
 
-    miles = distance_traveled(addr, city, state, zip_code, current_location)
-    direct_and_dist.append('Total travel time is ' + time_travel)
-    direct_and_dist.append('Total miles traveled: ' + str(miles) + 'mi')
-
-    return direct_and_dist
+# def get_directions(addr, city, state, zip_code, current_location):
+#     '''
+#     Given a user's current location and a resort, return
+#     a list with the directions
+#     '''
+#     current = current_location.split()
+#     current = '+'.join(current)
+# 
+#     end = destination(addr, city, state, zip_code)
+#     
+#     url = ('https://maps.googleapis.com/maps/api/directions/json?' +
+#             'origin=' + current + '&' + 'destination=' + end +  
+#             '&key=' + DIRECTIONS_ID)
+# 
+#     url = urlopen(url)
+#     text = url.read()
+#     text = text.decode('utf-8')
+# 
+#     values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
+#     time_travel = values[1][1]
+# 
+#     distances = []
+#     for i in values[2::2]:
+#         distances.append(i[1])
+# 
+#     instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
+#     directions = []
+#     for i in instructions:
+#         directions.append(i[1])
+# 
+#     l = []
+#     for i in directions:
+#         x = re.findall('([A-Za-z\s]+)([A-Za-z0-9\s\-]+)', i)
+#         l.append(x)
+#     
+#     directions = []
+#     for turn in l:
+#         new = ''
+#         first_term = turn[0][0]
+#         if first_term == 'u':
+#             for i in turn[1:len(turn) - 1:2]:
+#                 new += i[1][4:] + ' '
+#         else:
+#             new += first_term + ' '
+#             for i in turn[2:len(turn) - 1:2]:
+#                 new += i[1][4:] + ' '
+# 
+#         directions.append(new)
+# 
+#     direct_and_dist = []
+#     for i in range(len(directions)):
+#         entry = directions[i] + 'and continue for ' + distances[i]
+#         direct_and_dist.append(entry)
+# 
+#     miles = distance_traveled(addr, city, state, zip_code, current_location)
+#     direct_and_dist.append('Total travel time is ' + time_travel)
+#     direct_and_dist.append('Total miles traveled: ' + str(miles) + 'mi')
+# 
+#     return direct_and_dist
 
 def build_ranking(search_dict, database_name):
     '''
@@ -404,7 +437,7 @@ def compute_time_between(lon1, lat1, lon2, lat2):
     
     meters = haversine(lon1, lat1, lon2, lat2)
     #adjusted downwards to account for manhattan distance
-    driving_speed_per_hr = 70000
+    driving_speed_per_hr = 60000
     hrs = meters / driving_speed_per_hr
     # print("hrs",hrs)
     return hrs

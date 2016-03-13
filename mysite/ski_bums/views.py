@@ -7,10 +7,8 @@ import sqlite3
 
 from . import models
 
-
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
-
 
 def index(request):
     
@@ -21,6 +19,7 @@ def results(request):
     info = {}
     if request.method == 'POST':
         current_location = request.POST['current_location']
+        print(request.POST)
         id_ranking = models.build_ranking(request.POST, DATABASE_FILENAME)
 
         if id_ranking != []:
