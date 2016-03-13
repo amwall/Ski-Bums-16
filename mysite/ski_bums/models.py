@@ -9,7 +9,7 @@ import os
 from math import sin, asin, sqrt, cos, radians
 
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+DATABASE_FILENAME = os.path.join(DATA_DIR, '../../ski-resorts.db')
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'

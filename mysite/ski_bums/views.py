@@ -102,3 +102,8 @@ def info(request):
 
     return render(request, 'ski_bums/info.html', c)
 
+
+def d3_ski_resorts(request):
+
+    return render(request, 'ski_bums/d3-ski-resorts.html')
+
