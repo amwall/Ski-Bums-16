@@ -52,8 +52,7 @@
 <body>
     <h1>Results</h1>
 
-    <p> <a href="{% url 'info' %}">Browse Resorts</a> </p>
-    <p> <a href="{% url 'd3-ski-resorts' %}">Interactive Map</a> </p>
+    <p> <a href="{% url 'info' %}">Browse Resorts</a> | <a href="{% url 'd3-ski-resorts' %}">Interactive Map</a> | <a href="{% url 'index' %}">Search Again</a></p>
 
     {% if state_1 %}
     <p><font size = "4">Based on your seach inputs, here are the ski resort(s) we recommend</font></p>
