@@ -1,9 +1,9 @@
 # preference.py
 # Gareth Jones
+import sqlite3
+from directions import compute_time_between, get_lat_lon
 
-from directions import destination, travel_time_hours
-
-def build_ranking(search_dict, database_name):
+def build_ranking(search_dict, database_name='ski-resorts.db'):
     '''
     The main ranking algorithm. It takes the search results and builds a query
     that returns the top three results. The program returns the IDs, which are
@@ -11,9 +11,9 @@ def build_ranking(search_dict, database_name):
     '''
 
     db = sqlite3.connect(database_name)
-    db.create_function('score_size', 2, score_size)
+    db.create_function('score_size', 2, score_size)     
     db.create_function('time_between', 4, compute_time_between)
-    cursor = db.cursor()
+    cursor = db.cursor()    
 
     parameters = []
 
@@ -24,7 +24,8 @@ def build_ranking(search_dict, database_name):
     query += addition
 
     ### SCORE SIZE ###
-    choice = search_dict['Resort Size']
+    choice = search_dict['Resort Size'][0]
+    # print(choice)
     query += "score_size(total_runs, " + "'" + choice + "')"  +  ' AS total_score'
     # Connect table
 
@@ -33,15 +34,13 @@ def build_ranking(search_dict, database_name):
     ### DISTANCE ###
     if search_dict['max_drive_time'][0]:
         
-        # query += " time_between(lon,lat,?,?) AS travel_time"
         
         where.append(" time_between(lon,lat,?,?) <= ?")
-        max_time = int(search_dict['max_drive_time']) + 0.5
+        max_time = int(search_dict['max_drive_time'][0]) + 0.5
         cur_loc = search_dict['current_location']
-        u_lat, u_lon = cur_lat_and_long(cur_loc)
+        u_lat, u_lon = get_lat_lon(cur_loc)
         parameters.extend([u_lon, u_lat, max_time])
 
-    
     query += ' FROM main WHERE'
     ### NIGHT SKIING ###
     if search_dict['night skiing'][0] != 'Indifferent':
@@ -49,12 +48,12 @@ def build_ranking(search_dict, database_name):
 
     ### MAX TICKET ###
     if search_dict['max_tic_price']:
-        price = int(search_dict['max_tic_price'])
+        price = int(search_dict['max_tic_price'][0])
         parameters.append(price)
         where.append(" (max_price <= ? OR max_price='N/A')")
 
     ### Terrain Park ###
-    if int(search_dict['Terrain parks']) > 1:
+    if int(search_dict['Terrain parks'][0]) > 1:
         where.append(" park > 0")
 
     where = " AND".join(where)
@@ -72,32 +71,58 @@ def build_ranking(search_dict, database_name):
     
     return resort_ids
 
-
-def compute_time_between(lon1, lat1, lon2, lat2):
-
+def score_size(num_runs, choice):
     '''
-    Converts the output of the haversine formula to walking time in minutes
+    A system for scoring base on the users choice and the number of runs at
+    the resort
     '''
+
+    # SMALL: 1-35
+    # MEDIUM: 35-100
+    # Large: 100 +
+    # print("check")
+
+    if choice == 'Small':
+        sml_mlt = 10
+        med_mlt = 3
+        lrg_mlt = 0.5
+    elif choice == 'Medium':
+        sml_mlt = 8
+        med_mlt = 4
+        lrg_mlt = 2
+    else:
+        sml_mlt = 0.5
+        med_mlt = 0.65
+        lrg_mlt = 0.8
+
+    if num_runs >= 100:
+        scr = num_runs * lrg_mlt
+    elif num_runs >= 35 and num_runs < 100:
+        scr = num_runs * med_mlt
+    else:
+        scr = num_runs * lrg_mlt
+
+    return scr
+
+def score_runs(search_dict, parameters):
+    '''
+    A function for builds a portion of the SQL query that scores based on the
+    percentage of runs that are of a given difficulty.
+    '''
+    score_dict = {'1': 0,
+                  '2': .25,
+                  '3': .5,
+                  '4': 1,
+                  '5': 2}
+
+    beg_mlt = score_dict[search_dict['Beginner runs'][0]]
+    int_mlt = score_dict[search_dict['Intermediate runs'][0]]
+    exp_mlt = score_dict[search_dict['Expert runs'][0]]
+    adv_mlt = score_dict[search_dict['Advanced runs'][0]]
+
+    parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
+    query = " beginner * ? + intermediate * ? + \
+              advanced * ? + expert * ? + "
     
-    meters = haversine(lon1, lat1, lon2, lat2)
-    #adjusted downwards to account for manhattan distance
-    driving_speed_per_hr = 70 
-    hrs = meters / driving_speed_per_hr
-    return hrs
-
-def haversine(lon1, lat1, lon2, lat2):
-    '''
-    Calculate the circle distance between two points 
-    on the earth (specified in decimal degrees)
-    '''
-    # convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    # Haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
-    # 6367 km is the radius of the Earth
-    km = 6367 * c
-    m = km * 1000
-    return m 
+    
+    return query, parameters

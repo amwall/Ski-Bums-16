@@ -6,9 +6,9 @@ from math import sin,cos,radians,asin, sqrt
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
-GEOCODING_ID = 'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
+GEOCODING_ID = 'AIzaSyCeg-uM3PsOT2ssRsPDfQdxZPbGz6k0kBc'#'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
 
-def get_lat_lon(location):
+def get_lat_lon(location, locality=False):
     '''
     This function is used for getting the GPS coordinates for a given location.
     location can be any combination of city, state, addr and zip code.
@@ -20,7 +20,7 @@ def get_lat_lon(location):
     
     url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
             'address=' + current + '&key=' + GEOCODING_ID)
-
+    
     request = urlopen(url)
     test = request.read().decode("utf-8")
     data = json.loads(test)
@@ -28,9 +28,21 @@ def get_lat_lon(location):
     try:
         lat = data['results'][0]['geometry']['location']['lat']
         lon = data['results'][0]['geometry']['location']['lng']
+         
     except:
         lat = 0
         lon = 0
+    
+    if locality:
+        city = 'NaN'
+        state = 'NaN'
+        short = data['results'][0]['address_components']
+        for i in range(len(short)):
+            if 'locality' in short[i]['types']:
+                city = short[i]['short_name']
+            if "administrative_area_level_1" in short[i]['types']:
+                state = short[i]["long_name"]
+        return lat, lon, city, state
         
     return lat, lon
 
@@ -84,8 +96,6 @@ def get_distance(addr, city, state, zip_code, current_location):
         meters = 'nan'
         time_text = 'nan'
         dist_text = 'nan'
-    print(seconds, time_text)
-    print(meters, dist_text)
 
 def get_directions(addr, city, state, zip_code, current_location):
     '''
@@ -100,7 +110,7 @@ def get_directions(addr, city, state, zip_code, current_location):
     url = ('https://maps.googleapis.com/maps/api/directions/json?' +
             'origin=' + current + '&' + 'destination=' + end +  
             '&key=' + DIRECTIONS_ID)
-    print(url)
+    
     request = urlopen(url)
     text = request.read()
     text = text.decode('utf-8', errors='ignore')
@@ -116,9 +126,6 @@ def get_directions(addr, city, state, zip_code, current_location):
         instructions.append(instr)
         dist += steps[x]['distance']['value']
         time += steps[x]['duration']['value']
-        print(instr)
-    print('time', time)
-    print('dist', dist)
 
     return instructions, time, distance
     
@@ -174,7 +181,7 @@ def compute_time_between(lon1, lat1, lon2, lat2):
     
     meters = haversine(lon1, lat1, lon2, lat2)
     #adjusted downwards to account for manhattan distance
-    driving_speed_per_hr = 70000
+    driving_speed_per_hr = 50000
     hrs = meters / driving_speed_per_hr
     # print("hrs",hrs)
     return hrs
