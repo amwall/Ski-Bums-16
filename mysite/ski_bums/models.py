@@ -427,7 +427,6 @@ def score_location(current_location, path, db_path):
     score = (area)/(time/count)
     info = (city, state, area, time, count,lat,lon,score)
     
-    # print(info)
     percentile = compare_score(info, path)
     if type(percentile) == str:
         return percentile

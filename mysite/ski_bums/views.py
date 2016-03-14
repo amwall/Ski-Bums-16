@@ -120,17 +120,23 @@ def ranking(request):
     CITY_200_FILENAME = os.path.join(CITY_200, 'top200_scored.csv')
     
     df = pd.read_csv(CITY_200_FILENAME)
+    df['avg_time'] = df['time']/df['number']
     
     c = {}
     for i, city in df.iterrows():
         if i < 20:
             rv = list(city)
-            rv = rv[1:5]
-            rv[3] = round(rv[3],2)
-            
-            c['city' + str(i)] = list(rv)
+            print(rv)
+            avg_time = rv[-1]
+            number = rv[5]
+            rv = rv[1:4]
+            rv.append(number)
+            rv.append(avg_time)
+            # print(rv)
+            rv[-1] = round(rv[-1],2)
+            print(rv)
+            c['city' + str(i)] = rv
         else:
             break
-    return c
 
     return render(request, 'ski_bums/ranking.html', c)
