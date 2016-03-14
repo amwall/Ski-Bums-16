@@ -52,13 +52,10 @@ def results(request):
 
 
                 # adding directions/ driving time  to the dictionary
-                directions = models.get_directions(addr_info[i][0], addr_info[i][1],
-                                            addr_info[i][2], addr_info[i][3],
-                                            current_location)
+                loc = addr_info[i][1] + " " + addr_info[i][2] + " " + addr_info[i][3]
+                directions = models.get_directions(loc, current_location)
                 dir_list.append(directions)
-                time = models.travel_time_words(addr_info[i][0], addr_info[i][1],
-                                         addr_info[i][2], addr_info[i][3],
-                                         current_location)
+                time, dist = models.get_distance(loc,current_location)
                 drive_time.append(time)
 
                 info['time_' + str(i + 1)] = ['Driving Time', drive_time[i]]
