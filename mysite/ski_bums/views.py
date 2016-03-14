@@ -4,6 +4,7 @@ from django.http import HttpResponse
 
 import os
 import sqlite3
+import pandas as pd
 
 from . import models
 
@@ -13,7 +14,6 @@ DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
 def index(request):
     
     return render(request, 'ski_bums/index.html')
-
 
 def results(request):
     info = {}
@@ -104,4 +104,33 @@ def d3_ski_resorts(request):
     return render(request, 'ski_bums/d3-ski-resorts.html')
 
 
+def ranking(request):
+    
+    CITY_1000 = os.path.dirname(__file__)
+    CITY_1000_FILENAME = os.path.join(CITY_1000, 'top1000_scored.csv')
+    
+    current_location = request.POST['current_location']
+    output = models.score_location(current_location, CITY_1000_FILENAME, DATABASE_FILENAME)
+    
+    
+    CITY_200 = os.path.dirname(__file__)
+    CITY_200_FILENAME = os.path.join(CITY_200, 'top200_scored.csv')
+    
+    df = pd.read_csv(CITY_200_FILENAME)
+    
+    c = {}
+    for i, city in df.itterows():
+        if i < 20:
+            rv = list(city)
+            rv = rv[:5]
+            rv[3] = round(rv[3],2)
+            c['city' + str(i)] = list(city)
+        else:
+            break
+            
+    return render(request, 'ski_bums/ranking.html', c)
 
+def city_graphic(request):
+
+    
+    return render(request, '...')

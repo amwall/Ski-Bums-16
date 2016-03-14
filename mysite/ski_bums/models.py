@@ -105,8 +105,6 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     query += where
     query += ' ORDER BY total_score DESC LIMIT 3'
     
-    print(query)
-    
     parameters = tuple(parameters)
     exc = cursor.execute(query, parameters)
     output = exc.fetchall()
@@ -115,12 +113,6 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     for i in range(len(output)):
         resort_id = output[i][0]
         resort_ids.append(resort_id)
-    
-    print()
-    print(resort_ids)
-    print()
-    print(parameters)
-    return resort_ids
 
 def score_size(num_runs, choice):
     '''
@@ -229,6 +221,15 @@ def grab_weather(id_list, days_list, check):
     connection.close()
     
     return current_weather
+        
+        
+#########################################################
+#                                                       #
+#               DISTANCE & DIRECTIONS                   #
+#                                                       #
+#########################################################
+        
+           
         
 def compute_time_between(lon1, lat1, lon2, lat2):
 
@@ -381,3 +382,77 @@ def get_directions(destination, current_location):
     direct_and_dist.append('Total miles traveled: ' + dist_travel)
 
     return direct_and_dist
+
+
+
+
+########################################################
+#                                                      #
+#                   ANALYSIS FILES                     #
+#                                                      #
+########################################################
+
+
+
+
+def score_location(current_location, path, db_path):
+    '''
+    This function is used for comparing a user's given location
+    against the scores for 1,000 most populous cities in the country.
+    It returns a string the gives the percentile their location falls into.
+    Input: current_location: user's input
+           path: The path to the scored registry of cities
+           db_path: The path to the ski-resorts database
+    
+    '''
+    
+    conn = lite.connect(db_path)
+    c = conn.cursor()
+    conn.create_function('time_between', 4, compute_time_between)
+    lat, lon, city, state = get_lat_lon(current_location, locality=True)
+    params = (lon,lat,lon,lat)
+    query = "SELECT SUM(area), SUM(time_between(lon, lat, ?, ?)), COUNT(*)\
+             FROM main WHERE time_between(lon, lat, ?, ?) < 3.25"
+    result = c.execute(query, params)
+    
+    area, time, count = list(result)[0]
+    score = (area)/(time/count)
+    info = (city, state, area, time, count,lat,lon,score)
+    
+    # print(info)
+    percentile = compare_score(info, path)
+    if type(percentile) == str:
+        return percentile
+    else:
+        rv = (city + ", " + state + " is in the " + str(round(((1-percentile) * 100),1)) +
+              " percentile of places to live for access to ski resorts")
+        return rv
+    
+def compare_score(info, path):
+    '''
+    
+    Compare_score is helper function called in the score_location function which
+    does the actual comparison of the user location to the registry of cities.
+    If the city they give is not in our database of cities, the information is added
+    to our registry for future users to compare with
+    '''
+    
+    df = pd.read_csv(path)
+    if info[0] != 'NaN':    
+        if any(np.where(df['city'] == info[0])):
+            rank = np.where(df['city'] == info[0])[0][0]
+            print(rank)
+            rv = rank/len(df)
+        else:
+            df.loc[len(df)] = info 
+            print(df.tail())
+            df.sort_values(['score'], ascending=False, inplace=True)
+            
+            rank = np.where(df['city'] == info[0])[0][0]
+            rv = rank/len(df)
+            df.to_csv(path, index=False)
+    else:
+        rv = "We could not compare your location"
+        
+    return rv
+
