@@ -26,8 +26,10 @@ Our project is composed of the following:
 
 ## File Overview 
 1. **apps**: This folder contains the files for the functions that are called in our website or were used to create material
+    - analysis.py: The file for creating the scored city lists and scoring the users current location
     - database.py: Used for creating the SQL database and uploading csv data into it 
     - directions.py: Uses Google's API to get directions, locations, and distances
+    - forecast.py: Functions for getting the weather forecast from the database
     - scraper.py: A web scraper used to gather information from the OnTheSnow.com
     - preferences.py: The preference algorithm that is preforms a ranking with a SQL query
     - weather.py: A program for getting current weather conditions and a seven day forecast for every resort in our database. The data comes courtesy of OpenWeatherMap.org
