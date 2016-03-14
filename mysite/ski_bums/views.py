@@ -106,11 +106,11 @@ def d3_ski_resorts(request):
 
 def ranking(request):
     
-    CITY_1000 = os.path.dirname(__file__)
-    CITY_1000_FILENAME = os.path.join(CITY_1000, 'top1000_scored.csv')
-    
-    current_location = request.POST['current_location']
-    output = models.score_location(current_location, CITY_1000_FILENAME, DATABASE_FILENAME)
+    # CITY_1000 = os.path.dirname(__file__)
+    # CITY_1000_FILENAME = os.path.join(CITY_1000, 'top1000_scored.csv')
+    # 
+    # current_location = request.POST['current_location']
+    # output = models.score_location(current_location, CITY_1000_FILENAME, DATABASE_FILENAME)
     
     
     CITY_200 = os.path.dirname(__file__)
@@ -119,15 +119,17 @@ def ranking(request):
     df = pd.read_csv(CITY_200_FILENAME)
     
     c = {}
-    for i, city in df.itterows():
+    for i, city in df.iterrows():
         if i < 20:
             rv = list(city)
-            rv = rv[:5]
+            rv = rv[1:5]
             rv[3] = round(rv[3],2)
-            c['city' + str(i)] = list(city)
+            
+            c['city' + str(i)] = list(rv)
         else:
             break
-            
+    return c
+
     return render(request, 'ski_bums/ranking.html', c)
 
 def city_graphic(request):

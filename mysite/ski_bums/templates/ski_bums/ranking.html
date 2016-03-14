@@ -1,0 +1,150 @@
+<html>
+<head>
+    <title>City Ranking</title>
+
+    <style>
+    table {
+        width:80%;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+    table#t01 tr:nth-child(even) {
+        background-color: #FFF8C6;
+    }
+    table#t01 tr:nth-child(odd) {
+       background-color: white;
+    }
+    table#t01 th    {
+        background-color: #FFD801;
+        color: black;
+    }
+    </style>
+
+</head>
+
+<body>
+    <h1>City Ranking </h1>
+    <h2>(A ranking of the 200 most populous cities)</h2>
+
+    <p> <a href="{% url 'info' %}">Browse Resorts</a> | <a href="{% url 'd3-ski-resorts' %}">Interactive Map</a> | <a href="{% url 'index' %}">Search Again</a></p>
+
+    <table id="t01">
+        <tr>
+            <th></th>
+            <th>City</th>
+            <th>State</th>
+            <th>Number of Resorts</th>
+            <th>Acreage</th>
+            <th>Average Driving Time (Hrs)</th>
+        </tr>
+        <tr>
+            {% for city in city0 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city1 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city2 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city3 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city4 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city5 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city6 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city7 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city8 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city9 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city10 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city11 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city12 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city13 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city14 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city15 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city16 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city17 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city18 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for city in city19 %}
+            <td>{{ city }}</td>
+            {% endfor %}
+        </tr>
+            </table>
+
+</body>
+
+</html>
