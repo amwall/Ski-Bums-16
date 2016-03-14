@@ -10,7 +10,6 @@ import pandas as pd
 import numpy as np
 import colorlover as cl
 from scipy.stats import gaussian_kde
-from directions import compute_time_between
 
 PATH = "CSVs/ski-resorts.txt"
 
@@ -19,59 +18,15 @@ def read_data(path):
     df = pd.read_csv(path)
     df.set_index(['ID'], inplace=True)
     return df
-def state_skiability(path):
-      
-    df = pd.read_csv(PATH)
-    
-    for col in df.columns:
-        df[col] = df[col].astype(str)
-    
-    scl = [[0.0, 'rgb(242,240,247)'],[0.2, 'rgb(218,218,235)'],[0.4, 'rgb(188,189,220)'],\
-                [0.6, 'rgb(158,154,200)'],[0.8, 'rgb(117,107,177)'],[1.0, 'rgb(84,39,143)']]
-    
-    df['text'] = df['state']
-    
-    data = [ dict(
-            type='choropleth',
-            colorscale = scl,
-            autocolorscale = False,
-            locations = df['state'],
-            z = df['total exports'].astype(float),
-            locationmode = 'USA-states',
-            text = df['text'],
-            marker = dict(
-                line = dict (
-                    color = 'rgb(255,255,255)',
-                    width = 2
-                )
-            ),
-            colorbar = dict(
-                title = "Millions USD"
-            )
-        ) ]
-    
-    layout = dict(
-            title = '2011 US Agriculture Exports by State<br>(Hover for breakdown)',
-            geo = dict(
-                scope='usa',
-                projection=dict( type='albers usa' ),
-                showlakes = True,
-                lakecolor = 'rgb(255, 255, 255)',
-            ),
-        )
-        
-    fig = dict( data=data, layout=layout )
-    
-    url = py.plot( fig, filename='state-skiability.html' )
 
 def skiability_map(PATH):
     
     df = pd.read_csv(PATH)
-    df['text'] = (df['city'] + ", " + df['state'] + ')  Number of Nearby Resorts: ' + df['number'].astype(str))
+    df['text'] = ("("+ df['city'] + ", " + df['state'] + ')  Number of Nearby Resorts: ' + df['number'].astype(str))
     
-    scl = [ [0,"#C90D34"],[0.1,"#AD1A4C"],[0.2,"#91275F"],[0.25,'#753472'],
-            [0.35,"#594184"],[0.5,"#3D4E97"],[.6,"#215BAA"],[1, '#0569BD' ]]
-    #
+    scl = [ [0.0,"#D4D4D4"],[0.05,"#B7CEB9"],[0.1,"#9AC89F"],[0.15,'#7DC285'],
+            [0.3,"#60BC6A"],[0.4,"#43B650"],[.6,"#26B036"],[1, '#09AA1C' ]]
+
     data = [dict(
             type ='scattergeo',
             locationmode = 'USA-states',
@@ -88,7 +43,7 @@ def skiability_map(PATH):
                             color = df['area'],
                             cmax = df['area'].max(),
                             colorbar=dict(
-                            title="Best Cities for Skiers & Boarders"
+                            title="Skiable Terrain Nearby"
                                             ))
             )]
 
@@ -107,7 +62,7 @@ def skiability_map(PATH):
              )
 
     fig = dict(data=data, layout=layout )
-    url = py.plot(fig, validate=False, filename='cities.html' )
+    url = py.plot(fig, validate=False, filename='city_graphic.html' )
 
 
 def snowfall_map(df):

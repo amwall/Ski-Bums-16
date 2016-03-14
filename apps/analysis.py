@@ -76,7 +76,7 @@ def gather_city_data(city_csv, db_name, output_name):
     '''
     This function creates a csv that saves the total acreage, number of resorts
     and time to drive to them for all resorts within a 3.25 hour drive of the
-    city. This includes     
+    city.   
     '''
     
     conn = lite.connect(db_name)
@@ -85,13 +85,16 @@ def gather_city_data(city_csv, db_name, output_name):
     cities = pd.read_csv(city_csv)
     rows = []
     for i, city in cities.iterrows():
-        lat, lon = get_lat_lon(city['City'] + " " + city['State'])
+        lat, lon = get_lat_lon(city['city'] + " " + city['state'])
         params = (lon,lat,lon,lat)
         query = "SELECT SUM(area), SUM(time_between(lon, lat, ?, ?)), COUNT(*) \
                  FROM main WHERE time_between(lon, lat, ?, ?) < 3.25"
         result = c.execute(query, params)
         area, time, count = list(result)[0]
-        rows.append((city['City'], city['State'], area, time, count, lat, lon))
+        rows.append((city['city'], city['state'], area, time, count, lat, lon))
+        
+    conn.commit()
+    conn.close()
 
     labels = ['city','state','area','time','number', 'lat', 'lon']
     csv_writer(labels,rows,output_name)

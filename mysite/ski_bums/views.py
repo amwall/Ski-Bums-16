@@ -103,6 +103,9 @@ def d3_ski_resorts(request):
 
     return render(request, 'ski_bums/d3-ski-resorts.html')
 
+def city_graphic(request):
+    
+    return render(request, 'ski_bums/city_graphic.html')
 
 def ranking(request):
     
@@ -131,8 +134,3 @@ def ranking(request):
     return c
 
     return render(request, 'ski_bums/ranking.html', c)
-
-def city_graphic(request):
-
-    
-    return render(request, '...')
