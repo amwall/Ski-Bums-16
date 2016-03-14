@@ -26,15 +26,15 @@ def score_location(current_location, path, db_path):
     
     area, time, count = list(result)[0]
     score = (area)/(time/count)
-    info = (city, state, area, time, count, score)
+    info = (city, state, area, time, count,lat,lon,score)
     
     print(info)
     percentile = compare_score(info, path)
     if type(percentile) == str:
         return percentile
     else:
-        rv = (city + ", " + state + " is in the " + str((1-percentile) * 100) +
-              "percentile of places to live for skiers and snowboards")
+        rv = (city + ", " + state + " is in the " + str(round(((1-percentile) * 100),1)) +
+              " percentile of places to live for access to ski resorts")
         return rv
     
 def compare_score(info, path):
@@ -53,11 +53,13 @@ def compare_score(info, path):
             print(rank)
             rv = rank/len(df)
         else:
-            df.concat(pd.Series(info))
+            df.loc[len(df)] = info 
+            print(df.tail())
             df.sort_values(['score'], ascending=False, inplace=True)
-            rank = np.where(df['city'] == info[0])
+            
+            rank = np.where(df['city'] == info[0])[0][0]
             rv = rank/len(df)
-            df.to_csv(path)
+            df.to_csv(path, index=False)
     else:
         rv = "We could not compare your location"
         
