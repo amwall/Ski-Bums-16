@@ -6,6 +6,8 @@ from urllib.request import urlopen
 import sqlite3
 import os
 from math import sin, asin, sqrt, cos, radians
+import pandas as pd
+import numpy as np
 
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
@@ -269,7 +271,7 @@ def haversine(lon1, lat1, lon2, lat2):
     m = km * 1000
     return m
 
-def get_lat_lon(location):
+def get_lat_lon(location, locality=False):
     '''
     This function is used for getting the GPS coordinates for a given location.
     location can be any combination of city, state, addr and zip code.
@@ -281,7 +283,7 @@ def get_lat_lon(location):
     
     url =  ('https://maps.googleapis.com/maps/api/geocode/json?' +
             'address=' + current + '&key=' + GEOCODING_ID)
-
+    
     request = urlopen(url)
     test = request.read().decode("utf-8")
     data = json.loads(test)
@@ -289,9 +291,21 @@ def get_lat_lon(location):
     try:
         lat = data['results'][0]['geometry']['location']['lat']
         lon = data['results'][0]['geometry']['location']['lng']
+         
     except:
         lat = 0
         lon = 0
+    
+    if locality:
+        city = 'NaN'
+        state = 'NaN'
+        short = data['results'][0]['address_components']
+        for i in range(len(short)):
+            if 'locality' in short[i]['types']:
+                city = short[i]['short_name']
+            if "administrative_area_level_1" in short[i]['types']:
+                state = short[i]["long_name"]
+        return lat, lon, city, state
         
     return lat, lon
 
@@ -414,7 +428,7 @@ def score_location(current_location, path, db_path):
     
     '''
     
-    conn = lite.connect(db_path)
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
     conn.create_function('time_between', 4, compute_time_between)
     lat, lon, city, state = get_lat_lon(current_location, locality=True)

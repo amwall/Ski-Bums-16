@@ -11,6 +11,12 @@ from . import models
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
 
+CITY_1000 = os.path.dirname(__file__)
+CITY_1000_FILENAME = os.path.join(CITY_1000, 'top1000_scored.csv')
+
+CITY_200 = os.path.dirname(__file__)
+CITY_200_FILENAME = os.path.join(CITY_200, 'top200_scored.csv')
+
 def index(request):
     
     return render(request, 'ski_bums/index.html')
@@ -19,9 +25,12 @@ def results(request):
     info = {}
     if request.method == 'POST':
         current_location = request.POST['current_location']
-        print(request.POST)
         id_ranking = models.build_ranking(request.POST, DATABASE_FILENAME)
 
+       
+        output = models.score_location(current_location, CITY_1000_FILENAME, DATABASE_FILENAME)
+        info['location'] = output
+        
         if id_ranking != []:
             addr_info = models.sql_info(id_ranking)
             dir_list = []
@@ -115,9 +124,7 @@ def ranking(request):
     # current_location = request.POST['current_location']
     # output = models.score_location(current_location, CITY_1000_FILENAME, DATABASE_FILENAME)
     
-    
-    CITY_200 = os.path.dirname(__file__)
-    CITY_200_FILENAME = os.path.join(CITY_200, 'top200_scored.csv')
+
     
     df = pd.read_csv(CITY_200_FILENAME)
     df['avg_time'] = df['time']/df['number']
@@ -126,15 +133,12 @@ def ranking(request):
     for i, city in df.iterrows():
         if i < 20:
             rv = list(city)
-            print(rv)
             avg_time = rv[-1]
             number = rv[5]
             rv = rv[1:4]
             rv.append(number)
             rv.append(avg_time)
-            # print(rv)
             rv[-1] = round(rv[-1],2)
-            print(rv)
             c['city' + str(i)] = rv
         else:
             break
