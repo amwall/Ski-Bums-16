@@ -1,5 +1,5 @@
-# Ski-Bums-16
-# Final Project: Winter 2016
+# Ski-Bums:
+Gareth, Alison, Megan, & Syd
 
 ## Project Overview
 Our project is composed of the following:
@@ -16,18 +16,18 @@ Our project is composed of the following:
     * Quality of cities for access to ski and snowboard areas
 
 ## How to run Ski-Bums:
-1. navigate to the mysite directory in the shell
-2. Open a web browser
-3. In the run:
+1. Open a web browser
+2. navigate to the mysite directory in the shell
+3. In the shell run:
     ```
     python manage.py runserver
     ```
-4. 
+4. The page search page should have appeard in your browser
 
 ## File Overview 
 1. **apps**: This folder contains the files for the functions that are called in our website or were used to create material
     - database.py: Used for creating the SQL database and uploading csv data into it 
-    - directions.py: Uses Google's API to get directions and driving times
+    - directions.py: Uses Google's API to get directions, locations, and distances
     - scraper.py: A web scraper used to gather information from the OnTheSnow.com
     - preferences.py: The preference algorithm that is preforms a ranking with a SQL query
     - weather.py: A program for getting current weather conditions and a seven day forecast for every resort in our database. The data comes courtesy of OpenWeatherMap.org
@@ -55,4 +55,5 @@ Our project is composed of the following:
     - denisty-plot.html: Exploratory graph of resort data
     - newtork.hmtl: Sidelind project for displaying user's location
     - visualization.py: Program for creating visualization output
+    
 6. **README.md**: (This file)
