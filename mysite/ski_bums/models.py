@@ -127,11 +127,11 @@ def score_size(area, choice):
     
     if choice == 'Small':
         sml_mlt = 80
-        med_mlt = 5
+        med_mlt = 1
         lrg_mlt = 0.5
     elif choice == 'Medium':
-        sml_mlt = 2
-        med_mlt = 4
+        sml_mlt = 5
+        med_mlt = 2
         lrg_mlt = 1
     else:
         sml_mlt = 3

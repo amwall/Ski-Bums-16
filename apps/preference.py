@@ -24,16 +24,15 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     query += addition
 
     ### SCORE SIZE ###
-    choice = search_dict['Resort Size'][0]
+    choice = search_dict['Resort Size']
     # print(choice)
-    query += "score_size(total_runs, " + "'" + choice + "')"  +  ' AS total_score'
+    query += "score_size(area, " + "'" + choice + "')"  +  ' AS total_score'
     # Connect table
 
     ### CUTTING ATTRIBUTES ###
     where = []
     ### DISTANCE ###
-    if search_dict['max_drive_time'][0]:
-        
+    if search_dict['max_drive_time']:
         
         where.append(" time_between(lon,lat,?,?) <= ?")
         max_time = int(search_dict['max_drive_time'][0]) + 0.5  #Marginally increase bounds
@@ -43,17 +42,17 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
 
     query += ' FROM main WHERE'
     ### NIGHT SKIING ###
-    if search_dict['night skiing'][0] != 'Indifferent':
+    if search_dict['night skiing'] != 'Indifferent':
         where.append(" night=1")
 
     ### MAX TICKET ###
     if search_dict['max_tic_price']:
-        price = int(search_dict['max_tic_price'][0])
+        price = int(search_dict['max_tic_price'])
         parameters.append(price)
         where.append(" (max_price <= ? OR max_price='N/A')")
 
     ### Terrain Park ###
-    if int(search_dict['Terrain parks'][0]) > 1:
+    if int(search_dict['Terrain parks']) > 1:
         where.append(" park > 0")
 
     where = " AND".join(where)
@@ -68,39 +67,37 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     for i in range(len(output)):
         resort_id = output[i][0]
         resort_ids.append(resort_id)
-    
+        
     return resort_ids
 
-def score_size(num_runs, choice):
+def score_size(area, choice):
     '''
     A system for scoring base on the users choice and the number of runs at
     the resort
+    SMALL: 1-35
+    MEDIUM: 35-150
+    Large: 150 +
     '''
-
-    # SMALL: 1-35
-    # MEDIUM: 35-100
-    # Large: 100 +
-    # print("check")
-
+    
     if choice == 'Small':
-        sml_mlt = 10
-        med_mlt = 3
+        sml_mlt = 80
+        med_mlt = 1
         lrg_mlt = 0.5
     elif choice == 'Medium':
-        sml_mlt = 8
-        med_mlt = 4
-        lrg_mlt = 2
+        sml_mlt = 5
+        med_mlt = 2
+        lrg_mlt = 1
     else:
-        sml_mlt = 0.5
-        med_mlt = 0.65
-        lrg_mlt = 0.8
+        sml_mlt = 3
+        med_mlt = 1
+        lrg_mlt = 1.25
 
-    if num_runs >= 100:
-        scr = num_runs * lrg_mlt
-    elif num_runs >= 35 and num_runs < 100:
-        scr = num_runs * med_mlt
+    if (area >= 0 and area < 750):
+        scr = area * sml_mlt
+    elif (area >= 750 and area < 2000):
+        scr = area * med_mlt
     else:
-        scr = num_runs * lrg_mlt
+        scr = area * lrg_mlt
 
     return scr
 
@@ -110,19 +107,18 @@ def score_runs(search_dict, parameters):
     percentage of runs that are of a given difficulty.
     '''
     score_dict = {'1': 0,
-                  '2': .25,
-                  '3': .5,
-                  '4': 1,
-                  '5': 2}
+                  '2': 25,
+                  '3': 50,
+                  '4': 100,
+                  '5': 200}
 
-    beg_mlt = score_dict[search_dict['Beginner runs'][0]]
-    int_mlt = score_dict[search_dict['Intermediate runs'][0]]
-    exp_mlt = score_dict[search_dict['Expert runs'][0]]
-    adv_mlt = score_dict[search_dict['Advanced runs'][0]]
+    beg_mlt = score_dict[search_dict['Beginner runs']]
+    int_mlt = score_dict[search_dict['Intermediate runs']]
+    exp_mlt = score_dict[search_dict['Expert runs']]
+    adv_mlt = score_dict[search_dict['Advanced runs']]
 
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
     query = " beginner * ? + intermediate * ? + \
               advanced * ? + expert * ? + "
-    
     
     return query, parameters
