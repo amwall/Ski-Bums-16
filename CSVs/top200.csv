@@ -1,0 +1,200 @@
+city,state,area,time,number
+New York   ,New York,4870,65.0689914,34
+Los Angeles   ,California,930,5.314240359,4
+Chicago   ,Illinois,664,25.66604802,12
+Houston   ,Texas,,,0
+Philadelphia   ,Pennsylvania,3047,43.12469485,21
+Phoenix   ,Arizona,777,2.832717422,1
+San Antonio   ,Texas,,,0
+San Diego   ,California,930,10.0844787,4
+Dallas   ,Texas,,,0
+San Jose   ,California,7170,16.22213327,6
+Austin   ,Texas,,,0
+Jacksonville   ,Florida,,,0
+San Francisco   ,California,2782,8.138943629,3
+Indianapolis   ,Indiana,329,6.955127662,3
+Columbus   ,Ohio,541,13.70625328,6
+Fort Worth   ,Texas,,,0
+Charlotte   ,North Carolina,370,14.48383785,6
+Detroit   ,Michigan,1694,25.36347982,13
+El Paso   ,Texas,1310,4.903381698,2
+Seattle   ,Washington,10946,8.651077081,7
+Denver   ,Colorado,28407,27.45681925,15
+Washington   ,District of Columbia,1034,29.20778008,11
+Memphis   ,Tennessee,,,0
+Boston   ,Massachusetts,10168,99.80830852,46
+Nashville-Davidson   ,Tennessee,,,0
+Baltimore   ,Maryland,1856,37.69269451,14
+Oklahoma City   ,Oklahoma,,,0
+Portland   ,Oregon,13571,15.92660516,8
+Las Vegas   ,Nevada,2535,0.860160405,2
+Louisville/Jefferson County   ,Kentucky,185,2.74913114,2
+Milwaukee   ,Wisconsin,1353,33.09876513,17
+Albuquerque   ,New Mexico,4241,16.22540801,8
+Tucson   ,Arizona,,,0
+Fresno   ,California,7120,14.77335526,7
+Sacramento   ,California,26455,31.6273863,16
+Long Beach   ,California,930,5.909304683,4
+Kansas City   ,Missouri,30,0.634082928,1
+Mesa   ,Arizona,777,2.840513842,1
+Atlanta   ,Georgia,8,2.743484487,1
+Virginia Beach   ,Virginia,,,0
+Omaha   ,Nebraska,795,6.72112282,4
+Colorado Springs   ,Colorado,25317,25.3509503,12
+Raleigh   ,North Carolina,270,3.27794146,3
+Miami   ,Florida,,,0
+Oakland   ,California,7082,13.78928343,5
+Minneapolis   ,Minnesota,4172,24.97468657,14
+Tulsa   ,Oklahoma,,,0
+Cleveland   ,Ohio,1599,25.89426659,13
+Wichita   ,Kansas,,,0
+New Orleans   ,Louisiana,,,0
+Arlington   ,Texas,,,0
+Bakersfield   ,California,1140,7.93666122,3
+Tampa   ,Florida,,,0
+Aurora   ,Colorado,28407,30.05228573,15
+Honolulu   ,Hawaii,,,0
+Anaheim   ,California,930,4.573179958,4
+Santa Ana   ,California,930,4.823956094,4
+Corpus Christi   ,Texas,,,0
+Riverside   ,California,930,2.858098537,4
+St. Louis   ,Missouri,30,0.5673913,1
+Lexington-Fayette   ,Kentucky,185,4.302641056,2
+Pittsburgh   ,Pennsylvania,1449,35.55117347,16
+Stockton   ,California,28405,41.07594674,18
+Anchorage   ,Alaska,1640,0.705843424,2
+Cincinnati   ,Ohio,329,5.185371151,3
+St. Paul   ,Minnesota,4202,27.40291622,15
+Greensboro   ,North Carolina,471,14.23883293,6
+Toledo   ,Ohio,1804,32.6402683,15
+Newark   ,New Jersey,4870,62.88589294,34
+Plano   ,Texas,,,0
+Henderson   ,Nevada,2535,1.239898964,2
+Lincoln   ,Nebraska,760,5.611638587,3
+Orlando   ,Florida,,,0
+Jersey City   ,New Jersey,4870,63.87830397,34
+Chula Vista   ,California,930,10.58562093,4
+Buffalo   ,New York,2573,25.55431724,14
+Fort Wayne   ,Indiana,1483,28.28193372,11
+Chandler   ,Arizona,777,3.0140695,1
+St. Petersburg   ,Florida,,,0
+Laredo   ,Texas,,,0
+Durham   ,North Carolina,399,7.201604189,4
+Irvine   ,California,930,4.917878961,4
+Madison   ,Wisconsin,1470,29.66802002,17
+Norfolk   ,Virginia,,,0
+Lubbock   ,Texas,,,0
+Gilbert   ,Arizona,777,2.935230714,1
+Winston-Salem   ,North Carolina,407,14.75988572,6
+Glendale   ,Arizona,777,2.726219326,1
+Reno   ,Nevada,33515,21.26703043,17
+Hialeah   ,Florida,,,0
+Garland   ,Texas,,,0
+Chesapeake   ,Virginia,,,0
+Irving   ,Texas,,,0
+North Las Vegas   ,Nevada,2535,0.964388233,2
+Scottsdale   ,Arizona,777,2.729141771,1
+Baton Rouge   ,Louisiana,,,0
+Fremont   ,California,7170,15.96479822,6
+Richmond   ,Virginia,269,9.925946949,4
+Boise City   ,Idaho,8576,10.65907327,6
+San Bernardino   ,California,930,2.212162386,4
+Birmingham   ,Alabama,,,0
+Spokane   ,Washington,10920,14.04489908,8
+Rochester   ,New York,3083,31.56701091,18
+Modesto   ,California,27205,38.79611588,17
+Des Moines   ,Iowa,765,6.187833048,3
+Oxnard   ,California,930,9.984928555,4
+Tacoma   ,Washington,15471,18.63010666,10
+Fontana   ,California,930,2.329665546,4
+Fayetteville   ,North Carolina,270,2.536262428,3
+Moreno Valley   ,California,930,2.853514877,4
+Columbus   ,Georgia,,,0
+Huntington Beach   ,California,930,5.642112264,4
+Yonkers   ,New York,5212,71.61128308,38
+Montgomery   ,Alabama,,,0
+Aurora   ,Illinois,1106,36.41762947,15
+Glendale   ,California,930,5.226494468,4
+Shreveport   ,Louisiana,,,0
+Akron   ,Ohio,1289,17.29256392,10
+Little Rock   ,Arkansas,,,0
+Amarillo   ,Texas,,,0
+Augusta-Richmond County   ,Georgia,8,2.967345651,1
+Mobile   ,Alabama,,,0
+Grand Rapids   ,Michigan,2629,46.70396914,21
+Salt Lake City   ,Utah,29428,10.25668688,13
+Huntsville   ,Alabama,,,0
+Tallahassee   ,Florida,,,0
+Grand Prairie   ,Texas,,,0
+Overland Park   ,Kansas,30,0.737704912,1
+Knoxville   ,Tennessee,100,7.137240147,4
+Brownsville   ,Texas,,,0
+Worcester   ,Massachusetts,11351,106.5118732,53
+Newport News   ,Virginia,,,0
+Santa Clarita   ,California,930,6.679823559,4
+Providence   ,Rhode Island,6068,76.58352383,36
+Fort Lauderdale   ,Florida,,,0
+Garden Grove   ,California,930,4.93341599,4
+Oceanside   ,California,930,7.121664582,4
+Rancho Cucamonga   ,California,930,2.474179169,4
+Santa Rosa   ,California,240,2.5735022,1
+Port St. Lucie   ,Florida,,,0
+Chattanooga   ,Tennessee,8,5.432635664,2
+Tempe   ,Arizona,777,2.839622327,1
+Jackson   ,Mississippi,,,0
+Cape Coral   ,Florida,,,0
+Vancouver   ,Washington,16390,22.42740036,10
+Ontario   ,California,930,2.773417723,4
+Sioux Falls   ,South Dakota,,,0
+Peoria   ,Arizona,777,2.680380048,1
+Springfield   ,Missouri,,,0
+Pembroke Pines   ,Florida,,,0
+Elk Grove   ,California,27955,34.05771422,17
+Salem   ,Oregon,,,0
+Corona   ,California,930,3.444609742,4
+Lancaster   ,California,930,5.364435044,4
+Eugene   ,Oregon,9789,14.72303673,7
+Palmdale   ,California,930,4.862262333,4
+McKinney   ,Texas,,,0
+Salinas   ,California,1190,8.022815304,3
+Fort Collins   ,Colorado,26060,25.81841735,13
+Cary   ,North Carolina,270,3.320058376,3
+Hayward   ,California,7170,16.17885913,6
+Springfield   ,Massachusetts,10609,102.7182908,55
+Pasadena   ,Texas,,,0
+Macon-Bibb County   ,Georgia,,,0
+Pomona   ,California,930,3.104011114,4
+Alexandria   ,Virginia,910,23.29160967,9
+Escondido   ,California,930,7.627928424,4
+Sunnyvale   ,California,5170,13.71684443,5
+Lakewood   ,Colorado,28407,25.99298188,15
+Kansas City   ,Kansas,30,0.579606346,1
+Rockford   ,Illinois,1110,26.2700597,14
+Torrance   ,California,930,6.324934021,4
+Hollywood   ,Florida,,,0
+Joliet   ,Illinois,671,29.69585775,12
+Bridgeport   ,Connecticut,7232,105.4785903,48
+Clarksville   ,Tennessee,,,0
+Paterson   ,New Jersey,5182,66.25428908,37
+Naperville   ,Illinois,1206,39.79269675,16
+Frisco   ,Texas,,,0
+Mesquite   ,Texas,,,0
+Savannah   ,Georgia,,,0
+Syracuse   ,New York,4752,69.3437029,33
+Dayton   ,Ohio,344,5.000336142,3
+Pasadena   ,California,930,4.656594224,4
+Orange   ,California,930,4.581357555,4
+Fullerton   ,California,930,4.461547383,4
+McAllen   ,Texas,,,0
+Killeen   ,Texas,,,0
+Hampton   ,Virginia,,,0
+Bellevue   ,Washington,10946,8.125443101,7
+Warren   ,Michigan,1590,25.89749063,13
+Miramar   ,Florida,,,0
+West Valley City   ,Utah,29428,11.13868677,13
+Olathe   ,Kansas,30,0.847032907,1
+Columbia   ,South Carolina,58,5.419868596,2
+Sterling Heights   ,Michigan,1590,26.01479624,13
+Thornton   ,Colorado,28407,27.95096213,15
+New Haven   ,Connecticut,7664,108.4632431,49
+Waco   ,Texas,,,0
