@@ -5,16 +5,16 @@ Gareth, Alison, Megan, & Syd
 ## Project Overview
 Our project is composed of the following:
 1. **Django Website**
-    * Interactive Website for displaying our data and results
+    - Interactive Website for displaying our data and results
 2. **Data**
-    * A database contaning information on resorts and their current and predicted weather.
-    * A databse ranking major cities by their acess to resorts
+    - A database contaning information on resorts and their current and predicted weather.
+    - A databse ranking major cities by their acess to resorts
 3. **Algorithms**
-    * An algorithm for producing the top 3 resorts given a user's input
-    * An algorithm for ranking the user's current location relative to other cities in our database
+    - An algorithm for producing the top 3 resorts given a user's input
+    - An algorithm for ranking the user's current location relative to other cities in our database
 4. **Visualizations**
-    * Quality of resorts based on snowfall
-    * Quality of cities for access to ski and snowboard areas
+    - Quality of resorts based on snowfall
+    - Quality of cities for access to ski and snowboard areas
     
 ## Packages Required 
 Our project may require you to install the following to run all programs:
