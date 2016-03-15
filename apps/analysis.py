@@ -1,6 +1,5 @@
 # analysis.py
 # Gareth Jones
-# All functions in this file are original
 
 import pandas as pd
 from directions import get_lat_lon, compute_time_between

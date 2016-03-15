@@ -11,7 +11,7 @@ import pandas as pd
 from . import models
 
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+DATABASE_FILENAME = os.path.join(DATA_DIR, '../../ski-resorts.db')
 
 CITY_1000 = os.path.dirname(__file__)
 CITY_1000_FILENAME = os.path.join(CITY_1000, 'top1000_scored.csv')

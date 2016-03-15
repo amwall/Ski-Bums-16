@@ -61,6 +61,15 @@ def address_info(resort_ids):
     return output
 
 
+#########################################################
+#                                                       #
+#                    Ranking Algorithm                  #
+#                                                       #
+#########################################################
+
+
+
+
 def build_ranking(search_dict, database_name='ski-resorts.db'):
     '''
     The main ranking algorithm. It takes the search results and builds 
