@@ -30,12 +30,13 @@
 
 <body>
     <h1>City Ranking </h1>
-    <h2>(A ranking of the 20 most populous cities)</h2>
+    <h2>(Top 20 of the 200 most populous cities)</h2>
 
     <p> <a href="{% url 'info' %}">Browse Resorts</a> | <a href="{% url 'd3-ski-resorts' %}">Resorts Interactive Map</a> | <a href="{% url 'city_graphic' %}">City Interactive Map</a> | <a href="{% url 'index' %}">Search Again</a></p>
 
     <table id="t01">
         <tr>
+            <th>Rank</th>
             <th>City</th>
             <th>State</th>
             <th>Acreage</th>

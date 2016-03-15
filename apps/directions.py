@@ -144,9 +144,9 @@ def get_directions(destination, current_location):
     direct_and_dist.append('Total miles traveled: ' + dist_travel)
 
     return direct_and_dist
-##
-## The following function were modified from PA3 
-##  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# The following function were modified from PA3    #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def compute_time_between(lon1, lat1, lon2, lat2):
     '''
     Converts the output of the haversine formula to walking time in minutes

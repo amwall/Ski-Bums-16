@@ -143,6 +143,9 @@ def city_graphic(request):
 
 
 def ranking(request):
+    '''
+    Build the city ranking from the largest 200 cities
+    '''
     # ranking the top 20 cities for skiing
     df = pd.read_csv(CITY_200_FILENAME)
     df['avg_time'] = df['time'] / df['number']
@@ -157,6 +160,8 @@ def ranking(request):
             rv.append(number)
             rv.append(avg_time)
             rv[-1] = round(rv[-1],2)
+            rv.insert(0, i+1)
+            
             c['city' + str(i)] = rv
         else:
             break
