@@ -10,21 +10,30 @@ import pandas as pd
 import numpy as np
 
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR, 'ski-resorts.db')
+DATABASE_FILENAME = os.path.join(DATA_DIR, '../../ski-resorts.db')
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
-GEOCODING_ID = 'AIzaSyCeg-uM3PsOT2ssRsPDfQdxZPbGz6k0kBc' #'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
+GEOCODING_ID = 'AIzaSyCeg-uM3PsOT2ssRsPDfQdxZPbGz6k0kBc' 
+
 
 def general_information(resort_ids):
     '''
+    Obtains general information from the sqlite database for the 
+    given resorts
+
+    Input:
+        resort_ids: a list
+
+    Output:
+        a list
     '''
     where = ['id = ?'] * len(resort_ids)
     where = " WHERE " + " OR ".join(where) 
 
-    sql_string = ('SELECT name, ID, city, state, elev, max_price, beginner, intermediate, ' +
-                  'advanced, expert, night, park, total_runs, area ' +
-                  'FROM main ' + where)
+    sql_string = ('SELECT name, ID, city, state, elev, max_price, beginner, ' +
+                  'intermediate, advanced, expert, night, park, total_runs, ' +
+                  'area FROM main ' + where)
     
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
@@ -34,14 +43,15 @@ def general_information(resort_ids):
 
     return output
 
-def sql_info(resort_ids):
+def address_info(resort_ids):
     '''
+    Obtains the address, city, state, and zip code from the sqlite
+    database for the given resorts
     '''
     where = ['id = ?'] * len(resort_ids)
     where = "WHERE " + " OR ".join(where) 
 
     query = 'SELECT addr, city, state, zip FROM main ' + where
-    print(query)
     connection = sqlite3.connect(DATABASE_FILENAME)
     cursor = connection.cursor()
     execute = cursor.execute(query, resort_ids)
@@ -53,11 +63,10 @@ def sql_info(resort_ids):
 
 def build_ranking(search_dict, database_name='ski-resorts.db'):
     '''
-    The main ranking algorithm. It takes the search results and builds a query
-    that returns the top three results. The program returns the IDs, which are
-    the primary keys for the resorts
+    The main ranking algorithm. It takes the search results and builds 
+    a query that returns the top three results. The program returns 
+    the IDs, which are the primary keys for the resorts
     '''
-
     db = sqlite3.connect(database_name)
     db.create_function('score_size', 2, score_size)     
     db.create_function('time_between', 4, compute_time_between)
@@ -73,7 +82,6 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
 
     ### SCORE SIZE ###
     choice = search_dict['Resort Size']
-    # print(choice)
     query += "score_size(area, " + "'" + choice + "')"  +  ' AS total_score'
     # Connect table
 
@@ -83,7 +91,6 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
         
     where.append(" time_between(lon,lat,?,?) <= ?")
     max_time = float(search_dict['max_drive_time']) + 0.5  #Marginally increase bounds
-    print(max_time)
     cur_loc = search_dict['current_location']
     u_lat, u_lon = get_lat_lon(cur_loc)
     parameters.extend([u_lon, u_lat, max_time])
@@ -106,9 +113,8 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     where = " AND".join(where)
     query += where
     query += ' ORDER BY total_score DESC LIMIT 3'
-    print('QUERY', query)
+    
     parameters = tuple(parameters)
-    print('PARAMS', parameters)
     exc = cursor.execute(query, parameters)
     output = exc.fetchall()
 
@@ -119,6 +125,7 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
         
     return resort_ids
 
+
 def score_size(area, choice):
     '''
     A system for scoring base on the users choice and the number of runs at
@@ -127,7 +134,6 @@ def score_size(area, choice):
     MEDIUM: 750-2000
     Large: 2000 +
     '''
-    print(area, choice)
     if area == 'N/A':
         area = 1000
 
@@ -152,6 +158,7 @@ def score_size(area, choice):
         scr = area * lrg_mlt
 
     return scr
+
 
 def score_runs(search_dict, parameters):
     '''
@@ -181,7 +188,10 @@ def score_runs(search_dict, parameters):
 #############################################################
 
 def date_distance(date_ski):
-    
+    '''
+    Returns the number of days in a list between the current 
+    date and the inputed date
+    '''
     date_today = date.today().strftime('%m/%d/%Y')
 
     dat_lis = re.findall('[0-9]+',date_today)
@@ -194,7 +204,11 @@ def date_distance(date_ski):
     
 
 def grab_weather(id_list, days_list, check):
-    
+    '''
+    Returns current weather of the given ski resorts. 
+    If check == True, also returns the forecast for the day
+    the user wants to ski
+    '''
     select = 'SELECT '
     fields = 'c.ID, c.wthr, c.dscr, c.temp, c.snow'
 
@@ -221,8 +235,9 @@ def grab_weather(id_list, days_list, check):
     customer_id = "(" + ", ".join(new_id) + ")"
     where = 'WHERE c.ID IN ' + customer_id
     if check == 'Yes':
-        sql_string = (select + fields + ', ' + weather + description + average_day +
-                      snow_fall[0] + 'FROM current AS c JOIN forecast AS f ON (c.ID = f.ID) ' +
+        sql_string = (select + fields + ', ' + weather + description +
+                      average_day + snow_fall[0] + 
+                      'FROM current AS c JOIN forecast AS f ON (c.ID = f.ID) ' +
                       where)
     else:
         sql_string = select + fields + fro_cur + where
@@ -242,38 +257,7 @@ def grab_weather(id_list, days_list, check):
 #                                                       #
 #########################################################
         
-           
-        
-def compute_time_between(lon1, lat1, lon2, lat2):
-
-    '''
-    Converts the output of the haversine formula to walking time in minutes
-    '''
-    
-    meters = haversine(lon1, lat1, lon2, lat2)
-    #adjusted downwards to account for manhattan distance
-    driving_speed_per_hr = 55000 #55km an hr
-    hrs = meters / driving_speed_per_hr
-
-    return hrs
-
-def haversine(lon1, lat1, lon2, lat2):
-    '''
-    Calculate the circle distance between two points 
-    on the earth (specified in decimal degrees)
-    '''
-    # convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    # Haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
-    # 6367 km is the radius of the Earth
-    km = 6367 * c
-    m = km * 1000
-    return m
-
+                 
 def get_lat_lon(location, locality=False):
     '''
     This function is used for getting the GPS coordinates for a given location.
@@ -311,7 +295,7 @@ def get_lat_lon(location, locality=False):
         return lat, lon, city, state
         
     return lat, lon
-
+    
 
 def get_distance(destination, current_location):
     '''
@@ -325,8 +309,8 @@ def get_distance(destination, current_location):
     end = "+".join(end)
     
     url = ('https://maps.googleapis.com/maps/api/distancematrix/json?' +
-           'units=imperial' + '&origins=' + current + '&destinations=' + end +  
-            '&key=' + DISTANCE_MATRIX_ID)
+           'units=imperial' + '&origins=' + current + '&destinations=' + 
+           end + '&key=' + DISTANCE_MATRIX_ID)
 
     url = urlopen(url)
     text = url.read()
@@ -346,6 +330,7 @@ def get_distance(destination, current_location):
         dist_text = 'NaN'
     
     return time_text, dist_text
+
 
 def get_directions(destination, current_location):
     '''
@@ -367,22 +352,22 @@ def get_directions(destination, current_location):
     text = text.decode('utf-8')
 
     values = re.findall('("text"\s:\s)\"([0-9\.\sa-z]*)', text)
-    time_travel = values[1][1]
-
+    # Make a list of the distances you are driving for each step
     distances = []
     for i in values[2::2]:
         distances.append(i[1])
 
-    instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', text)
+    instructions = re.findall('("html_instructions"\s:\s)\"([A-Za-z0-9\\\/\s\-]*)', 
+                              text)
     directions = []
     for i in instructions:
         directions.append(i[1])
-
+    # Narrowing down the directions by using regular expressions
     l = []
     for i in directions:
         x = re.findall('([A-Za-z\s]+)([A-Za-z0-9\s\-]+)', i)
         l.append(x)
-    
+    # Make a list of the directions (i.e. Turn right onto street, Merge onto...) 
     directions = []
     for turn in l:
         new = ''
@@ -396,7 +381,7 @@ def get_directions(destination, current_location):
                 new += i[1][4:] + ' '
 
         directions.append(new)
-
+    # Make a final list of the directions with distance for each step
     direct_and_dist = []
     for i in range(len(directions)):
         entry = directions[i] + 'and continue for ' + distances[i]
@@ -408,6 +393,36 @@ def get_directions(destination, current_location):
 
     return direct_and_dist
 
+    
+def compute_time_between(lon1, lat1, lon2, lat2):
+    '''
+    Converts the output of the haversine formula to walking time in minutes
+    '''
+    meters = haversine(lon1, lat1, lon2, lat2)
+    #adjusted downwards to account for manhattan distance
+    driving_speed_per_hr = 55000 #55km an hr
+    hrs = meters / driving_speed_per_hr
+
+    return hrs
+
+
+def haversine(lon1, lat1, lon2, lat2):
+    '''
+    Calculate the circle distance between two points 
+    on the earth (specified in decimal degrees)
+    '''
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # Haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    # 6367 km is the radius of the Earth
+    km = 6367 * c
+    m = km * 1000
+    return m
+
 
 
 
@@ -416,8 +431,6 @@ def get_directions(destination, current_location):
 #                   ANALYSIS FILES                     #
 #                                                      #
 ########################################################
-
-
 
 
 def score_location(current_location, path, db_path):
@@ -448,28 +461,27 @@ def score_location(current_location, path, db_path):
     if type(percentile) == str:
         return percentile
     else:
-        rv = (city + ", " + state + " is in the " + str(round(((1-percentile) * 100),1)) +
+        rv = (city + ", " + state + " is in the " + 
+              str(round(((1-percentile) * 100),1)) +
               " percentile of places to live for access to ski resorts")
         return rv
     
 def compare_score(info, path):
     '''
-    
-    Compare_score is helper function called in the score_location function which
-    does the actual comparison of the user location to the registry of cities.
-    If the city they give is not in our database of cities, the information is added
-    to our registry for future users to compare with
+    Compare_score is helper function called in the score_location function 
+    which does the actual comparison of the user location to the registry 
+    of cities.
+    If the city they give is not in our database of cities, the information 
+    is added to our registry for future users to compare with
     '''
     
     df = pd.read_csv(path)
     if info[0] != 'NaN':    
         if any(np.where(df['city'] == info[0])):
             rank = np.where(df['city'] == info[0])[0][0]
-            print(rank)
             rv = rank/len(df)
         else:
             df.loc[len(df)] = info 
-            print(df.tail())
             df.sort_values(['score'], ascending=False, inplace=True)
             
             rank = np.where(df['city'] == info[0])[0][0]

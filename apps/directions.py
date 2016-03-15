@@ -1,4 +1,5 @@
 # directions.py
+# Megan Wall
 
 from urllib.request import urlopen
 import json
@@ -6,7 +7,7 @@ from math import sin,cos,radians,asin,sqrt
 
 DISTANCE_MATRIX_ID = 'AIzaSyDJ4p7topWHJW7SRAJJFY88BYVAapEkz0g'
 DIRECTIONS_ID = 'AIzaSyBkmUNSECcrSIPufRXJQCEm-0OhAmH9Mm8'
-GEOCODING_ID = 'AIzaSyCeg-uM3PsOT2ssRsPDfQdxZPbGz6k0kBc'#'AIzaSyB0Sx4EMq-IP2fXfzSyoRQ4-1llyKNJQgU'
+GEOCODING_ID = 'AIzaSyCeg-uM3PsOT2ssRsPDfQdxZPbGz6k0kBc'
 
 
 def get_lat_lon(location, locality=False):

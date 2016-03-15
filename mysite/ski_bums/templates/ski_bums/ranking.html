@@ -15,13 +15,13 @@
         text-align: left;
     }
     table#t01 tr:nth-child(even) {
-        background-color: #FFF8C6;
+        background-color: #ddd;
     }
     table#t01 tr:nth-child(odd) {
        background-color: white;
     }
     table#t01 th    {
-        background-color: #FFD801;
+        background-color: #B6B6B4;
         color: black;
     }
     </style>
@@ -30,9 +30,9 @@
 
 <body>
     <h1>City Ranking </h1>
-    <h2>(A ranking of the 200 most populous cities)</h2>
+    <h2>(A ranking of the 20 most populous cities)</h2>
 
-    <p> <a href="{% url 'info' %}">Browse Resorts</a> | <a href="{% url 'd3-ski-resorts' %}">Resorts Interactive Map</a> | <a href="{% url 'index' %}">Search Again</a> | <a href="{% url 'city_graphic' %}">City Interactive Map</a></p>
+    <p> <a href="{% url 'info' %}">Browse Resorts</a> | <a href="{% url 'd3-ski-resorts' %}">Resorts Interactive Map</a> | <a href="{% url 'city_graphic' %}">City Interactive Map</a> | <a href="{% url 'index' %}">Search Again</a></p>
 
     <table id="t01">
         <tr>
