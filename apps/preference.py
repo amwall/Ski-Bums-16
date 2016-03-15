@@ -32,13 +32,13 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     ### CUTTING ATTRIBUTES ###
     where = []
     ### DISTANCE ###
-    if search_dict['max_drive_time']:
         
-        where.append(" time_between(lon,lat,?,?) <= ?")
-        max_time = int(search_dict['max_drive_time'][0]) + 0.5  #Marginally increase bounds
-        cur_loc = search_dict['current_location']
-        u_lat, u_lon = get_lat_lon(cur_loc)
-        parameters.extend([u_lon, u_lat, max_time])
+    where.append(" time_between(lon,lat,?,?) <= ?")
+    max_time = float(search_dict['max_drive_time']) + 0.5  #Marginally increase bounds
+    print(max_time)
+    cur_loc = search_dict['current_location']
+    u_lat, u_lon = get_lat_lon(cur_loc)
+    parameters.extend([u_lon, u_lat, max_time])
 
     query += ' FROM main WHERE'
     ### NIGHT SKIING ###
@@ -58,8 +58,9 @@ def build_ranking(search_dict, database_name='ski-resorts.db'):
     where = " AND".join(where)
     query += where
     query += ' ORDER BY total_score DESC LIMIT 3'
-    
+    print('QUERY', query)
     parameters = tuple(parameters)
+    print('PARAMS', parameters)
     exc = cursor.execute(query, parameters)
     output = exc.fetchall()
 
@@ -74,11 +75,14 @@ def score_size(area, choice):
     '''
     A system for scoring base on the users choice and the number of runs at
     the resort
-    SMALL: 1-35
-    MEDIUM: 35-150
-    Large: 150 +
+    SMALL: 0-750
+    MEDIUM: 750-2000
+    Large: 2000 +
     '''
-    
+    print(area, choice)
+    if area == 'N/A':
+        area = 1000
+
     if choice == 'Small':
         sml_mlt = 80
         med_mlt = 1
@@ -118,7 +122,6 @@ def score_runs(search_dict, parameters):
     adv_mlt = score_dict[search_dict['Advanced runs']]
 
     parameters.extend([beg_mlt, int_mlt, adv_mlt, exp_mlt])
-    query = " beginner * ? + intermediate * ? + \
-              advanced * ? + expert * ? + "
+    query = " beginner * ? + intermediate * ? + advanced * ? + expert * ? + "
     
     return query, parameters
