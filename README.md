@@ -1,6 +1,20 @@
 # Ski-Bums:
 Gareth, Alison, Megan, & Syd
 
+
+## Packages Required 
+Our project is composed of the following:
+Python3
+Plotty
+Sqlite3
+Django
+
+To Install run the following code in your command temrinal:
+sudo pip install python3
+sudo pip install plotty
+sudo pip install sqlite3
+sudo pip install django
+
 ## Project Overview
 Our project is composed of the following:
 1. **Django Website**
