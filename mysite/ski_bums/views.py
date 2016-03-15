@@ -24,6 +24,7 @@ def index(request):
 def results(request):
     info = {}
     if request.method == 'POST':
+        print('POST', request.POST)
         current_location = request.POST['current_location']
         id_ranking = models.build_ranking(request.POST, DATABASE_FILENAME)
 
